@@ -1,16 +1,18 @@
-snap-python
-===========
+snap-python-64
+==============
+
+This is an unstable, development repository.
 
 1. Install SWIG for your platform (see below).  Swig should be able to run from the command-line.
 
 2. Checkout the snap-python repository as well as the SNAP C++ repository.
 
-		git clone git@github.com:snap-stanford/snap-python.git
-		git clone git@github.com:snap-stanford/snap.git
+		git clone git@github.com:snap-stanford/snap-python-64.git
+		git clone git@github.com:snap-stanford/snap-dev-64.git
 
-2. Then, run `make` from the top-level of `snap-python`. This will make the SNAP code into a Python module, using SWIG.  Finally, it will run some Python tests in the `test` directory.
+2. Then, run `make` from the t`snap-python-64/swig`. This will make the SNAP code into a Python module, using SWIG.  Finally, it will run some Python tests in the `test` directory.
 
-		cd snap-python
+		cd snap-python-64/swig
 		make
 
 	From a Python interpreter, you should be able to import `snap` module:
