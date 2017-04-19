@@ -9,7 +9,7 @@
         TMMNetModeNetI EndModeNetI() {
           return TMMNetModeNetI($self->EndModeNetI());
         }
-        TMMNetModeNetI GetModeNetI(const int &NId) {
+        TMMNetModeNetI GetModeNetI(const int64 &NId) {
           return TMMNetModeNetI($self->GetModeNetI(NId));
         }
 
@@ -20,7 +20,7 @@
         TMMNetCrossNetI EndCrossNetI() {
           return TMMNetCrossNetI ($self->EndCrossNetI());
         }
-        TMMNetCrossNetI GetCrossNetI(const int &CId) {
+        TMMNetCrossNetI GetCrossNetI(const int64 &CId) {
           return TMMNetCrossNetI ($self->GetCrossNetI(CId));
         }
   

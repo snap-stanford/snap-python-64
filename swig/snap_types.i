@@ -82,6 +82,67 @@
 }
 
 //
+// TInt64
+//
+
+%typemap(in) TInt64& {
+//%typemap(in) TInt64 & NId {
+  //TInt64 I = PyInt_AsLong($input);
+  //$1 = &I;
+  $1 = new TInt64(PyInt_AsLong($input));
+}
+
+%typemap(freearg) TInt64& {
+   free($1);
+}
+
+%typemap(in) const TInt64& {
+//%typemap(in) const TInt64& value {
+  //TInt64 I = PyInt_AsLong($input);
+  //$1 = &I;
+  $1 = new TInt64(PyInt_AsLong($input));
+}
+
+%typemap(freearg) const TInt64& {
+   free($1);
+}
+
+%typemap(in) TInt64 {
+  //TInt64 I = PyInt_AsLong($input);
+  //$1 = I;
+  $1 = TInt64(PyInt_AsLong($input));
+}
+
+%typemap(in) TInt64 defaultValue {
+  //TInt64 I = PyInt_AsLong($input);
+  //$1 = I;
+  $1 = TInt64(PyInt_AsLong($input));
+}
+
+%typemap(out) TInt64 {
+  $result = PyInt_FromLong((long) ($1.Val));
+}
+
+%typemap(out) TInt64& {
+  $result = PyInt_FromLong((long) ($1->Val));
+}
+
+
+%typecheck(SWIG_TYPECHECK_INTEGER)
+   int, short, long,
+   unsigned int, unsigned short, unsigned long,
+   signed char, unsigned char,
+   long long, unsigned long long,
+   const int &, const short &, const long &,
+   const unsigned int &, const unsigned short &, const unsigned long &,
+   const long long &, const unsigned long long &,
+   enum SWIGTYPE,
+         bool, const bool &, TInt64, TInt64&, const TInt64, const TInt64&
+{
+  $1 = (PyInt_Check($input) || PyLong_Check($input)) ? 1 : 0;
+}
+
+//
 // TFlt
 //
 
@@ -299,4 +360,3 @@
 %typemap(in) (char *buffer, int size) = (char *str, int len);
 
 %include "snap_types.h"
-

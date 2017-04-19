@@ -8,7 +8,7 @@
         TDirNetNodeI EndNI() {
                 return TDirNetNodeI($self->EndNI());
         }
-        TDirNetNodeI GetNI(const int &NId) {
+        TDirNetNodeI GetNI(const int64 &NId) {
                 return TDirNetNodeI($self->GetNI(NId));
         }
         TDirNetEdgeI BegEI() {
@@ -40,7 +40,7 @@ TDirNetEdgeI.GetId = GetId
 %template(PDirNet) TPt< TDirNet >;
 
 // gbase.h - PDirNet
-%template(PrintInfo_PDirNet) TSnap::PrintInfo<PDirNet>;
+//%template(PrintInfo_PDirNet) TSnap::PrintInfo<PDirNet>;
 
 // cncom.h - PDirNet
 %template(GetNodeWcc_PDirNet) TSnap::GetNodeWcc<PDirNet>;

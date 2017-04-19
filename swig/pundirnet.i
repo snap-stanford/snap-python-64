@@ -8,7 +8,7 @@
         TUndirNetNodeI EndNI() {
                 return TUndirNetNodeI($self->EndNI());
         }
-        TUndirNetNodeI GetNI(const int &NId) {
+        TUndirNetNodeI GetNI(const int64 &NId) {
                 return TUndirNetNodeI($self->GetNI(NId));
         }
         TUndirNetEdgeI BegEI() {
@@ -39,7 +39,7 @@ TUndirNetEdgeI.GetId = GetId
 %template(PUndirNet) TPt< TUndirNet >;
 
 // gbase.h - PUndirNet
-%template(PrintInfo_PUndirNet) TSnap::PrintInfo<PUndirNet>;
+//%template(PrintInfo_PUndirNet) TSnap::PrintInfo<PUndirNet>;
 
 // cncom.h - PUndirNet
 %template(GetNodeWcc_PUndirNet) TSnap::GetNodeWcc<PUndirNet>;
@@ -205,4 +205,3 @@ TUndirNetEdgeI.GetId = GetId
 
 // conv.h - PUndirNet
 %template(ToGraph_PUndirNet) TSnap::ToGraph<PUndirNet>;
-

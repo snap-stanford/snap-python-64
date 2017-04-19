@@ -8,7 +8,7 @@
         TNEANetMPNodeI EndNI() {
                 return TNEANetMPNodeI($self->EndNI());
         }
-        TNEANetMPNodeI GetNI(const int &NId) {
+        TNEANetMPNodeI GetNI(const int64 &NId) {
                 return TNEANetMPNodeI($self->GetNI(NId));
         }
         TNEANetMPEdgeI BegEI() {
@@ -53,7 +53,6 @@ def ToNetworkMP2(tspec, *args):
 %template(PNEANetMP) TPt< TNEANetMP >;
 // conv.h - PNGraph
 #ifdef _OPENMP
-%template(ToNetworkMP_PNEANetMP) TSnap::ToNetworkMP<PNEANetMP>;
-%template(ToNetworkMP2_PNEANetMP) TSnap::ToNetworkMP2<PNEANetMP>;
+//%template(ToNetworkMP_PNEANetMP) TSnap::ToNetworkMP<PNEANetMP>;
+//%template(ToNetworkMP2_PNEANetMP) TSnap::ToNetworkMP2<PNEANetMP>;
 #endif
-

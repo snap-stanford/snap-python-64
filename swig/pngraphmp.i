@@ -8,7 +8,7 @@
         TNGraphMPNodeI EndNI() {
                 return TNGraphMPNodeI($self->EndNI());
         }
-        TNGraphMPNodeI GetNI(const int &NId) {
+        TNGraphMPNodeI GetNI(const int64 &NId) {
                 return TNGraphMPNodeI($self->GetNI(NId));
         }
         TNGraphMPEdgeI BegEI() {
@@ -54,7 +54,6 @@ def ToGraphMP(tspec, *args):
 
 // conv.h - PNGraph
 #ifdef _OPENMP
-%template(ToGraphMP_PNGraphMP) TSnap::ToGraphMP<PNGraphMP>;
-%template(ToGraphMP3_PNGraphMP) TSnap::ToGraphMP3<PNGraphMP>;
+//%template(ToGraphMP_PNGraphMP) TSnap::ToGraphMP<PNGraphMP>;
+//%template(ToGraphMP3_PNGraphMP) TSnap::ToGraphMP3<PNGraphMP>;
 #endif
-

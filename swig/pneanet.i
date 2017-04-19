@@ -18,23 +18,23 @@
         TNEANetNodeI EndNI() {
           return TNEANetNodeI($self->EndNI());
         }
-        TNEANetNodeI GetNI(const int &NId) {
+        TNEANetNodeI GetNI(const int64 &NId) {
           return TNEANetNodeI($self->GetNI(NId));
         }
 
         // add node attribute value
-        int AddIntAttrDatN(const TNEANetNodeI& NI, const TInt& Value, const TStr& Attr) {
+        int64 AddIntAttrDatN(const TNEANetNodeI& NI, const TInt64& Value, const TStr& Attr) {
           return $self->AddIntAttrDatN(NI.GetNI(), Value, Attr);
         }
-        int AddFltAttrDatN(const TNEANetNodeI& NI, const TFlt& Value, const TStr& Attr) {
+        int64 AddFltAttrDatN(const TNEANetNodeI& NI, const TFlt& Value, const TStr& Attr) {
           return $self->AddFltAttrDatN(NI.GetNI(), Value, Attr);
         }
-        int AddStrAttrDatN(const TNEANetNodeI& NI, const TStr& Value, const TStr& Attr) {
+        int64 AddStrAttrDatN(const TNEANetNodeI& NI, const TStr& Value, const TStr& Attr) {
           return $self->AddStrAttrDatN(NI.GetNI(), Value, Attr);
         }
 
         // get node attribute value
-        TInt GetIntAttrDatN(const TNEANetNodeI& NI, const TStr& Attr) {
+        TInt64 GetIntAttrDatN(const TNEANetNodeI& NI, const TStr& Attr) {
           return $self->GetIntAttrDatN(NI.GetNI(), Attr);
         }
         TFlt GetFltAttrDatN(const TNEANetNodeI& NI, const TStr& Attr) {
@@ -45,18 +45,18 @@
         }
 
         // get node attribute value by index
-        TInt GetIntAttrIndDatN(const TNEANetNodeI& NI, const int& index) {
+        TInt64 GetIntAttrIndDatN(const TNEANetNodeI& NI, const int64& index) {
           return $self->GetIntAttrIndDatN(NI.GetNI(), index);
         }
-        TFlt GetFltAttrIndDatN(const TNEANetNodeI& NI, const int& index) {
+        TFlt GetFltAttrIndDatN(const TNEANetNodeI& NI, const int64& index) {
           return $self->GetFltAttrIndDatN(NI.GetNI(), index);
         }
-        TStr GetStrAttrIndDatN(const TNEANetNodeI& NI, const int& index) {
+        TStr GetStrAttrIndDatN(const TNEANetNodeI& NI, const int64& index) {
           return $self->GetStrAttrIndDatN(NI.GetNI(), index);
         }
 
         // delete node attribute value
-        int DelAttrDatN(const TNEANetNodeI& NI, const TStr& Attr) {
+        int64 DelAttrDatN(const TNEANetNodeI& NI, const TStr& Attr) {
           return $self->DelAttrDatN(NI.GetNI(), Attr);
         }
   
@@ -67,26 +67,26 @@
         TNEANetEdgeI EndEI() {
           return TNEANetEdgeI($self->EndEI());
         }
-        TNEANetEdgeI GetEI(const int &EId) {
+        TNEANetEdgeI GetEI(const int64 &EId) {
           return TNEANetEdgeI($self->GetEI(EId));
         }
-        TNEANetEdgeI GetEI(const int &SrcNId, const int &DstNId) {
+        TNEANetEdgeI GetEI(const int64 &SrcNId, const int64 &DstNId) {
           return TNEANetEdgeI($self->GetEI(SrcNId, DstNId));
         }
 
         // add edge attributes value
-        int AddIntAttrDatE(const TNEANetEdgeI& EI, const TInt& Value, const TStr& Attr) {
+        int64 AddIntAttrDatE(const TNEANetEdgeI& EI, const TInt64& Value, const TStr& Attr) {
           return $self->AddIntAttrDatE(EI.GetEI(), Value, Attr);
         }
-        int AddFltAttrDatE(const TNEANetEdgeI& EI, const TFlt& Value, const TStr& Attr) {
+        int64 AddFltAttrDatE(const TNEANetEdgeI& EI, const TFlt& Value, const TStr& Attr) {
           return $self->AddFltAttrDatE(EI.GetEI(), Value, Attr);
         }
-        int AddStrAttrDatE(const TNEANetEdgeI& EI, const TStr& Value, const TStr& Attr) {
+        int64 AddStrAttrDatE(const TNEANetEdgeI& EI, const TStr& Value, const TStr& Attr) {
           return $self->AddStrAttrDatE(EI.GetEI(), Value, Attr);
         }
 
         // get edge attribute value
-        TInt GetIntAttrDatE(const TNEANetEdgeI& EI, const TStr& Attr) {
+        TInt64 GetIntAttrDatE(const TNEANetEdgeI& EI, const TStr& Attr) {
           return $self->GetIntAttrDatE(EI.GetEI(), Attr);
         }
         TFlt GetFltAttrDatE(const TNEANetEdgeI& EI, const TStr& Attr) {
@@ -97,18 +97,18 @@
         }
 
         // get edge attribute value by index
-        TInt GetIntAttrIndDatE(const TNEANetEdgeI& EI, const int& index) {
+        TInt64 GetIntAttrIndDatE(const TNEANetEdgeI& EI, const int64& index) {
           return $self->GetIntAttrIndDatE(EI.GetEI(), index);
         }
-        TFlt GetFltAttrIndDatE(const TNEANetEdgeI& EI, const int& index) {
+        TFlt GetFltAttrIndDatE(const TNEANetEdgeI& EI, const int64& index) {
           return $self->GetFltAttrIndDatE(EI.GetEI(), index);
         }
-        TStr GetStrAttrIndDatE(const TNEANetEdgeI& EI, const int& index) {
+        TStr GetStrAttrIndDatE(const TNEANetEdgeI& EI, const int64& index) {
           return $self->GetStrAttrIndDatE(EI.GetEI(), index);
         }
 
         // delete edge attribute value
-        int DelAttrDatE(const TNEANetEdgeI& EI, const TStr& Attr) {
+        int64 DelAttrDatE(const TNEANetEdgeI& EI, const TStr& Attr) {
           return $self->DelAttrDatE(EI.GetEI(), Attr);
         }
   
@@ -173,7 +173,7 @@
 
 
 // gbase.h - PNEANet
-%template(PrintInfo_PNEANet) TSnap::PrintInfo<PNEANet>;
+//%template(PrintInfo_PNEANet) TSnap::PrintInfo<PNEANet>;
 
 
 // cncom.h - PNEANet
@@ -349,8 +349,7 @@
 //TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TStrV  &, TAttrAggr);
 //%rename(ToNetwork_PNEANet) TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TAttrAggr);
 //TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TAttrAggr);
-//%rename(ToNetwork_PNEANet) TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TVec<TStr,int> &, TAttrAggr);
-//TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TVec<TStr,int> &, TAttrAggr);
-//%rename(ToNetwork_PNEANet) TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TVec<TStr,int> &, PTable, const TStr &, TVec<TStr,int> &, TAttrAggr);
-//TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TVec<TStr,int> &, PTable, const TStr &, TVec<TStr,int> &, TAttrAggr);
-
+//%rename(ToNetwork_PNEANet) TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TVec<TStr,int64> &, TAttrAggr);
+//TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TVec<TStr,int64> &, TAttrAggr);
+//%rename(ToNetwork_PNEANet) TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TVec<TStr,int64> &, PTable, const TStr &, TVec<TStr,int64> &, TAttrAggr);
+//TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TVec<TStr,int64> &, PTable, const TStr &, TVec<TStr,int64> &, TAttrAggr);

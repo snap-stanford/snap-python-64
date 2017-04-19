@@ -8,7 +8,7 @@
         TUNGraphNodeI EndNI() {
                 return TUNGraphNodeI($self->EndNI());
         }
-        TUNGraphNodeI GetNI(const int &NId) {
+        TUNGraphNodeI GetNI(const int64 &NId) {
                 return TUNGraphNodeI($self->GetNI(NId));
         }
         TUNGraphEdgeI BegEI() {
@@ -17,7 +17,7 @@
         TUNGraphEdgeI EndEI() {
                 return TUNGraphEdgeI($self->EndEI());
         }
-        TUNGraphEdgeI GetEI(const int &SrcNId, const int &DstNId) {
+        TUNGraphEdgeI GetEI(const int64 &SrcNId, const int64 &DstNId) {
           return TUNGraphEdgeI($self->GetEI(SrcNId, DstNId));
         }
 };
@@ -42,7 +42,7 @@ TUNGraphEdgeI.GetId = GetId
 %template(PUNGraph) TPt< TUNGraph >;
 
 // gbase.h - PUNGraph
-%template(PrintInfo_PUNGraph) TSnap::PrintInfo<PUNGraph>;
+//%template(PrintInfo_PUNGraph) TSnap::PrintInfo<PUNGraph>;
 
 // cncom.h - PUNGraph
 %template(GetNodeWcc_PUNGraph) TSnap::GetNodeWcc<PUNGraph>;
@@ -211,4 +211,3 @@ TUNGraphEdgeI.GetId = GetId
 
 // conv.h - PUNGraph
 %template(ToGraph_PUNGraph) TSnap::ToGraph<PUNGraph>;
-

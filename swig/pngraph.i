@@ -8,7 +8,7 @@
         TNGraphNodeI EndNI() {
                 return TNGraphNodeI($self->EndNI());
         }
-        TNGraphNodeI GetNI(const int &NId) {
+        TNGraphNodeI GetNI(const int64 &NId) {
                 return TNGraphNodeI($self->GetNI(NId));
         }
         TNGraphEdgeI BegEI() {
@@ -17,7 +17,7 @@
         TNGraphEdgeI EndEI() {
                 return TNGraphEdgeI($self->EndEI());
         }
-        TNGraphEdgeI GetEI(const int &SrcNId, const int &DstNId) {
+        TNGraphEdgeI GetEI(const int64 &SrcNId, const int64 &DstNId) {
           return TNGraphEdgeI($self->GetEI(SrcNId, DstNId));
         }
 };
@@ -43,7 +43,7 @@ TNGraphEdgeI.GetId = GetId
 %template(PNGraph) TPt< TNGraph >;
 
 // gbase.h - PNGraph
-%template(PrintInfo_PNGraph) TSnap::PrintInfo<PNGraph>;
+//%template(PrintInfo_PNGraph) TSnap::PrintInfo<PNGraph>;
 
 // cncom.h - PNGraph
 %template(GetNodeWcc_PNGraph) TSnap::GetNodeWcc<PNGraph>;

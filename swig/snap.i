@@ -8,7 +8,7 @@
 #define SNAP_ALL 0
 
 %pythoncode %{
-Version = "3.0.2-64"
+Version = "3.0.2"
 %}
 
 %module snap
@@ -48,7 +48,7 @@ Version = "3.0.2-64"
 %ignore TChA::LoadXml;
 %ignore TMem::LoadXml;
 
-%ignore TInt::GetStr;
+%ignore TInt64::GetStr;
 %ignore TPair::GetStr;
 
 %ignore TFInOut;
@@ -62,28 +62,38 @@ Version = "3.0.2-64"
 %ignore TBPGraph::HasFlag(const TGraphFlag& Flag) const;
 %ignore TNEGraph::GetSmallGraph();
 %ignore TNEANet::GetSmallGraph();
-%ignore TBPGraph::GetEI(int const&) const;
+%ignore TBPGraph::GetEI(int64 const&) const;
 
-%ignore TNGraph::GetEI(int const&) const;
-%ignore TUNGraph::GetEI(int const&) const;
-%ignore TNEANet::GetEI(int const&) const;
-%ignore TDirNet::GetEI(int const&) const;
-%ignore TUndirNet::GetEI(int const&) const;
+%ignore TNGraph::GetEI(int64 const&) const;
+%ignore TUNGraph::GetEI(int64 const&) const;
+%ignore TNEANet::GetEI(int64 const&) const;
+%ignore TDirNet::GetEI(int64 const&) const;
+%ignore TUndirNet::GetEI(int64 const&) const;
 
 %ignore TVec<TVec<TInt, int>, int>::Add;
 %ignore TVec<TVec<TInt, int>, int>::AddMerged;
+%ignore TVec<TVec<TInt64, int64>, int64>::Add;
+%ignore TVec<TVec<TInt64, int64>, int64>::AddMerged;
 
 %ignore TVec<TStr, int>::Add;
 %ignore TVec<TStr, int>::AddMerged;
+%ignore TVec<TStr, int64>::Add;
+%ignore TVec<TStr, int64>::AddMerged;
 
 
 %ignore THash< TInt, TVec< TInt, int > >::AddDat;
 %ignore THash< TInt, TVec< TInt, int > >::HashPrimeT;
 %ignore THash< TInt, TVec< TInt, int > >::AddDatId;
+%ignore THash< TInt64, TVec< TInt64, int64 > >::AddDat;
+%ignore THash< TInt64, TVec< TInt64, int64 > >::HashPrimeT;
+%ignore THash< TInt64, TVec< TInt64, int64 > >::AddDatId;
 
 %ignore THash< TInt, TInt, TDefaultHashFunc<TInt> >::HashPrimeT;
 %ignore THash< TInt, TInt, TDefaultHashFunc<TInt> >::AddDatId;
 %ignore THash< TInt, TInt>::HashPrimeT;
+%ignore THash< TInt64, TInt64, TDefaultHashFunc<TInt64> >::HashPrimeT;
+%ignore THash< TInt64, TInt64, TDefaultHashFunc<TInt64> >::AddDatId;
+%ignore THash< TInt64, TInt64>::HashPrimeT;
 
 %ignore LoadXml;
 %ignore SaveXml;
@@ -237,20 +247,32 @@ Version = "3.0.2-64"
 // ds.h
 
 %template(TIntPr) TPair<TInt, TInt>;
+%template(TInt64Pr) TPair<TInt64, TInt64>;
 %template(TFltPr) TPair<TFlt, TFlt>;
 %template(TStrIntPr) TPair<TStr, TInt>;
 %template(TIntTr) TTriple<TInt, TInt, TInt>;
+%template(TInt64Tr) TTriple<TInt64, TInt64, TInt64>;
 %template(TIntFltKd) TKeyDat<TInt, TFlt>;
+%template(TIntFlt64Kd) TKeyDat<TInt64, TFlt>;
 
 %template(TIntV) TVec<TInt>;
+%template(TInt64V) TVec<TInt64, int64>;
 %template(TFltV) TVec<TFlt>;
+%template(TFlt64V) TVec<TFlt, int64>;
 %template(TStrV) TVec<TStr>;
+%template(TStr64V) TVec<TStr, int64>;
 %template(TIntPrV) TVec<TIntPr>;
+%template(TIntPr64V) TVec<TInt64Pr, int64>;
 %template(TFltPrV) TVec<TFltPr>;
+%template(TFltPr64V) TVec<TFltPr, int64>;
 %template(TStrIntPrV) TVec<TStrIntPr>;
 %template(TIntTrV) TVec<TIntTr>;
+%template(TIntTr64V) TVec<TInt64Tr, int64>;
 %template(TIntFltKdV) TVec<TIntFltKd>;
+%template(TIntFltKd64V) TVec<TIntFlt64Kd, int64>;
 %template(TIntStrPr) TPair<TInt, TStr>;
+%template(TInt64StrPr) TPair<TInt64, TStr>;
+%template(TIntIntVV) TVec< TVec< TInt, int >, int >;
 %template(TIntIntVV) TVec< TVec< TInt, int >, int >;
 %template(PNEANetV) TVec<PNEANet>;
 
@@ -456,11 +478,17 @@ Version = "3.0.2-64"
 
 // define hash types
 %template(TIntH) THash<TInt, TInt>;
+%template(TInt64H) THash<TInt64, TInt64, int64>;
 %template(TIntIntH) THash<TInt, TInt>;
+//%template(TIntInt64H) THash<TInt64, TInt64, int64>;
 %template(TIntFltH) THash<TInt, TFlt>;
+%template(TIntFlt64H) THash<TInt64, TFlt, int64>;
 %template(TIntStrH) THash<TInt, TStr>;
+%template(TIntStr64H) THash<TInt64, TStr, int64>;
 %template(TIntPrFltH) THash<TIntPr, TFlt>;
+%template(TIntPrFlt64H) THash<TInt64Pr, TFlt, int64>;
 %template(TStrIntH) THash<TStr, TInt>;
+%template(TStrInt64H) THash<TStr, TInt64, int64>;
 %template(TStrIntSH) TStrHash<TInt, TStrPool, TDefaultHashFunc<TStr> >;
 
 // define keydat types
@@ -608,10 +636,12 @@ Version = "3.0.2-64"
 // dt.h
 
 %template(TStrV) TVec<TStr, int>;
+%template(TStr64V) TVec<TStr, int64>;
 
 // cncom.h
 
 %template(TCnComV) TVec<TCnCom>;
+%template(TCnCom64V) TVec<TCnCom, int64>;
 
 // tm.h
 
@@ -683,4 +713,3 @@ Version = "3.0.2-64"
 
 // note for operator renaming
 // %rename(Add) Vector3::operator +;
-
