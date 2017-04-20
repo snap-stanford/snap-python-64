@@ -58,31 +58,66 @@ TIntH.__setitem__ = setitem_hash
 TIntH.__delitem__ = delitem_hash
 TIntH.__len__ = len_hash
 TIntH.__iter__ = iterhash
+
+TInt64H.__getitem__ = getitem_hash
+TInt64H.__setitem__ = setitem_hash
+TInt64H.__delitem__ = delitem_hash
+TInt64H.__len__ = len_hash
+TInt64H.__iter__ = iterhash
+
 TIntIntH.__getitem__ = getitem_hash
 TIntIntH.__setitem__ = setitem_hash
 TIntIntH.__delitem__ = delitem_hash
 TIntIntH.__len__ = len_hash
 TIntIntH.__iter__ = iterhash
+
+TIntInt64H.__getitem__ = getitem_hash
+TIntInt64H.__setitem__ = setitem_hash
+TIntInt64H.__delitem__ = delitem_hash
+TIntInt64H.__len__ = len_hash
+TIntInt64H.__iter__ = iterhash
+
 TIntFltH.__getitem__ = getitem_hash
 TIntFltH.__setitem__ = setitem_hash
 TIntFltH.__delitem__ = delitem_hash
 TIntFltH.__len__ = len_hash
 TIntFltH.__iter__ = iterhash
+
+TIntFlt64H.__getitem__ = getitem_hash
+TIntFlt64H.__setitem__ = setitem_hash
+TIntFlt64H.__delitem__ = delitem_hash
+TIntFlt64H.__len__ = len_hash
+TIntFlt64H.__iter__ = iterhash
+
 TIntStrH.__getitem__ = getitem_hash
 TIntStrH.__setitem__ = setitem_hash
 TIntStrH.__delitem__ = delitem_hash
 TIntStrH.__len__ = len_hash
 TIntStrH.__iter__ = iterhash
+
+TIntStr64H.__getitem__ = getitem_hash
+TIntStr64H.__setitem__ = setitem_hash
+TIntStr64H.__delitem__ = delitem_hash
+TIntStr64H.__len__ = len_hash
+TIntStr64H.__iter__ = iterhash
+
 TIntPrFltH.__getitem__ = getitem_hash
 TIntPrFltH.__setitem__ = setitem_hash
 TIntPrFltH.__delitem__ = delitem_hash
 TIntPrFltH.__len__ = len_hash
 TIntPrFltH.__iter__ = iterhash
+
 TStrIntH.__getitem__ = getitem_hash
 TStrIntH.__setitem__ = setitem_hash
 TStrIntH.__iter__ = iterhash
 TStrIntH.__delitem__ = delitem_hash
 TStrIntH.__len__ = len_hash
+
+TStrInt64H.__getitem__ = getitem_hash
+TStrInt64H.__setitem__ = setitem_hash
+TStrInt64H.__iter__ = iterhash
+TStrInt64H.__delitem__ = delitem_hash
+TStrInt64H.__len__ = len_hash
 %}
 
 

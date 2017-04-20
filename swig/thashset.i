@@ -53,5 +53,7 @@ def iterhashset(self):
 
 TIntSet.__iter__ = iterhashset
 TIntSet.__contains__ = contains_hashset
+TInt64Set.__iter__ = iterhashset
+TInt64Set.__contains__ = contains_hashset
 
 %}

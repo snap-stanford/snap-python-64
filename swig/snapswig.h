@@ -13,25 +13,25 @@ public:
   /// Returns C++ node iterator.
   TNGraph::TNodeI GetNI() const { return NI; }
   /// Returns ID of the current node.
-  int GetId() const { return NI.GetId(); }
+  int64 GetId() const { return NI.GetId(); }
   /// Returns degree of the current node, the sum of in-degree and out-degree.
-  int GetDeg() const { return NI.GetDeg(); }
+  int64 GetDeg() const { return NI.GetDeg(); }
   /// Returns in-degree of the current node.
-  int GetInDeg() const { return NI.GetInDeg(); }
+  int64 GetInDeg() const { return NI.GetInDeg(); }
   /// Returns out-degree of the current node.
-  int GetOutDeg() const { return NI.GetOutDeg(); }
+  int64 GetOutDeg() const { return NI.GetOutDeg(); }
   /// Returns ID of NodeN-th in-node (the node pointing to the current node). ##TNGraph::TNodeI::GetInNId
-  int GetInNId(const int& NodeN) const { return NI.GetInNId(NodeN); }
+  int64 GetInNId(const int64& NodeN) const { return NI.GetInNId(NodeN); }
   /// Returns ID of NodeN-th out-node (the node the current node points to). ##TNGraph::TNodeI::GetOutNId
-  int GetOutNId(const int& NodeN) const { return NI.GetOutNId(NodeN); }
+  int64 GetOutNId(const int64& NodeN) const { return NI.GetOutNId(NodeN); }
   /// Returns ID of NodeN-th neighboring node. ##TNGraph::TNodeI::GetNbrNId
-  int GetNbrNId(const int& NodeN) const { return NI.GetNbrNId(NodeN); }
+  int64 GetNbrNId(const int64& NodeN) const { return NI.GetNbrNId(NodeN); }
   /// Tests whether node with ID NId points to the current node.
-  bool IsInNId(const int& NId) const { return NI.IsInNId(NId); }
+  bool IsInNId(const int64& NId) const { return NI.IsInNId(NId); }
   /// Tests whether the current node points to node with ID NId.
-  bool IsOutNId(const int& NId) const { return NI.IsOutNId(NId); }
+  bool IsOutNId(const int64& NId) const { return NI.IsOutNId(NId); }
   /// Tests whether node with ID NId is a neighbor of the current node.
-  bool IsNbrNId(const int& NId) const { return NI.IsOutNId(NId) || NI.IsInNId(NId); }
+  bool IsNbrNId(const int64& NId) const { return NI.IsOutNId(NId) || NI.IsInNId(NId); }
 };
 
 class TDirNetNodeI {
@@ -47,25 +47,25 @@ public:
   bool operator < (const TDirNetNodeI& NodeI) const { return NI < NodeI.NI; }
   bool operator == (const TDirNetNodeI& NodeI) const { return NI == NodeI.NI; }
   /// Returns ID of the current node.
-  int GetId() const { return NI.GetId(); }
+  int64 GetId() const { return NI.GetId(); }
   /// Returns degree of the current node, the sum of in-degree and out-degree.
-  int GetDeg() const { return NI.GetDeg(); }
+  int64 GetDeg() const { return NI.GetDeg(); }
   /// Returns in-degree of the current node.
-  int GetInDeg() const { return NI.GetInDeg(); }
+  int64 GetInDeg() const { return NI.GetInDeg(); }
   /// Returns out-degree of the current node.
-  int GetOutDeg() const { return NI.GetOutDeg(); }
+  int64 GetOutDeg() const { return NI.GetOutDeg(); }
   /// Returns ID of NodeN-th in-node (the node pointing to the current node). ##TDirNet::TNodeI::GetInNId
-  int GetInNId(const int& NodeN) const { return NI.GetInNId(NodeN); }
+  int64 GetInNId(const int64& NodeN) const { return NI.GetInNId(NodeN); }
   /// Returns ID of NodeN-th out-node (the node the current node points to). ##TDirNet::TNodeI::GetOutNId
-  int GetOutNId(const int& NodeN) const { return NI.GetOutNId(NodeN); }
+  int64 GetOutNId(const int64& NodeN) const { return NI.GetOutNId(NodeN); }
   /// Returns ID of NodeN-th neighboring node. ##TDirNet::TNodeI::GetNbrNId
-  int GetNbrNId(const int& NodeN) const { return NI.GetNbrNId(NodeN); }
+  int64 GetNbrNId(const int64& NodeN) const { return NI.GetNbrNId(NodeN); }
   /// Tests whether node with ID NId points to the current node.
-  bool IsInNId(const int& NId) const { return NI.IsInNId(NId); }
+  bool IsInNId(const int64& NId) const { return NI.IsInNId(NId); }
   /// Tests whether the current node points to node with ID NId.
-  bool IsOutNId(const int& NId) const { return NI.IsOutNId(NId); }
+  bool IsOutNId(const int64& NId) const { return NI.IsOutNId(NId); }
   /// Tests whether node with ID NId is a neighbor of the current node.
-  bool IsNbrNId(const int& NId) const { return NI.IsOutNId(NId) || NI.IsInNId(NId); }
+  bool IsNbrNId(const int64& NId) const { return NI.IsOutNId(NId) || NI.IsInNId(NId); }
 };
 
 #ifdef GCC_ATOMIC
@@ -82,25 +82,25 @@ public:
   bool operator < (const TNGraphMPNodeI& NodeI) const { return NI < NodeI.NI; }
   bool operator == (const TNGraphMPNodeI& NodeI) const { return NI == NodeI.NI; }
   /// Returns ID of the current node.
-  int GetId() const { return NI.GetId(); }
+  int64 GetId() const { return NI.GetId(); }
   /// Returns degree of the current node, the sum of in-degree and out-degree.
-  int GetDeg() const { return NI.GetDeg(); }
+  int64 GetDeg() const { return NI.GetDeg(); }
   /// Returns in-degree of the current node.
-  int GetInDeg() const { return NI.GetInDeg(); }
+  int64 GetInDeg() const { return NI.GetInDeg(); }
   /// Returns out-degree of the current node.
-  int GetOutDeg() const { return NI.GetOutDeg(); }
+  int64 GetOutDeg() const { return NI.GetOutDeg(); }
   /// Returns ID of NodeN-th in-node (the node pointing to the current node). ##TNGraphMP::TNodeI::GetInNId
-  int GetInNId(const int& NodeN) const { return NI.GetInNId(NodeN); }
+  int64 GetInNId(const int64& NodeN) const { return NI.GetInNId(NodeN); }
   /// Returns ID of NodeN-th out-node (the node the current node points to). ##TNGraphMP::TNodeI::GetOutNId
-  int GetOutNId(const int& NodeN) const { return NI.GetOutNId(NodeN); }
+  int64 GetOutNId(const int64& NodeN) const { return NI.GetOutNId(NodeN); }
   /// Returns ID of NodeN-th neighboring node. ##TNGraphMP::TNodeI::GetNbrNId
-  int GetNbrNId(const int& NodeN) const { return NI.GetNbrNId(NodeN); }
+  int64 GetNbrNId(const int64& NodeN) const { return NI.GetNbrNId(NodeN); }
   /// Tests whether node with ID NId points to the current node.
-  bool IsInNId(const int& NId) const { return NI.IsInNId(NId); }
+  bool IsInNId(const int64& NId) const { return NI.IsInNId(NId); }
   /// Tests whether the current node points to node with ID NId.
-  bool IsOutNId(const int& NId) const { return NI.IsOutNId(NId); }
+  bool IsOutNId(const int64& NId) const { return NI.IsOutNId(NId); }
   /// Tests whether node with ID NId is a neighbor of the current node.
-  bool IsNbrNId(const int& NId) const { return NI.IsOutNId(NId) || NI.IsInNId(NId); }
+  bool IsNbrNId(const int64& NId) const { return NI.IsOutNId(NId) || NI.IsInNId(NId); }
 };
 #endif // GCC_ATOMIC
 
@@ -120,11 +120,11 @@ public:
   /// Returns C++ edge iterator.
   TNGraph::TEdgeI GetEI() const { return EI; }
   /// Gets edge ID. Always returns -1, since edges do not have explicit IDs.
-  int GetId() const { return EI.GetId(); }
+  int64 GetId() const { return EI.GetId(); }
   /// Returns the ID of the source node of the edge.
-  int GetSrcNId() const { return EI.GetSrcNId(); }
+  int64 GetSrcNId() const { return EI.GetSrcNId(); }
   /// Returns the ID of the destination node of the edge.
-  int GetDstNId() const { return EI.GetDstNId(); }
+  int64 GetDstNId() const { return EI.GetDstNId(); }
 };
 
 /// Edge iterator. Only forward iteration (operator++) is supported.
@@ -141,11 +141,11 @@ public:
   bool operator < (const TDirNetEdgeI& EdgeI) const { return EI < EdgeI.EI; }
   bool operator == (const TDirNetEdgeI& EdgeI) const { return EI == EdgeI.EI; }
   /// Gets edge ID. Always returns -1, since edges do not have explicit IDs.
-  int GetId() const { return EI.GetId(); }
+  int64 GetId() const { return EI.GetId(); }
   /// Gets the source of an edge.
-  int GetSrcNId() const { return EI.GetSrcNId(); }
+  int64 GetSrcNId() const { return EI.GetSrcNId(); }
   /// Gets destination of an edge.
-  int GetDstNId() const { return EI.GetDstNId(); }
+  int64 GetDstNId() const { return EI.GetDstNId(); }
 };
 
 #ifdef GCC_ATOMIC
@@ -163,11 +163,11 @@ public:
   bool operator < (const TNGraphMPEdgeI& EdgeI) const { return EI < EdgeI.EI; }
   bool operator == (const TNGraphMPEdgeI& EdgeI) const { return EI == EdgeI.EI; }
   /// Gets edge ID. Always returns -1, since edges do not have explicit IDs.
-  int GetId() const { return EI.GetId(); }
+  int64 GetId() const { return EI.GetId(); }
   /// Gets the source of an edge.
-  int GetSrcNId() const { return EI.GetSrcNId(); }
+  int64 GetSrcNId() const { return EI.GetSrcNId(); }
   /// Gets destination of an edge.
-  int GetDstNId() const { return EI.GetDstNId(); }
+  int64 GetDstNId() const { return EI.GetDstNId(); }
 };
 #endif // GCC_ATOMIC
 
@@ -186,25 +186,25 @@ public:
   /// Returns C++ node iterator.
   TUNGraph::TNodeI GetNI() const { return NI; }
   /// Returns ID of the current node.
-  int GetId() const { return NI.GetId(); }
+  int64 GetId() const { return NI.GetId(); }
   /// Returns degree of the current node, the sum of in-degree and out-degree.
-  int GetDeg() const { return NI.GetDeg(); }
+  int64 GetDeg() const { return NI.GetDeg(); }
   /// Returns in-degree of the current node.
-  int GetInDeg() const { return NI.GetInDeg(); }
+  int64 GetInDeg() const { return NI.GetInDeg(); }
   /// Returns out-degree of the current node.
-  int GetOutDeg() const { return NI.GetOutDeg(); }
+  int64 GetOutDeg() const { return NI.GetOutDeg(); }
   /// Returns ID of NodeN-th in-node (the node pointing to the current node). ##TUNGraph::TNodeI::GetInNId
-  int GetInNId(const int& NodeN) const { return NI.GetInNId(NodeN); }
+  int64 GetInNId(const int64& NodeN) const { return NI.GetInNId(NodeN); }
   /// Returns ID of NodeN-th out-node (the node the current node points to). ##TUNGraph::TNodeI::GetOutNId
-  int GetOutNId(const int& NodeN) const { return NI.GetOutNId(NodeN); }
+  int64 GetOutNId(const int64& NodeN) const { return NI.GetOutNId(NodeN); }
   /// Returns ID of NodeN-th neighboring node. ##TUNGraph::TNodeI::GetNbrNId
-  int GetNbrNId(const int& NodeN) const { return NI.GetNbrNId(NodeN); }
+  int64 GetNbrNId(const int64& NodeN) const { return NI.GetNbrNId(NodeN); }
   /// Tests whether node with ID NId points to the current node.
-  bool IsInNId(const int& NId) const { return NI.IsInNId(NId); }
+  bool IsInNId(const int64& NId) const { return NI.IsInNId(NId); }
   /// Tests whether the current node points to node with ID NId.
-  bool IsOutNId(const int& NId) const { return NI.IsOutNId(NId); }
+  bool IsOutNId(const int64& NId) const { return NI.IsOutNId(NId); }
   /// Tests whether node with ID NId is a neighbor of the current node.
-  bool IsNbrNId(const int& NId) const { return NI.IsOutNId(NId) || NI.IsInNId(NId); }
+  bool IsNbrNId(const int64& NId) const { return NI.IsOutNId(NId) || NI.IsInNId(NId); }
 };
 
 class TUndirNetNodeI {
@@ -220,25 +220,25 @@ public:
   bool operator < (const TUndirNetNodeI& NodeI) const { return NI < NodeI.NI; }
   bool operator == (const TUndirNetNodeI& NodeI) const { return NI == NodeI.NI; }
   /// Returns ID of the current node.
-  int GetId() const { return NI.GetId(); }
+  int64 GetId() const { return NI.GetId(); }
   /// Returns degree of the current node, the sum of in-degree and out-degree.
-  int GetDeg() const { return NI.GetDeg(); }
+  int64 GetDeg() const { return NI.GetDeg(); }
   /// Returns in-degree of the current node.
-  int GetInDeg() const { return NI.GetInDeg(); }
+  int64 GetInDeg() const { return NI.GetInDeg(); }
   /// Returns out-degree of the current node.
-  int GetOutDeg() const { return NI.GetOutDeg(); }
+  int64 GetOutDeg() const { return NI.GetOutDeg(); }
   /// Returns ID of NodeN-th in-node (the node pointing to the current node). ##TUndirNet::TNodeI::GetInNId
-  int GetInNId(const int& NodeN) const { return NI.GetInNId(NodeN); }
+  int64 GetInNId(const int64& NodeN) const { return NI.GetInNId(NodeN); }
   /// Returns ID of NodeN-th out-node (the node the current node points to). ##TUndirNet::TNodeI::GetOutNId
-  int GetOutNId(const int& NodeN) const { return NI.GetOutNId(NodeN); }
+  int64 GetOutNId(const int64& NodeN) const { return NI.GetOutNId(NodeN); }
   /// Returns ID of NodeN-th neighboring node. ##TUndirNet::TNodeI::GetNbrNId
-  int GetNbrNId(const int& NodeN) const { return NI.GetNbrNId(NodeN); }
+  int64 GetNbrNId(const int64& NodeN) const { return NI.GetNbrNId(NodeN); }
   /// Tests whether node with ID NId points to the current node.
-  bool IsInNId(const int& NId) const { return NI.IsInNId(NId); }
+  bool IsInNId(const int64& NId) const { return NI.IsInNId(NId); }
   /// Tests whether the current node points to node with ID NId.
-  bool IsOutNId(const int& NId) const { return NI.IsOutNId(NId); }
+  bool IsOutNId(const int64& NId) const { return NI.IsOutNId(NId); }
   /// Tests whether node with ID NId is a neighbor of the current node.
-  bool IsNbrNId(const int& NId) const { return NI.IsOutNId(NId) || NI.IsInNId(NId); }
+  bool IsNbrNId(const int64& NId) const { return NI.IsOutNId(NId) || NI.IsInNId(NId); }
 };
 
 /// Edge iterator. Only forward iteration (operator++) is supported.
@@ -257,11 +257,11 @@ public:
   /// Returns C++ edge iterator.
   TUNGraph::TEdgeI GetEI() const { return EI; }
   /// Gets edge ID. Always returns -1, since edges do not have explicit IDs.
-  int GetId() const { return EI.GetId(); }
+  int64 GetId() const { return EI.GetId(); }
   /// Gets the source of an edge. Since the graph is undirected this is the node with smaller ID of the edge endpoints.
-  int GetSrcNId() const { return EI.GetSrcNId(); }
+  int64 GetSrcNId() const { return EI.GetSrcNId(); }
   /// Gets destination of an edge. Since the graph is undirected this is the node with greater ID of the edge endpoints.
-  int GetDstNId() const { return EI.GetDstNId(); }
+  int64 GetDstNId() const { return EI.GetDstNId(); }
 };
 
 class TUndirNetEdgeI {
@@ -277,11 +277,11 @@ public:
   bool operator < (const TUndirNetEdgeI& EdgeI) const { return EI < EdgeI.EI; }
   bool operator == (const TUndirNetEdgeI& EdgeI) const { return EI == EdgeI.EI; }
   /// Gets edge ID. Always returns -1 since only edges in multigraphs have explicit IDs.
-  int GetId() const { return EI.GetId(); }
+  int64 GetId() const { return EI.GetId(); }
   /// Gets the source of an edge. Since the graph is undirected this is the node with smaller ID of the edge endpoints.
-  int GetSrcNId() const { return EI.GetSrcNId(); }
+  int64 GetSrcNId() const { return EI.GetSrcNId(); }
   /// Gets destination of an edge. Since the graph is undirected this is the node with greater ID of the edge endpoints.
-  int GetDstNId() const { return EI.GetDstNId(); }
+  int64 GetDstNId() const { return EI.GetDstNId(); }
 };  
 
 class TNEANetNodeI {
@@ -299,25 +299,25 @@ public:
   /// Returns C++ node iterator.
   TNEANet::TNodeI GetNI() const { return NI; }
   /// Returns ID of the current node.
-  int GetId() const { return NI.GetId(); }
+  int64 GetId() const { return NI.GetId(); }
   /// Returns degree of the current node, the sum of in-degree and out-degree.
-  int GetDeg() const { return NI.GetDeg(); }
+  int64 GetDeg() const { return NI.GetDeg(); }
   /// Returns in-degree of the current node.
-  int GetInDeg() const { return NI.GetInDeg(); }
+  int64 GetInDeg() const { return NI.GetInDeg(); }
   /// Returns out-degree of the current node.
-  int GetOutDeg() const { return NI.GetOutDeg(); }
+  int64 GetOutDeg() const { return NI.GetOutDeg(); }
   /// Returns ID of NodeN-th in-node (the node pointing to the current node). ##TNEANet::TNodeI::GetInNId
-  int GetInNId(const int& NodeN) const { return NI.GetInNId(NodeN); }
+  int64 GetInNId(const int64& NodeN) const { return NI.GetInNId(NodeN); }
   /// Returns ID of NodeN-th out-node (the node the current node points to). ##TNEANet::TNodeI::GetOutNId
-  int GetOutNId(const int& NodeN) const { return NI.GetOutNId(NodeN); }
+  int64 GetOutNId(const int64& NodeN) const { return NI.GetOutNId(NodeN); }
   /// Returns ID of NodeN-th neighboring node. ##TNEANet::TNodeI::GetNbrNId
-  int GetNbrNId(const int& NodeN) const { return NI.GetNbrNId(NodeN); }
+  int64 GetNbrNId(const int64& NodeN) const { return NI.GetNbrNId(NodeN); }
   /// Tests whether node with ID NId points to the current node.
-  bool IsInNId(const int& NId) const { return NI.IsInNId(NId); }
+  bool IsInNId(const int64& NId) const { return NI.IsInNId(NId); }
   /// Tests whether the current node points to node with ID NId.
-  bool IsOutNId(const int& NId) const { return NI.IsOutNId(NId); }
+  bool IsOutNId(const int64& NId) const { return NI.IsOutNId(NId); }
   /// Tests whether node with ID NId is a neighbor of the current node.
-  bool IsNbrNId(const int& NId) const { return NI.IsOutNId(NId) || NI.IsInNId(NId); }
+  bool IsNbrNId(const int64& NId) const { return NI.IsOutNId(NId) || NI.IsInNId(NId); }
 };
 
 /// Edge iterator. Only forward iteration (operator++) is supported.
@@ -337,14 +337,14 @@ public:
   /// Returns C++ edge iterator.
   TNEANet::TEdgeI GetEI() const { return EI; }
   /// Returns edge ID. Only multigraphs have explicit edge IDs.
-  int GetId() const { return EI.GetId(); }
+  int64 GetId() const { return EI.GetId(); }
   /// Returns the ID of the source node of the edge.
-  int GetSrcNId() const { return EI.GetSrcNId(); }
+  int64 GetSrcNId() const { return EI.GetSrcNId(); }
   /// Returns the ID of the destination node of the edge.
-  int GetDstNId() const { return EI.GetDstNId(); }
+  int64 GetDstNId() const { return EI.GetDstNId(); }
 };
 
-typedef TIntV::TIter TIntVecIter;
+typedef TInt64V::TIter TIntVecIter;
 
 /// Node/edge integer attribute iterator. Iterates through all nodes/edges for one integer attribute.
 class TNEANetAIntI {
@@ -362,14 +362,14 @@ public:
   bool operator < (const TNEANetAIntI& I) const { return IntAI < I.IntAI; }
   bool operator == (const TNEANetAIntI& I) const { return IntAI == I.IntAI; }
   /// Returns an attribute of the node.
-  int GetDat() const { return IntAI.GetDat().Val; }
+  int64 GetDat() const { return IntAI.GetDat().Val; }
   /// Returns true if node or edge has been deleted.
   bool IsDeleted() const { return IntAI.IsDeleted(); };
   TNEANetAIntI& operator++(int) { IntAI++; return *this; }
 //  friend class TNEANet;
 };
 
-typedef TStrV::TIter TStrVecIter;
+typedef TStr64V::TIter TStrVecIter;
 
 /// Node/edge string attribute iterator. Iterates through all nodes/edges for one string attribute.
 class TNEANetAStrI {
@@ -395,7 +395,7 @@ public:
 };
 
 
-typedef TFltV::TIter TFltVecIter;
+typedef TFlt64V::TIter TFltVecIter;
 
 /// Node/edge float attribute iterator. Iterates through all nodes/edges for one float attribute.
 class TNEANetAFltI {
@@ -435,25 +435,25 @@ public:
   bool operator < (const TNEANetMPNodeI& NodeI) const { return NI < NodeI.NI; }
   bool operator == (const TNEANetMPNodeI& NodeI) const { return NI == NodeI.NI; }
   /// Returns ID of the current node.
-  int GetId() const { return NI.GetId(); }
+  int64 GetId() const { return NI.GetId(); }
   /// Returns degree of the current node, the sum of in-degree and out-degree.
-  int GetDeg() const { return NI.GetDeg(); }
+  int64 GetDeg() const { return NI.GetDeg(); }
   /// Returns in-degree of the current node.
-  int GetInDeg() const { return NI.GetInDeg(); }
+  int64 GetInDeg() const { return NI.GetInDeg(); }
   /// Returns out-degree of the current node.
-  int GetOutDeg() const { return NI.GetOutDeg(); }
+  int64 GetOutDeg() const { return NI.GetOutDeg(); }
   /// Returns ID of NodeN-th in-node (the node pointing to the current node). ##TNEANetMP::TNodeI::GetInNId
-  int GetInNId(const int& NodeN) const { return NI.GetInNId(NodeN); }
+  int64 GetInNId(const int64& NodeN) const { return NI.GetInNId(NodeN); }
   /// Returns ID of NodeN-th out-node (the node the current node points to). ##TNEANetMP::TNodeI::GetOutNId
-  int GetOutNId(const int& NodeN) const { return NI.GetOutNId(NodeN); }
+  int64 GetOutNId(const int64& NodeN) const { return NI.GetOutNId(NodeN); }
   /// Returns ID of NodeN-th neighboring node. ##TNEANetMP::TNodeI::GetNbrNId
-  int GetNbrNId(const int& NodeN) const { return NI.GetNbrNId(NodeN); }
+  int64 GetNbrNId(const int64& NodeN) const { return NI.GetNbrNId(NodeN); }
   /// Tests whether node with ID NId points to the current node.
-  bool IsInNId(const int& NId) const { return NI.IsInNId(NId); }
+  bool IsInNId(const int64& NId) const { return NI.IsInNId(NId); }
   /// Tests whether the current node points to node with ID NId.
-  bool IsOutNId(const int& NId) const { return NI.IsOutNId(NId); }
+  bool IsOutNId(const int64& NId) const { return NI.IsOutNId(NId); }
   /// Tests whether node with ID NId is a neighbor of the current node.
-  bool IsNbrNId(const int& NId) const { return NI.IsOutNId(NId) || NI.IsInNId(NId); }
+  bool IsNbrNId(const int64& NId) const { return NI.IsOutNId(NId) || NI.IsInNId(NId); }
 };
 
 /// Edge iterator. Only forward iteration (operator++) is supported.
@@ -471,11 +471,11 @@ public:
   bool operator < (const TNEANetMPEdgeI& EdgeI) const { return EI < EdgeI.EI; }
   bool operator == (const TNEANetMPEdgeI& EdgeI) const { return EI == EdgeI.EI; }
   /// Gets edge ID. Always returns -1 since only edges in multigraphs have explicit IDs.
-  int GetId() const { return EI.GetId(); }
+  int64 GetId() const { return EI.GetId(); }
   /// Gets the source of an edge. Since the graph is undirected this is the node with smaller ID of the edge endpoints.
-  int GetSrcNId() const { return EI.GetSrcNId(); }
+  int64 GetSrcNId() const { return EI.GetSrcNId(); }
   /// Gets destination of an edge. Since the graph is undirected this is the node with greater ID of the edge endpoints.
-  int GetDstNId() const { return EI.GetDstNId(); }
+  int64 GetDstNId() const { return EI.GetDstNId(); }
 };
 #endif // GCC_ATOMIC
 
@@ -493,25 +493,25 @@ public:
   bool operator < (const TModeNetNodeI& NodeI) const { return NI < NodeI.NI; }
   bool operator == (const TModeNetNodeI& NodeI) const { return NI == NodeI.NI; }
   /// Returns ID of the current node.
-  int GetId() const { return NI.GetId(); }
+  int64 GetId() const { return NI.GetId(); }
   /// Returns degree of the current node, the sum of in-degree and out-degree.
-  int GetDeg() const { return NI.GetDeg(); }
+  int64 GetDeg() const { return NI.GetDeg(); }
   /// Returns in-degree of the current node.
-  int GetInDeg() const { return NI.GetInDeg(); }
+  int64 GetInDeg() const { return NI.GetInDeg(); }
   /// Returns out-degree of the current node.
-  int GetOutDeg() const { return NI.GetOutDeg(); }
+  int64 GetOutDeg() const { return NI.GetOutDeg(); }
   /// Returns ID of NodeN-th in-node (the node pointing to the current node). ##TNEANet::TNodeI::GetInNId
-  int GetInNId(const int& NodeN) const { return NI.GetInNId(NodeN); }
+  int64 GetInNId(const int64& NodeN) const { return NI.GetInNId(NodeN); }
   /// Returns ID of NodeN-th out-node (the node the current node points to). ##TNEANet::TNodeI::GetOutNId
-  int GetOutNId(const int& NodeN) const { return NI.GetOutNId(NodeN); }
+  int64 GetOutNId(const int64& NodeN) const { return NI.GetOutNId(NodeN); }
   /// Returns ID of NodeN-th neighboring node. ##TNEANet::TNodeI::GetNbrNId
-  int GetNbrNId(const int& NodeN) const { return NI.GetNbrNId(NodeN); }
+  int64 GetNbrNId(const int64& NodeN) const { return NI.GetNbrNId(NodeN); }
   /// Tests whether node with ID NId points to the current node.
-  bool IsInNId(const int& NId) const { return NI.IsInNId(NId); }
+  bool IsInNId(const int64& NId) const { return NI.IsInNId(NId); }
   /// Tests whether the current node points to node with ID NId.
-  bool IsOutNId(const int& NId) const { return NI.IsOutNId(NId); }
+  bool IsOutNId(const int64& NId) const { return NI.IsOutNId(NId); }
   /// Tests whether node with ID NId is a neighbor of the current node.
-  bool IsNbrNId(const int& NId) const { return NI.IsOutNId(NId) || NI.IsInNId(NId); }
+  bool IsNbrNId(const int64& NId) const { return NI.IsOutNId(NId) || NI.IsInNId(NId); }
 };
 
 /// Edge iterator. Only forward iteration (operator++) is supported.
@@ -529,11 +529,11 @@ public:
   bool operator < (const TModeNetEdgeI& EdgeI) const { return EI < EdgeI.EI; }
   bool operator == (const TModeNetEdgeI& EdgeI) const { return EI == EdgeI.EI; }
   /// Gets edge ID. Always returns -1 since only edges in multigraphs have explicit IDs.
-  int GetId() const { return EI.GetId(); }
+  int64 GetId() const { return EI.GetId(); }
   /// Gets the source of an edge. Since the graph is undirected this is the node with smaller ID of the edge endpoints.
-  int GetSrcNId() const { return EI.GetSrcNId(); }
+  int64 GetSrcNId() const { return EI.GetSrcNId(); }
   /// Gets destination of an edge. Since the graph is undirected this is the node with greater ID of the edge endpoints.
-  int GetDstNId() const { return EI.GetDstNId(); }
+  int64 GetDstNId() const { return EI.GetDstNId(); }
 };
 
 /// Edge iterator. Only forward iteration (operator++) is supported.
@@ -551,11 +551,11 @@ public:
   bool operator < (const TCrossNetEdgeI& EdgeI) const { return EI < EdgeI.EI; }
   bool operator == (const TCrossNetEdgeI& EdgeI) const { return EI == EdgeI.EI; }
   /// Gets edge ID. Always returns -1 since only edges in multigraphs have explicit IDs.
-  int GetId() const { return EI.GetId(); }
+  int64 GetId() const { return EI.GetId(); }
   /// Gets the source of an edge. Since the graph is undirected this is the node with smaller ID of the edge endpoints.
-  int GetSrcNId() const { return EI.GetSrcNId(); }
+  int64 GetSrcNId() const { return EI.GetSrcNId(); }
   /// Gets destination of an edge. Since the graph is undirected this is the node with greater ID of the edge endpoints.
-  int GetDstNId() const { return EI.GetDstNId(); }
+  int64 GetDstNId() const { return EI.GetDstNId(); }
 };
 
 /// Node/Edge Attr iterator. Iterate through all node for one attr value.
@@ -574,7 +574,7 @@ public:
   bool operator < (const TCrossNetAIntI& I) const { return IntAI < I.IntAI; }
   bool operator == (const TCrossNetAIntI& I) const { return IntAI == I.IntAI; }
   /// Returns an attribute of the node.
-  int GetDat() const { return IntAI.GetDat().Val; }
+  int64 GetDat() const { return IntAI.GetDat().Val; }
   /// Returns true if node or edge has been deleted.
   bool IsDeleted() const { return IntAI.IsDeleted(); };
   TCrossNetAIntI& operator++(int) { IntAI++; return *this; }
@@ -645,7 +645,7 @@ public:
   bool operator < (const TMMNetModeNetI& NodeI) const { return NI < NodeI.NI; }
   bool operator == (const TMMNetModeNetI& NodeI) const { return NI == NodeI.NI; }
   /// Returns ID of the current node.
-  int GetModeId() { return NI.GetModeId(); }
+  int64 GetModeId() { return NI.GetModeId(); }
   TModeNet& GetModeNet() { return NI.GetModeNet(); }
 };
 
@@ -666,7 +666,7 @@ public:
   bool operator < (const TMMNetCrossNetI& EdgeI) const { return EI < EdgeI.EI; }
   bool operator == (const TMMNetCrossNetI& EdgeI) const { return EI == EdgeI.EI; }
   /// Gets edge ID. Always returns -1 since only edges in multigraphs have explicit IDs.
-  int GetCrossId() { return EI.GetCrossId(); }
+  int64 GetCrossId() { return EI.GetCrossId(); }
   TCrossNet& GetCrossNet() { return EI.GetCrossNet(); }
 
 };

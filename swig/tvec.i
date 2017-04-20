@@ -45,31 +45,67 @@ TIntV.__setitem__ = setitem_vec
 TIntV.__iter__ = itervec
 TIntV.__len__ = len_vec
 TIntV.__delitem__ = delitem_vec
+
+TInt64V.__getitem__ = getitem_vec
+TInt64V.__setitem__ = setitem_vec
+TInt64V.__iter__ = itervec
+TInt64V.__len__ = len_vec
+TInt64V.__delitem__ = delitem_vec
+
 TFltV.__getitem__ = getitem_vec
 TFltV.__setitem__ = setitem_vec
 TFltV.__iter__ = itervec
 TFltV.__len__ = len_vec
 TFltV.__delitem__ = delitem_vec
+
+TFlt64V.__getitem__ = getitem_vec
+TFlt64V.__setitem__ = setitem_vec
+TFlt64V.__iter__ = itervec
+TFlt64V.__len__ = len_vec
+TFlt64V.__delitem__ = delitem_vec
+
 TIntIntVV.__getitem__ = getitem_vec
 TIntIntVV.__setitem__ = setitem_vec
 TIntIntVV.__iter__ = itervec
 TIntIntVV.__len__ = len_vec
 TIntIntVV.__delitem__ = delitem_vec
+
 TIntPrV.__getitem__ = getitem_vec
 TIntPrV.__setitem__ = setitem_vec
 TIntPrV.__iter__ = itervec
 TIntPrV.__len__ = len_vec
 TIntPrV.__delitem__ = delitem_vec
+
+TIntPr64V.__getitem__ = getitem_vec
+TIntPr64V.__setitem__ = setitem_vec
+TIntPr64V.__iter__ = itervec
+TIntPr64V.__len__ = len_vec
+TIntPr64V.__delitem__ = delitem_vec
+
 TFltPrV.__getitem__ = getitem_vec
 TFltPrV.__setitem__ = setitem_vec
 TFltPrV.__iter__ = itervec
 TFltPrV.__len__ = len_vec
 TFltPrV.__delitem__ = delitem_vec
+
+TFltPr64V.__getitem__ = getitem_vec
+TFltPr64V.__setitem__ = setitem_vec
+TFltPr64V.__iter__ = itervec
+TFltPr64V.__len__ = len_vec
+TFltPr64V.__delitem__ = delitem_vec
+
 TIntFltKdV.__getitem__ = getitem_vec
 TIntFltKdV.__setitem__ = setitem_vec
 TIntFltKdV.__iter__ = itervec
 TIntFltKdV.__len__ = len_vec
 TIntFltKdV.__delitem__ = delitem_vec
+
+TIntFltKd64V.__getitem__ = getitem_vec
+TIntFltKd64V.__setitem__ = setitem_vec
+TIntFltKd64V.__iter__ = itervec
+TIntFltKd64V.__len__ = len_vec
+TIntFltKd64V.__delitem__ = delitem_vec
+
 TCnComV.__getitem__ = getitem_vec
 TCnComV.__setitem__ = setitem_vec
 TCnComV.__iter__ = itervec
