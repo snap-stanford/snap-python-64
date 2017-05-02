@@ -339,7 +339,7 @@
      if ($1) free($1);
 }
 
-// Convert an TIntV to a Python list
+// Convert an TIntV anf TInt64V to a Python list
 
 %module outarg
 
@@ -355,6 +355,19 @@
     $1 = &temp;
 }
 
+%module outarg
+
+%typemap(argout) TInt64V *OutValue {
+  $result = PyList_New($1->Len());
+  for (int i = 0; i < $1->Len(); ++i) {
+    PyList_SetItem($result, i, PyInt_FromLong((*$1)[i]));
+  }
+  delete $1; // Avoid a leak since you called new
+}
+
+%typemap(in,numinputs=0) TInt64V *OutValue(TIntV temp) {
+    $1 = &temp;
+}
 
 // Rename argument example.
 %typemap(in) (char *buffer, int size) = (char *str, int len);

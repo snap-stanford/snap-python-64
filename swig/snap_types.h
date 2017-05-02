@@ -4,6 +4,10 @@ void print_array(int *x, int length) {
   for (int i = 0; i < length; i++)
     printf("x[%d] = %d\n", i, x[i]);
 }
+void print_array(int64 *x, int64 length) {
+  for (int64 i = 0; i < length; i++)
+    printf("x[%d] = %d\n", i, x[i]);
+}
 
 TFltV PyTFltV(double x[10]) {
 
@@ -44,3 +48,34 @@ void TIntVToPy (TIntV originalList, TIntV *OutValue) {
 
 }
 
+
+TFlt64V PyTFlt64V(double x[10]) {
+
+  TFlt64V V;
+  for (int64 i = 0; i < 10; i++) {
+    V.Add(x[i]);
+  }
+  
+  return V;
+}
+
+TInt64V PyToTInt64V (int64 *array, int64 length) {
+  
+  TInt64V V;
+  for (int64 i = 0; i < length; i++) {
+    //printf("Adding array[%d] = %d\n", i, array[i]);
+    V.Add(array[i]);
+  }
+  
+  return V;
+}
+
+
+//void TIntVToPy (TIntV originalList, TIntV snapList, int& len) {
+void TInt64VToPy (TInt64V originalList, TInt64V *OutValue) {
+
+  printf("BEFORE: Original TInt64V list size to %d\n", originalList.Len());
+  *OutValue = originalList;
+  printf("BEFORE: New TInt64V list size = %d\n", OutValue->Len());
+
+}
