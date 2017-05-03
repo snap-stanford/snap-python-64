@@ -432,6 +432,5 @@
 
 // Rename argument example.
 %typemap(in) (char *buffer, int size) = (char *str, int len);
-%typemap(in) (char *buffer, int64 size) = (char *str, int64 len);
 
 %include "snap_types.h"
