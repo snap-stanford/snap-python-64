@@ -5,31 +5,34 @@ namespace TSnap {
 typedef TVec<TInt, int> TIntV;
 typedef TVec<TIntV, int> TIntIntVV;
 typedef THash<TInt, TVec< TInt, int> > TIntIntVH;
+typedef TVec<TInt64, int64> TInt64V;
+typedef TVec<TInt64V, int64> TIntInt64VV;
+typedef THash<TInt64, TVec< TInt64, int64>, int64 > TIntInt64VH;
 //typedef THash<TInt, TInt> TIntH;
 
 void SeedRandom() {
-  long int ITime;
-  long int IPid;
-  long int RSeed;
+  long int64 ITime;
+  long int64 IPid;
+  long int64 RSeed;
 
-  ITime = (long int) time(NULL);
-  IPid = (long int) getpid();
+  ITime = (long int64) time(NULL);
+  IPid = (long int64) getpid();
 
   RSeed = ITime * IPid;
   srand48(RSeed);
 }
 
-void Randomize(TIntV& Vec) {
-  int Pos;
-  int Last = Vec.Len() - 1;
-  for (int ValN = Last; ValN > 0; ValN--) {
+void Randomize(TInt64V& Vec) {
+  int64 Pos;
+  int64 Last = Vec.Len() - 1;
+  for (int64 ValN = Last; ValN > 0; ValN--) {
     Pos = (long) (drand48() * ValN);
     Vec.Swap(ValN, Pos);
   }
 }
 
-int StdDist(double Mean, double Dev) {
-  int i;
+int64 StdDist(double Mean, double Dev) {
+  int64 i;
   double x;
 
   x = -6.0;
@@ -40,7 +43,7 @@ int StdDist(double Mean, double Dev) {
   x *= Dev;
   x += Mean;
 
-  return int(x + 0.5);
+  return int64(x + 0.5);
 }
 
 #if 0
@@ -64,10 +67,10 @@ void GetDegrees(TIntV* Nodes, double Mean, double Dev) {
 }
 #endif
 
-void GetDegrees(TIntV& Nodes, double Mean, double Dev) {
-  int i;
-  int d;
-  int Len;
+void GetDegrees(TInt64V& Nodes, double Mean, double Dev) {
+  int64 i;
+  int64 d;
+  int64 Len;
   printf("GetDegrees\n");
   printf("Nodes Len %d\n",Nodes.Len());
 
@@ -84,9 +87,9 @@ void GetDegrees(TIntV& Nodes, double Mean, double Dev) {
   }
 }
 
-void IncVal(TIntV& Nodes, int disp) {
-  int i;
-  int Len;
+void IncVal(TInt64V& Nodes, int64 disp) {
+  int64 i;
+  int64 Len;
 
   // increment value for each element
   Len = Nodes.Len();
@@ -95,13 +98,13 @@ void IncVal(TIntV& Nodes, int disp) {
   }
 }
 
-void AssignRndTask(const TIntV& Nodes, TIntIntVV& Tasks) {
-  int i;
-  int j;
-  int n;
-  int t;
-  int NumNodes;
-  int NumTasks;
+void AssignRndTask(const TInt64V& Nodes, TIntInt64VV& Tasks) {
+  int64 i;
+  int64 j;
+  int64 n;
+  int64 t;
+  int64 NumNodes;
+  int64 NumTasks;
   printf("AssignRndTask\n");
   printf("Nodes Len %d\n",Nodes.Len());
   printf("Tasks Len %d\n",Tasks.Len());
@@ -120,13 +123,13 @@ void AssignRndTask(const TIntV& Nodes, TIntIntVV& Tasks) {
   }
 }
 
-void AssignEdges(const TIntV& Pairs, TIntIntVV& Tasks, int tsize) {
-  int i;
-  int NumStubs;
-  int NumTasks;
-  int TaskId;
-  int Node1;
-  int Node2;
+void AssignEdges(const TInt64V& Pairs, TIntInt64VV& Tasks, int64 tsize) {
+  int64 i;
+  int64 NumStubs;
+  int64 NumTasks;
+  int64 TaskId;
+  int64 Node1;
+  int64 Node2;
 
   printf("AssignEdges\n");
   printf("Pairs Len %d\n",Pairs.Len());
@@ -152,11 +155,11 @@ void AssignEdges(const TIntV& Pairs, TIntIntVV& Tasks, int tsize) {
   }
 }
 
-void GetAdjLists(const TIntV& Edges, TIntIntVH& AdjLists) {
-  int i;
-  int NumStubs;
-  int Node1;
-  int Node2;
+void GetAdjLists(const TInt64V& Edges, TIntInt64VH& AdjLists) {
+  int64 i;
+  int64 NumStubs;
+  int64 Node1;
+  int64 Node2;
 
   printf("GetAdjLists\n");
   printf("Edges1 Len %d\n",Edges.Len());
@@ -173,15 +176,15 @@ void GetAdjLists(const TIntV& Edges, TIntIntVH& AdjLists) {
   }
 }
 
-void GetNeighborhood(const TIntV& Nodes, const TIntIntVH& AdjLists, TIntV& Hood) {
-  int i;
-  int j;
-  int Node;
-  int NumNodes;
-  int NumNeighbors;
-  int Neighbor;
-  TIntH HashHood;
-  TIntV Neighbors;
+void GetNeighborhood(const TInt64V& Nodes, const TIntInt64VH& AdjLists, TInt64V& Hood) {
+  int64 i;
+  int64 j;
+  int64 Node;
+  int64 NumNodes;
+  int64 NumNeighbors;
+  int64 Neighbor;
+  TInt64H HashHood;
+  TInt64V Neighbors;
 
   NumNodes = Nodes.Len();
 
@@ -201,11 +204,11 @@ void GetNeighborhood(const TIntV& Nodes, const TIntIntVH& AdjLists, TIntV& Hood)
 }
   
 
-void Edge2Hash(const TIntV& Edges, TIntH& Hash) {
-  int i;
-  int Num;
-  int Key;
-  int Value;
+void Edge2Hash(const TInt64V& Edges, TInt64H& Hash) {
+  int64 i;
+  int64 Num;
+  int64 Key;
+  int64 Value;
 
   printf("Edges2 Len %d\n",Edges.Len());
   Num = Edges.Len();

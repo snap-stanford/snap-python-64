@@ -250,6 +250,7 @@ Version = "3.0.2"
 %template(TInt64Pr) TPair<TInt64, TInt64>;
 %template(TFltPr) TPair<TFlt, TFlt>;
 %template(TStrIntPr) TPair<TStr, TInt>;
+%template(TStrInt64Pr) TPair<TStr, TInt64>;
 %template(TIntTr) TTriple<TInt, TInt, TInt>;
 %template(TInt64Tr) TTriple<TInt64, TInt64, TInt64>;
 %template(TIntFltKd) TKeyDat<TInt, TFlt>;
@@ -273,7 +274,7 @@ Version = "3.0.2"
 %template(TIntStrPr) TPair<TInt, TStr>;
 %template(TInt64StrPr) TPair<TInt64, TStr>;
 %template(TIntIntVV) TVec< TVec< TInt, int >, int >;
-%template(TIntIntVV) TVec< TVec< TInt, int >, int >;
+%template(TIntInt64VV) TVec< TVec< TInt64, int64 >, int64 >;
 %template(PNEANetV) TVec<PNEANet>;
 
 #if SNAP_ALL
@@ -664,6 +665,8 @@ Version = "3.0.2"
 
 %template(TIntSet) THashSet<TInt>;
 %template(TIntHSI) THashSetKeyI <TInt>;
+%template(TInt64Set) THashSet<TInt64, int64>;
+%template(TInt64HSI) THashSetKeyI <TInt64, int64>;
 
 //----------
 

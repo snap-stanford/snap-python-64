@@ -7,6 +7,8 @@ using namespace TSnap;
   
 typedef TVec<TInt, int> TIntV;
 typedef TVec<TIntV, int> TIntIntVV;
+typedef TVec<TInt64, int64> TInt64V;
+typedef TVec<TInt64V, int64> TIntInt64VV;
 
 TUNGraph TPrGraph(PUNGraph G) {
   return *G;
@@ -21,9 +23,9 @@ TUNGraph TPrGraph(PUNGraph G) {
 //}
 
 template<class PGraph>
-double PercentDegree(const PGraph& Graph, const int Threshold=0) {
+double PercentDegree(const PGraph& Graph, const int64 Threshold=0) {
 
-    int Cnt = 0;
+    int64 Cnt = 0;
   for (typename PGraph::TObj::TNodeI NI = Graph->BegNI(); NI < Graph->EndNI(); NI++)
   {
     if (NI.GetDeg() >= Threshold) Cnt++;
@@ -33,9 +35,9 @@ double PercentDegree(const PGraph& Graph, const int Threshold=0) {
 }
 
 template<class PGraph>
-int NodesGTEDegree(const PGraph& Graph, const int Threshold=0) {
+int64 NodesGTEDegree(const PGraph& Graph, const int64 Threshold=0) {
   
-  int Cnt = 0;
+  int64 Cnt = 0;
   for (typename PGraph::TObj::TNodeI NI = Graph->BegNI(); NI < Graph->EndNI();
        NI++)
   {
@@ -46,9 +48,9 @@ int NodesGTEDegree(const PGraph& Graph, const int Threshold=0) {
 }
 
 template<class PGraph>
-int MxDegree(const PGraph& Graph) {
+int64 MxDegree(const PGraph& Graph) {
   
-  int MaxDeg = 0;
+  int64 MaxDeg = 0;
   for (typename PGraph::TObj::TNodeI NI = Graph->BegNI(); NI < Graph->EndNI(); NI++) {
     if (NI.GetDeg() > MaxDeg) {
       MaxDeg = NI.GetDeg();

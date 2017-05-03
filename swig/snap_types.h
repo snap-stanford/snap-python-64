@@ -71,11 +71,11 @@ TInt64V PyToTInt64V (int64 *array, int64 length) {
 }
 
 
-//void TIntVToPy (TIntV originalList, TIntV snapList, int& len) {
-void TInt64VToPy (TInt64V originalList, TInt64V *OutValue) {
+// //void TIntVToPy (TIntV originalList, TIntV snapList, int& len) {
+// void TInt64VToPy (TInt64V originalList, TInt64V *OutValue) {
 
-  printf("BEFORE: Original TInt64V list size to %d\n", originalList.Len());
-  *OutValue = originalList;
-  printf("BEFORE: New TInt64V list size = %d\n", OutValue->Len());
+//   printf("BEFORE: Original TInt64V list size to %d\n", originalList.Len());
+//   *OutValue = originalList;
+//   printf("BEFORE: New TInt64V list size = %d\n", OutValue->Len());
 
-}
+// }

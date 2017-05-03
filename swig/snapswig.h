@@ -1,3 +1,11 @@
+#if defined (_WIN32)
+  typedef __int64 int64;
+#elif defined (__WIN64)
+  typedef __int64 int64;
+#else
+  typedef long long int64;
+#endif
+
 class TNGraphNodeI {
 private:
   TNGraph::TNodeI NI;

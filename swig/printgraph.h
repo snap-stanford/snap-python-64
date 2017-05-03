@@ -3,7 +3,7 @@ template<class PGraph>
 void PrintGraphStatTable(const PGraph& G, TStr OutFNm, TStr Desc="") {
   TFltPrV DegCCfV;
   int64 ClosedTriads, OpenTriads;
-  int FullDiam;
+  int64 FullDiam;
   double EffDiam;
   TSnap::PrintInfo(G, OutFNm);
   TExeTm ExeTm; printf("C");
@@ -29,7 +29,7 @@ void PrintGraphStatTable(const PGraph& G, TStr OutFNm, TStr Desc="") {
   fprintf(F, "  <tr><td>Average clustering coefficient</td> <td>%.4f</td></tr>\n", CCF);
   fprintf(F, "  <tr><td>Number of triangles</td> <td>%s</td></tr>\n", TUInt64(ClosedTriads).GetStr().CStr());
   fprintf(F, "  <tr><td>Fraction of closed triangles</td> <td>%.4g</td></tr>\n", ClosedTriads/double(ClosedTriads+OpenTriads));
-  fprintf(F, "  <tr><td>Diameter (longest shortest path)</td> <td>%d</td></tr>\n", FullDiam);
+  fprintf(F, "  <tr><td>Diameter (longest shortest path)</td> <td>%d</td></tr>\n", TInt64(FullDiam).GetStr().CStr());
   fprintf(F, "  <tr><td>90-percentile effective diameter</td> <td>%.2g</td></tr>\n", EffDiam);
   fprintf(F, "</table>\n");
   fprintf(F, "<br>\n");
