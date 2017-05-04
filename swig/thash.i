@@ -71,11 +71,6 @@ TIntIntH.__delitem__ = delitem_hash
 TIntIntH.__len__ = len_hash
 TIntIntH.__iter__ = iterhash
 
-TIntInt64H.__getitem__ = getitem_hash
-TIntInt64H.__setitem__ = setitem_hash
-TIntInt64H.__delitem__ = delitem_hash
-TIntInt64H.__len__ = len_hash
-TIntInt64H.__iter__ = iterhash
 
 TIntFltH.__getitem__ = getitem_hash
 TIntFltH.__setitem__ = setitem_hash

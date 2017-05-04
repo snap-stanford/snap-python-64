@@ -481,7 +481,6 @@ Version = "3.0.2"
 %template(TIntH) THash<TInt, TInt>;
 %template(TInt64H) THash<TInt64, TInt64, int64>;
 %template(TIntIntH) THash<TInt, TInt>;
-//%template(TIntInt64H) THash<TInt64, TInt64, int64>;
 %template(TIntFltH) THash<TInt, TFlt>;
 %template(TIntFlt64H) THash<TInt64, TFlt, int64>;
 %template(TIntStrH) THash<TInt, TStr>;
