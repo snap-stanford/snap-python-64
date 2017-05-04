@@ -1,7 +1,7 @@
 
 template<class PGraph>
 void PrintGraphStatTable(const PGraph& G, TStr OutFNm, TStr Desc="") {
-  TFltPrV DegCCfV;
+  TFltPr64V DegCCfV;
   int64 ClosedTriads, OpenTriads;
   int64 FullDiam;
   double EffDiam;
