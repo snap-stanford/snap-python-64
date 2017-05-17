@@ -110,12 +110,12 @@ Version = "3.0.2"
 
 //%ignore TVec< TPair< TStr, TAttrType_ >, int >::Load;
 //%ignore TVec< TPair< TStr, TAttrType >, int >::Load;
-%ignore TVec< TPair< TStr,TAttrType > >::Load;
-%ignore TVec< TPair< TStr,TAttrType > >::Save;
-%ignore TVec< TPair< TStr,TAttrType > >::GetPrimHashCd;
-%ignore TVec< TPair< TStr,TAttrType > >::GetSecHashCd;
+%ignore TVec< TPair< TStr,TAttrType >, int64 >::Load;
+%ignore TVec< TPair< TStr,TAttrType >, int64 >::Save;
+%ignore TVec< TPair< TStr,TAttrType >, int64 >::GetPrimHashCd;
+%ignore TVec< TPair< TStr,TAttrType >, int64 >::GetSecHashCd;
 //%ignore TVec< TPair< TStr,TAttrType > >::TVec(TSIn *);
-%ignore TVec< TPair< TStr,TAttrType > >::TVec(TSIn &);
+%ignore TVec< TPair< TStr,TAttrType >, int64 >::TVec(TSIn &);
 //%ignore Schema::Load;
 
 %ignore TVec<PNEANet>::Intrs;
@@ -245,6 +245,7 @@ Version = "3.0.2"
 //%template(Schema) TVec<TPair<TStr, TInt> >;
 
 // ds.h
+
 
 %template(TIntPr) TPair<TInt, TInt>;
 %template(TInt64Pr) TPair<TInt64, TInt64>;
@@ -493,11 +494,17 @@ Version = "3.0.2"
 
 // define keydat types
 %template(TIntHI) THashKeyDatI <TInt, TInt>;
+%template(TInt64HI) THashKeyDatI <TInt64, TInt64, int64>;
 %template(TIntIntHI) THashKeyDatI <TInt, TInt>;
 %template(TIntFltHI) THashKeyDatI <TInt, TFlt>;
+%template(TIntFlt64HI) THashKeyDatI <TInt64, TFlt, int64>;
 %template(TIntStrHI) THashKeyDatI <TInt, TStr>;
+%template(TIntStr64HI) THashKeyDatI <TInt64, TStr, int64>;
 %template(TIntPrFltHI) THashKeyDatI <TIntPr, TFlt>;
+%template(TIntPrFlt64HI) THashKeyDatI <TInt64Pr, TFlt, int64>;
 %template(TStrIntHI) THashKeyDatI <TStr, TInt>;
+%template(TStrInt64HI) THashKeyDatI <TStr, TInt64, int64>;
+
 
 #if SNAP_ALL
 // define hash types
@@ -640,8 +647,7 @@ Version = "3.0.2"
 
 // cncom.h
 
-%template(TCnComV) TVec<TCnCom>;
-%template(TCnCom64V) TVec<TCnCom, int64>;
+%template(TCnComV) TVec<TCnCom, int64>;
 
 // tm.h
 
@@ -660,7 +666,7 @@ Version = "3.0.2"
 //typedef TStrIntPrV Schema;
 
 %template(TStrTAttrPr) TPair< TStr, TAttrType>;
-%template(Schema) TVec< TPair< TStr, TAttrType> >;
+%template(Schema) TVec< TPair< TStr, TAttrType>, int64 >;
 
 %template(TIntSet) THashSet<TInt>;
 %template(TIntHSI) THashSetKeyI <TInt>;

@@ -426,7 +426,7 @@
   delete $1; // Avoid a leak since you called new
 }
 
-%typemap(in,numinputs=0) TInt64V *OutValue(TIntV temp) {
+%typemap(in,numinputs=0) TInt64V *OutValue(TInt64V temp) {
     $1 = &temp;
 }
 
