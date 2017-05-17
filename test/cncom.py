@@ -8,14 +8,15 @@ print "IsConnected(G) =", snap.IsConnected(G)
 print "IsWeaklyConnected(G) =", snap.IsWeaklyConn(G)
 
 # get the weakly connected component counts
-WccSzCnt = snap.TIntPrV()
+WccSzCnt = snap.TIntPr64V()
 snap.GetWccSzCnt(G, WccSzCnt)
+print WccSzCnt[0],WccSzCnt[0].Val1,WccSzCnt[0].Val2
 for i in range (0, WccSzCnt.Len()):
     print "WccSzCnt[%d] = (%d, %d)" % (
                 i, WccSzCnt[i].Val1.Val, WccSzCnt[i].Val2.Val)
 
 # return nodes in the same weakly connected component as node 1
-CnCom = snap.TIntV()
+CnCom = snap.TInt64V()
 snap.GetNodeWcc(G, 1, CnCom)
 print "CnCom.Len() = %d" % (CnCom.Len())
 

@@ -233,11 +233,11 @@ def ManipulateAttributesId():
             Graph.GetIntAttrIndDatN(NId, attr2idx),
             Graph.GetFltAttrIndDatN(NId, attr3idx))
 
-    NIdAttrName = TStrV()
-    NIdAttrValue = TStrV()
-    NIdIntAttrValue = TIntV()
-    NIdFltAttrValue = TFltV()
-    NIdStrAttrValue = TStrV()
+    NIdAttrName = TStr64V()
+    NIdAttrValue = TStr64V()
+    NIdIntAttrValue = TInt64V()
+    NIdFltAttrValue = TFlt64V()
+    NIdStrAttrValue = TStr64V()
 
     Graph.AttrNameNI(NId, NIdAttrName)
     AttrLen = NIdAttrName.Len()
@@ -327,7 +327,7 @@ def ManipulateAttributesId():
     EdgeId = 0
     EI = Graph.BegEAIntI(attr2)
     while EI < Graph.EndEAIntI(attr2):
-        if EI.GetDat() != TInt.Mn:
+        if EI.GetDat() != TInt64.Mn:
             print "E Attribute1: %s, Edge: %i, Val: %i" % (
                 attr2, EdgeId, EI.GetDat())
             #% (attr2(), EdgeId, EI.GetDat())
@@ -399,16 +399,16 @@ def ManipulateAttributesId():
             Graph.GetIntAttrIndDatE(EId, attr2idx),
             Graph.GetFltAttrIndDatE(EId, attr3idx))
 
-    EIdAttrName = TStrV()
-    EIdAttrValue = TStrV()
-    EIdIntAttrValue = TIntV()
-    EIdFltAttrValue = TFltV()
-    EIdStrAttrValue = TStrV()
+    EIdAttrName = TStr64V()
+    EIdAttrValue = TStr64V()
+    EIdIntAttrValue = TInt64V()
+    EIdFltAttrValue = TFlt64V()
+    EIdStrAttrValue = TStr64V()
 
     EdgeId = 0
     EI = Graph.BegEAIntI(attr2)
     while EI < Graph.EndEAIntI(attr2):
-        if EI.GetDat() != TInt.Mn:
+        if EI.GetDat() != TInt64.Mn:
             print "E Attribute1: %s, Edge: %i, Val: %i" % (
                 attr2, EdgeId, EI.GetDat())
             #% (attr2(), EdgeId, EI.GetDat())
@@ -646,30 +646,30 @@ def ManipulateAttributesIter():
             Graph.GetIntAttrIndDatN(NI, attr2idx),
             Graph.GetFltAttrIndDatN(NI, attr3idx))
 
-    NIdAttrName = TStrV()
-    NIdAttrValue = TStrV()
-    NIdIntAttrValue = TIntV()
-    NIdFltAttrValue = TFltV()
-    NIdStrAttrValue = TStrV()
+    NIdAttrName = TStr64V()
+    NIdAttrValue = TStr64V()
+    NIdIntAttrValue = TInt64V()
+    NIdFltAttrValue = TFlt64V()
+    NIdStrAttrValue = TStr64V()
 
     Graph.AttrNameNI(NId, NIdAttrName)
     AttrLen = NIdAttrName.Len()
     for i in range(AttrLen):
         print "Vertical Node1: %i, Attr: %s" % (NId, NIdAttrName.GetI(i)())
 
-    NIdAttrName = TStrV()
+    NIdAttrName = TStr64V()
     Graph.IntAttrNameNI(NId, NIdAttrName)
     AttrLen = NIdAttrName.Len()
     for i in range(AttrLen):
         print "Vertical Node11 (int): %i, Attr: %s" % (NId, NIdAttrName.GetI(i)())
 
-    NIdAttrName = TStrV()
+    NIdAttrName = TStr64V()
     Graph.FltAttrNameNI(NId, NIdAttrName)
     AttrLen = NIdAttrName.Len()
     for i in range(AttrLen):
         print "Vertical Node12 (flt): %i, Attr: %s" % (NId, NIdAttrName.GetI(i)())
 
-    NIdAttrName = TStrV()
+    NIdAttrName = TStr64V()
     Graph.StrAttrNameNI(NId, NIdAttrName)
     AttrLen = NIdAttrName.Len()
     for i in range(AttrLen):
@@ -733,7 +733,7 @@ def ManipulateAttributesIter():
     EdgeId = 0
     EI = Graph.BegEAIntI(attr2)
     while EI < Graph.EndEAIntI(attr2):
-        if EI.GetDat() != TInt.Mn:
+        if EI.GetDat() != TInt64.Mn:
             print "E Attribute1: %s, Edge: %i, Val: %i" % (
                 attr2, EdgeId, EI.GetDat())
             #% (attr2(), EdgeId, EI.GetDat())
@@ -815,8 +815,8 @@ def ManipulateAttributesIter():
             Graph.GetIntAttrIndDatE(EI, attr2idx),
             Graph.GetFltAttrIndDatE(EI, attr3idx))
 
-    EIdAttrName = TStrV()
-    EIdAttrValue = TStrV()
+    EIdAttrName = TStr64V()
+    EIdAttrValue = TStr64V()
 
     Graph.AttrNameEI(EId, EIdAttrName)
     AttrLen = EIdAttrName.Len()

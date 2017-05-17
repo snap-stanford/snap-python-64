@@ -55,7 +55,7 @@ def intro():
     # get largest weakly connected component of G
     WccG = GetMxWcc(G6)
     # get a subgraph induced on nodes {0,1,2,3,4,5}
-    SubG = GetSubGraph(G6, TIntV.GetV(0,1,2,3,4))
+    SubG = GetSubGraph(G6, TInt64V.GetV(0,1,2,3,4))
     # get 3-core of G
     Core3 = GetKCore(G6, 3)
     # delete nodes of out degree 10 and in degree 5
@@ -66,13 +66,13 @@ def intro():
     G8 = GenPrefAttach(1000, 3)
     print "G8: Nodes %d, Edges %d" % (G8.GetNodes(), G8.GetEdges())
     # vector of pairs of integers (size, count)
-    CntV = TIntPrV()
+    CntV = TInt64PrV()
     # get distribution of connected components (component size, count)
     GetWccSzCnt(G8, CntV)
     # get degree distribution pairs (degree, count)
     GetOutDegCnt(G8, CntV)
     # vector of floats
-    EigV = TFltV()
+    EigV = TFlt64V()
     # get first eigenvector of graph adjacency matrix
     GetEigVec(G8, EigV)
     # get diameter of G8

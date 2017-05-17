@@ -2,7 +2,7 @@ import snap
 
 print "----- vector ----- "
 
-v = snap.TIntV()
+v = snap.TInt64V()
 
 v.Add(1)
 v.Add(2)
@@ -24,7 +24,7 @@ for i in range(0, v.Len()):
 
 print "----- hash table ----- "
 
-h = snap.TIntStrH()
+h = snap.TIntStr64H()
 
 h[5] = "five"
 h[3] = "three"
@@ -44,7 +44,7 @@ for key in h:
 
 print "----- pair ----- "
 
-p = snap.TIntStrPr(1, "one");
+p = snap.TInt64StrPr(1, "one");
 
 print p.GetVal1()
 print p.GetVal2()
@@ -103,7 +103,7 @@ print "G7: Nodes %d, Edges %d" % (G7.GetNodes(), G7.GetEdges())
 WccG = snap.GetMxWcc(G6)
 
 # generate a network using Forest Fire model
-G8 = snap.GenForestFire(1000, 0.35, 0.35)
+#G8 = snap.GenForestFire(1000, 0.35, 0.35)
 print "G8: Nodes %d, Edges %d" % (G8.GetNodes(), G8.GetEdges())
 
 # get a subgraph induced on nodes {0,1,2,3,4}
@@ -122,7 +122,7 @@ print "G9: Nodes %d, Edges %d" % (G9.GetNodes(), G9.GetEdges())
 
 # define a vector of pairs of integers (size, count) and
 # get a distribution of connected components (component size, count)
-CntV = snap.TIntPrV()
+CntV = snap.TInt64PrV()
 snap.GetWccSzCnt(G9, CntV)
 for p in CntV:
     print "size %d: count %d" % (p.GetVal1(), p.GetVal2())
@@ -137,7 +137,7 @@ G10 = snap.GenPrefAttach(100, 3)
 print "G10: Nodes %d, Edges %d" % (G10.GetNodes(), G10.GetEdges())
 
 # define a vector of floats and get first eigenvector of graph adjacency matrix
-EigV = snap.TFltV()
+EigV = snap.TFlt64V()
 snap.GetEigVec(G10, EigV)
 nr = 0
 for f in EigV:

@@ -9,7 +9,7 @@ import snap as Snap
 numnodes = 100
 valrange = numnodes / 5
 
-Edges = Snap.TIntV()
+Edges = Snap.TInt64V()
 
 for i in range(0,numnodes):
     Edges.Add(int(random.random() * valrange))
@@ -19,7 +19,7 @@ for i in range(0,numnodes,2):
     #print "Edges", i/2, Edges.GetVal(i).Val, Edges.GetVal(i+1).Val
     d[(Edges.GetVal(i).Val,Edges.GetVal(i+1).Val)] = 1
 
-Hash = Snap.TIntH()
+Hash = Snap.TInt64H()
 #Snap.Edge2Hash(Edges,Hash)
 
 Hash.AddDat(3,5)
@@ -50,7 +50,7 @@ while not Iter.IsEnd():
 
 sys.exit(0)
 
-AdjLists = Snap.TIntIntVH()
+AdjLists = Snap.TIntInt64VH()
 print "type", type(Edges), type(AdjLists)
 Snap.GetAdjLists(Edges, AdjLists)
 
@@ -67,12 +67,12 @@ print "done", Edges.Len(), AdjLists.Len(), size, len(d)
 sys.exit(0)
 
 #print "dir(Snap.TIntV)", dir(Snap.TIntV)
-Vec1 = Snap.TIntV(numnodes)
+Vec1 = Snap.TInt64V(numnodes)
 #print "dir(Vec1)", dir(Vec1)
 print "Len Vec1", Vec1.Len()
 
 #print "dir(Snap.TIntIntVV)", dir(Snap.TIntIntVV)
-Vec2 = Snap.TIntIntVV(numtask)
+Vec2 = Snap.TIntInt64VV(numtask)
 #print "dir(Vec2)", dir(Vec2)
 print "Len Vec2", Vec2.Len()
 

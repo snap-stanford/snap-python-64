@@ -14,7 +14,7 @@ if __name__ == '__main__':
     fname = sys.argv[1]
 
     FIn = Snap.TFIn(Snap.TStr(fname))
-    Vec = Snap.TIntV(FIn)
+    Vec = Snap.TInt64V(FIn)
     print "len", Vec.Len()
 
     Vec.Sort()
