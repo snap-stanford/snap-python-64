@@ -66,13 +66,13 @@ def intro():
     G8 = GenPrefAttach(1000, 3)
     print "G8: Nodes %d, Edges %d" % (G8.GetNodes(), G8.GetEdges())
     # vector of pairs of integers (size, count)
-    CntV = TInt64PrV()
+    CntV = TIntPr64V()
     # get distribution of connected components (component size, count)
     GetWccSzCnt(G8, CntV)
     # get degree distribution pairs (degree, count)
     GetOutDegCnt(G8, CntV)
     # vector of floats
-    EigV = TFlt64V()
+    EigV = TFltV()
     # get first eigenvector of graph adjacency matrix
     GetEigVec(G8, EigV)
     # get diameter of G8

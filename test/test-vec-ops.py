@@ -1,7 +1,7 @@
 import snap
 
 # first vector
-a = snap.TIntV()
+a = snap.TInt64V()
 a.Add(1)
 a.Add(2)
 a.Add(3)
@@ -11,7 +11,7 @@ l = [ str(elem) for elem in a]
 print "a =      ", ", ".join(l)
 
 # second vector
-b = snap.TIntV()
+b = snap.TInt64V()
 b.Add(3)
 b.Add(4)
 b.Add(5)
@@ -21,7 +21,7 @@ l = [ str(elem) for elem in b]
 print "b =      ", ", ".join(l)
 
 # third vector
-c = snap.TIntV()
+c = snap.TInt64V()
 c.Add(6)
 c.Add(7)
 c.Add(8)
@@ -47,7 +47,7 @@ print "c =      ", ", ".join(l)
 print
 
 # intersection
-i = snap.TIntV()
+i = snap.TInt64V()
 a.Intrs(c,i)
 l = [ str(elem) for elem in i]
 print "i = a^c  ", ", ".join(l)
@@ -58,7 +58,7 @@ print "c =      ", ", ".join(l)
 print
 
 # union
-u = snap.TIntV()
+u = snap.TInt64V()
 b.Union(c,u)
 l = [ str(elem) for elem in u]
 print "u = bvc  ", ", ".join(l)
