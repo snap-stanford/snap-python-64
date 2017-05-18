@@ -42,7 +42,7 @@ TUNGraphEdgeI.GetId = GetId
 %template(PUNGraph) TPt< TUNGraph >;
 
 // gbase.h - PUNGraph
-//%template(PrintInfo_PUNGraph) TSnap::PrintInfo<PUNGraph>;
+%template(PrintInfo_PUNGraph) TSnap::PrintInfo<PUNGraph>;
 
 // cncom.h - PUNGraph
 %template(GetNodeWcc_PUNGraph) TSnap::GetNodeWcc<PUNGraph>;

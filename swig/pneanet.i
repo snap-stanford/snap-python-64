@@ -173,7 +173,7 @@
 
 
 // gbase.h - PNEANet
-//%template(PrintInfo_PNEANet) TSnap::PrintInfo<PNEANet>;
+%template(PrintInfo_PNEANet) TSnap::PrintInfo<PNEANet>;
 
 
 // cncom.h - PNEANet

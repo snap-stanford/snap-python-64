@@ -39,7 +39,7 @@ TUndirNetEdgeI.GetId = GetId
 %template(PUndirNet) TPt< TUndirNet >;
 
 // gbase.h - PUndirNet
-//%template(PrintInfo_PUndirNet) TSnap::PrintInfo<PUndirNet>;
+%template(PrintInfo_PUndirNet) TSnap::PrintInfo<PUndirNet>;
 
 // cncom.h - PUndirNet
 %template(GetNodeWcc_PUndirNet) TSnap::GetNodeWcc<PUndirNet>;
