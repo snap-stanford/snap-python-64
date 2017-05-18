@@ -491,6 +491,7 @@ Version = "3.0.2"
 %template(TStrIntH) THash<TStr, TInt>;
 %template(TStrInt64H) THash<TStr, TInt64, int64>;
 %template(TStrIntSH) TStrHash<TInt, TStrPool, int64, TDefaultHashFunc<TStr> >;
+%template(TStrInt64SH) TStrHash<TInt64, TStrPool, int64, TDefaultHashFunc<TStr> >;
 
 // define keydat types
 %template(TIntHI) THashKeyDatI <TInt, TInt>;
