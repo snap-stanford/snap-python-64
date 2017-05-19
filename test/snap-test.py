@@ -2094,7 +2094,7 @@ class SnapPythonTest(unittest.TestCase):
         snap.GetTriadParticip(self.NetFull, TriadCntV)
         for pair in TriadCntV:
             self.assertEqual(exp_num_tri, pair.Val1())
-            self.assertEqual(self.num_nodes, pair.Val2)
+            self.assertEqual(self.num_nodes, pair.Val2.Val)
 
     def test_CntEdgesToSet(self):
         # Directed Graph
