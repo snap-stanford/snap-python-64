@@ -288,6 +288,7 @@ Version = "3.0.2"
 //%template(TIntChPr) TPair<TInt, TCh>;
 %template(TIntUInt64Pr) TPair<TInt, TUInt64>;
 %template(TIntIntPrPr) TPair<TInt, TIntPr>;
+%template(TIntIntPr64Pr) TPair<TInt64, TInt64Pr>;
 %template(TIntIntVPr) TPair<TInt, TVec<TInt, int> >;
 %template(TIntFltPr) TPair<TInt, TFlt>;
 %template(TIntStrVPr) TPair<TInt, TStrV>;
@@ -322,10 +323,12 @@ Version = "3.0.2"
 %template(TIntIntFltTr) TTriple<TInt, TInt, TFlt>;
 %template(TIntFltIntTr) TTriple<TInt, TFlt, TInt>;
 %template(TIntFltFltTr) TTriple<TInt, TFlt, TFlt>;
+%template(TInt64StrStrTr) TTriple<TInt64, TStr, TStr>;
 %template(TIntIntVIntTr) TTriple<TInt, TVec<TInt, int>, TInt>;
 %template(TIntIntIntVTr) TTriple<TInt, TInt, TVec<TInt, int> >;
 %template(TFltTr) TTriple<TFlt, TFlt, TFlt>;
 %template(TFltIntIntTr) TTriple<TFlt, TInt, TInt>;
+%template(TFltIntInt64Tr) TTriple<TFlt, TInt64, TInt64>;
 %template(TFltFltIntTr) TTriple<TFlt, TFlt, TInt>;
 %template(TFltFltStrTr) TTriple<TFlt, TFlt, TStr>;
 %template(TChATr) TTriple<TChA, TChA, TChA>;
@@ -345,6 +348,7 @@ Version = "3.0.2"
 %template(TIntUInt64Kd) TKeyDat<TInt, TUInt64>;
 %template(TIntPrFltKd) TKeyDat<TIntPr, TFlt>;
 %template(TIntFltPrKd) TKeyDat<TInt, TFltPr>;
+%template(TIntFltPr64Kd) TKeyDat<TInt64, TFltPr>;
 %template(TIntSFltKd) TKeyDat<TInt, TSFlt>;
 %template(TIntStrKd) TKeyDat<TInt, TStr>;
 %template(TUIntIntKd) TKeyDat<TUInt, TInt>;
@@ -373,11 +377,13 @@ Version = "3.0.2"
 %template(TUIntV) TVec<TUInt>;
 %template(TUInt64V) TVec<TUInt64>;
 %template(TSFltV) TVec<TSFlt>;
+%template(TSFlt64V) TVec<TSFlt, int64>;
 %template(TAscFltV) TVec<TAscFlt>;
 %template(TStrV) TVec<TStr>;
 %template(TChAV) TVec<TChA>;
 %template(TIntQuV) TVec<TIntQu>;
 %template(TFltTrV) TVec<TFltTr>;
+%template(TFltTr64V) TVec<TFltTr, int64>;
 %template(TIntKdV) TVec<TIntKd>;
 %template(TUChIntPrV) TVec<TUChIntPr>;
 %template(TUChUInt64PrV) TVec<TUChUInt64Pr>;
@@ -385,6 +391,7 @@ Version = "3.0.2"
 %template(TIntUInt64KdV) TVec<TIntUInt64Kd>;
 %template(TIntFltPrV) TVec<TIntFltPr>;
 %template(TIntFltPrKdV) TVec<TIntFltPrKd>;
+%template(TIntFltPrKd64V) TVec<TIntFltPr64Kd, int64>;
 %template(TFltIntPrV) TVec<TFltIntPr>;
 %template(TFltUInt64PrV) TVec<TFltUInt64Pr>;
 %template(TFltStrPrV) TVec<TFltStrPr>;
@@ -395,6 +402,8 @@ Version = "3.0.2"
 %template(TIntFltIntTrV) TVec<TIntFltIntTr>;
 %template(TIntStrIntTrV) TVec<TIntStrIntTr>;
 %template(TIntStrStrTrV) TVec<TIntStrStrTr>;
+%template(TIntStrStrTr64V) TVec<TInt64StrStrTr, int64>;
+
 %template(TIntKdV) TVec<TIntKd>;
 %template(TUIntIntKdV) TVec<TUIntIntKd>;
 %template(TIntPrFltKdV) TVec<TIntPrFltKd>;
@@ -414,6 +423,7 @@ Version = "3.0.2"
 %template(TFltUInt64KdV) TVec<TFltUInt64Kd>;
 %template(TFltIntPrKdV) TVec<TFltIntPrKd>;
 %template(TFltKdV) TVec<TFltKd>;
+%template(TFltKd64V) TVec<TFltKd, int64>;
 %template(TFltStrKdV) TVec<TFltStrKd>;
 %template(TFltStrPrPrV) TVec<TFltStrPrPr>;
 %template(TFltIntIntTrV) TVec<TFltIntIntTr>;
@@ -421,12 +431,14 @@ Version = "3.0.2"
 %template(TAscFltIntPrV) TVec<TAscFltIntPr>;
 %template(TAscFltIntKdV) TVec<TAscFltIntKd>;
 %template(TStrPrV) TVec<TStrPr>;
+%template(TStrPr64V) TVec<TStrPr, int64>;
 %template(TStrIntPrV) TVec<TStrIntPr>;
 %template(TStrFltPrV) TVec<TStrFltPr>;
 %template(TStrIntKdV) TVec<TStrIntKd>;
 %template(TStrFltKdV) TVec<TStrFltKd>;
 %template(TStrAscFltKdV) TVec<TStrAscFltKd>;
 %template(TStrTrV) TVec<TStrTr>;
+%template(TStrTr64V) TVec<TStrTr, int64>;
 %template(TStrQuV) TVec<TStrQu>;
 %template(TStrFltFltTrV) TVec<TStrFltFltTr>;
 %template(TStrStrIntTrV) TVec<TStrStrIntTr>;
@@ -449,6 +461,7 @@ Version = "3.0.2"
 %template(TIntVV) TVVec<TInt>;
 %template(TSFltVV) TVVec<TSFlt>;
 %template(TFltVV) TVVec<TFlt>;
+%template(TFlt64VV) TVVec<TFlt, int64>;
 %template(TStrVV) TVVec<TStr>;
 %template(TIntPrVV) TVVec<TIntPr>;
 %template(TIntVVV) TVVVec<TInt>;
@@ -459,8 +472,10 @@ Version = "3.0.2"
 %template(TStrIntPrTree) TTree<TStrIntPr>;
 %template(TStrIntStrVTrTree) TTree<TStrIntStrVTr>;
 %template(TIntS) TSStack<TInt>;
+%template(TInt64S) TSStack<TInt64, int64>;
 %template(TBoolChS) TSStack<TBoolChPr>;
 %template(TIntQ) TQQueue<TInt>;
+%template(TInt64Q) TQQueue<TInt64, int64>;
 %template(TFltQ) TQQueue<TFlt>;
 %template(TStrQ) TQQueue<TStr>;
 %template(TIntPrQ) TQQueue<TIntPr>;
@@ -482,6 +497,7 @@ Version = "3.0.2"
 %template(TIntH) THash<TInt, TInt>;
 %template(TInt64H) THash<TInt64, TInt64, int64>;
 %template(TIntIntH) THash<TInt, TInt>;
+//%template(TIntInt64H) THash<TInt64, TInt64, int64>;
 %template(TIntFltH) THash<TInt, TFlt>;
 %template(TIntFlt64H) THash<TInt64, TFlt, int64>;
 %template(TIntStrH) THash<TInt, TStr>;
@@ -497,6 +513,7 @@ Version = "3.0.2"
 %template(TIntHI) THashKeyDatI <TInt, TInt>;
 %template(TInt64HI) THashKeyDatI <TInt64, TInt64, int64>;
 %template(TIntIntHI) THashKeyDatI <TInt, TInt>;
+//%template(TIntInt64HI) THashKeyDatI <TInt64, TInt64, int64>;
 %template(TIntFltHI) THashKeyDatI <TInt, TFlt>;
 %template(TIntFlt64HI) THashKeyDatI <TInt64, TFlt, int64>;
 %template(TIntStrHI) THashKeyDatI <TInt, TStr>;
@@ -505,6 +522,8 @@ Version = "3.0.2"
 %template(TIntPrFlt64HI) THashKeyDatI <TInt64Pr, TFlt, int64>;
 %template(TStrIntHI) THashKeyDatI <TStr, TInt>;
 %template(TStrInt64HI) THashKeyDatI <TStr, TInt64, int64>;
+//%template(TStrIntSHI) TStrHashKeyDatI<TInt, TStrPool, int64>;
+//%template(TStrInt64SHI) TStrHashKeyDatI<TInt64, TStrPool, int64>;
 
 
 #if SNAP_ALL
@@ -516,7 +535,9 @@ Version = "3.0.2"
 %template(TIntUInt64H) THash<TInt, TUInt64>;
 //%template(TIntIntFltPrH) THash<TInt, TIntFltPr>;
 %template(TIntIntVH) THash<TInt, TIntV>;
+%template(TIntInt64V64H) THash<TInt64, TInt64V, int64>;
 %template(TIntIntHH) THash<TInt, TIntH>;
+%template(TIntInt64HH) THash<TInt64, TInt64H, int64>;
 %template(TIntFltPrH) THash<TInt, TFltPr>;
 %template(TIntFltTrH) THash<TInt, TFltTr>;
 %template(TIntFltVH) THash<TInt, TFltV>;
@@ -524,8 +545,10 @@ Version = "3.0.2"
 %template(TIntIntPrH) THash<TInt, TIntPr>;
 %template(TIntIntPrVH) THash<TInt, TIntPrV>;
 %template(TIntStrPrVH) THash<TInt, TStrPrV>;
+%template(TIntStrPr64VH) THash<TInt64, TStrPr64V, int64>;
 %template(TUInt64StrVH) THash<TUInt64, TStrV>;
 %template(TIntPrIntH) THash<TIntPr, TInt>;
+%template(TIntPrInt64H) THash<TInt64Pr, TInt64, int64>;
 %template(TIntPrIntVH) THash<TIntPr, TIntV>;
 %template(TIntPrIntPrVH) THash<TIntPr, TIntPrV>;
 %template(TIntTrIntH) THash<TIntTr, TInt>;
@@ -535,6 +558,7 @@ Version = "3.0.2"
 %template(TIntPrIntVH) THash<TIntPr, TIntV>;
 %template(TIntTrFltH) THash<TIntTr, TFlt>;
 %template(TIntPrStrH) THash<TIntPr, TStr>;
+%template(TIntPrStr64H) THash<TInt64Pr, TStr, int64>;
 %template(TIntPrStrVH) THash<TIntPr, TStrV>;
 %template(TIntStrPrIntH) THash<TIntStrPr, TInt>;
 %template(TFltFltH) THash<TFlt, TFlt>;
@@ -542,15 +566,19 @@ Version = "3.0.2"
 %template(TStrBoolH) THash<TStr, TBool>;
 %template(TStrIntH) THash<TStr, TInt>;
 %template(TStrIntPrH) THash<TStr, TIntPr>;
+%template(TStrIntPr64H) THash<TStr, TInt64Pr, int64>;
 %template(TStrIntVH) THash<TStr, TIntV>;
+%template(TStrInt64VH) THash<TStr, TInt64V, int64>;
 %template(TStrUInt64H) THash<TStr, TUInt64>;
 %template(TStrUInt64VH) THash<TStr, TUInt64V>;
 %template(TStrIntPrVH) THash<TStr, TIntPrV>;
 %template(TStrFltH) THash<TStr, TFlt>;
 %template(TStrFltVH) THash<TStr, TFltV>;
+%template(TStrFlt64VH) THash<TStr, TFlt64V, int64>;
 %template(TStrStrH) THash<TStr, TStr>;
 %template(TStrStrPrH) THash<TStr, TStrPr>;
 %template(TStrStrVH) THash<TStr, TStrV>;
+%template(TStrStr64VH) THash<TStr, TStr64V, int64>;
 %template(TStrStrPrVH) THash<TStr, TStrPrV>;
 %template(TStrStrKdVH) THash<TStr, TStrKdV>;
 %template(TStrIntFltPrH) THash<TStr, TIntFltPr>;
@@ -583,7 +611,9 @@ Version = "3.0.2"
 %template(TIntUInt64HI) THashKeyDatI <TInt, TUInt64>;
 //%template(TIntIntFltPrHI) THashKeyDatI <TInt, TIntFltPr>;
 %template(TIntIntVHI) THashKeyDatI <TInt, TIntV>;
+%template(TIntInt64V64HI) THashKeyDatI <TInt64, TInt64V>;
 %template(TIntIntHHI) THashKeyDatI <TInt, TIntH>;
+%template(TIntInt64HHI) THashKeyDatI <TInt64, TInt64H>;
 %template(TIntFltPrHI) THashKeyDatI <TInt, TFltPr>;
 %template(TIntFltTrHI) THashKeyDatI <TInt, TFltTr>;
 %template(TIntFltVHI) THashKeyDatI <TInt, TFltV>;
@@ -591,8 +621,11 @@ Version = "3.0.2"
 %template(TIntIntPrHI) THashKeyDatI <TInt, TIntPr>;
 %template(TIntIntPrVHI) THashKeyDatI <TInt, TIntPrV>;
 %template(TIntStrPrVHI) THashKeyDatI <TInt, TStrPrV>;
+%template(TIntStrPr64VHI) THashKeyDatI <TInt64, TStrPr64V>;
 %template(TUInt64StrVHI) THashKeyDatI <TUInt64, TStrV>;
 %template(TIntPrIntHI) THashKeyDatI <TIntPr, TInt>;
+%template(TIntPrInt64HI) THashKeyDatI <TInt64Pr, TInt64>;
+
 %template(TIntPrIntVHI) THashKeyDatI <TIntPr, TIntV>;
 %template(TIntPrIntPrVHI) THashKeyDatI <TIntPr, TIntPrV>;
 %template(TIntTrIntHI) THashKeyDatI <TIntTr, TInt>;
@@ -602,6 +635,7 @@ Version = "3.0.2"
 %template(TIntPrIntVHI) THashKeyDatI <TIntPr, TIntV>;
 %template(TIntTrFltHI) THashKeyDatI <TIntTr, TFlt>;
 %template(TIntPrStrHI) THashKeyDatI <TIntPr, TStr>;
+%template(TIntPrStr64HI) THashKeyDatI <TInt64Pr, TStr>;
 %template(TIntPrStrVHI) THashKeyDatI <TIntPr, TStrV>;
 %template(TIntStrPrIntHI) THashKeyDatI <TIntStrPr, TInt>;
 %template(TFltFltHI) THashKeyDatI <TFlt, TFlt>;
@@ -609,15 +643,19 @@ Version = "3.0.2"
 %template(TStrBoolHI) THashKeyDatI <TStr, TBool>;
 %template(TStrIntHI) THashKeyDatI <TStr, TInt>;
 %template(TStrIntPrHI) THashKeyDatI <TStr, TIntPr>;
+%template(TStrIntPr64HI) THashKeyDatI <TStr, TInt64Pr>;
 %template(TStrIntVHI) THashKeyDatI <TStr, TIntV>;
+%template(TStrInt64VHI) THashKeyDatI <TStr, TInt64V>;
 %template(TStrUInt64HI) THashKeyDatI <TStr, TUInt64>;
 %template(TStrUInt64VHI) THashKeyDatI <TStr, TUInt64V>;
 %template(TStrIntPrVHI) THashKeyDatI <TStr, TIntPrV>;
 %template(TStrFltHI) THashKeyDatI <TStr, TFlt>;
 %template(TStrFltVHI) THashKeyDatI <TStr, TFltV>;
+%template(TStrFlt64VHI) THashKeyDatI <TStr, TFlt64V>;
 %template(TStrStrHI) THashKeyDatI <TStr, TStr>;
 %template(TStrStrPrHI) THashKeyDatI <TStr, TStrPr>;
 %template(TStrStrVHI) THashKeyDatI <TStr, TStrV>;
+%template(TStrStr64VHI) THashKeyDatI <TStr, TStr64V>;
 %template(TStrStrPrVHI) THashKeyDatI <TStr, TStrPrV>;
 %template(TStrStrKdVHI) THashKeyDatI <TStr, TStrKdV>;
 %template(TStrIntFltPrHI) THashKeyDatI <TStr, TIntFltPr>;
