@@ -54,6 +54,6 @@ def ToGraphMP(tspec, *args):
 
 // conv.h - PNGraph
 #ifdef _OPENMP
-//%template(ToGraphMP_PNGraphMP) TSnap::ToGraphMP<PNGraphMP>;
-//%template(ToGraphMP3_PNGraphMP) TSnap::ToGraphMP3<PNGraphMP>;
+%template(ToGraphMP_PNGraphMP) TSnap::ToGraphMP<PNGraphMP>;
+%template(ToGraphMP3_PNGraphMP) TSnap::ToGraphMP3<PNGraphMP>;
 #endif

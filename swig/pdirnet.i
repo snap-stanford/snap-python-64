@@ -40,7 +40,7 @@ TDirNetEdgeI.GetId = GetId
 %template(PDirNet) TPt< TDirNet >;
 
 // gbase.h - PDirNet
-//%template(PrintInfo_PDirNet) TSnap::PrintInfo<PDirNet>;
+%template(PrintInfo_PDirNet) TSnap::PrintInfo<PDirNet>;
 
 // cncom.h - PDirNet
 %template(GetNodeWcc_PDirNet) TSnap::GetNodeWcc<PDirNet>;
