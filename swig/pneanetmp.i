@@ -39,6 +39,8 @@ def ToNetworkMP2(tspec, *args):
 %}
 #endif
 
+// gbase.h - PNEANet
+%template(PrintInfo_PNEANetMP) TSnap::PrintInfo<PNEANetMP>;
 
 
 // Basic Undirected Graphs
