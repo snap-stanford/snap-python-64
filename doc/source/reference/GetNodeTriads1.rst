@@ -39,18 +39,18 @@ The following example shows how to compute the number of Open and Closed triads 
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 10, 10)
-    closed = snap.TInt()
-    open = snap.TInt()
+    closed = snap.TInt64()
+    open = snap.TInt64()
     print snap.GetNodeTriads(Graph, 2, closed, open)
 
     Graph = snap.GenRndGnm(snap.PUNGraph, 10, 10)
-    closed = snap.TInt()
-    open = snap.TInt()
+    closed = snap.TInt64()
+    open = snap.TInt64()
     print snap.GetNodeTriads(Graph, 2, closed, open)
 
     Graph = snap.GenRndGnm(snap.PNEANet, 10, 10)
-    closed = snap.TInt()
-    open = snap.TInt()
+    closed = snap.TInt64()
+    open = snap.TInt64()
     print snap.GetNodeTriads(Graph, 2, closed, open)
 
 The error report produced from the calls to GetNodeTriads is::

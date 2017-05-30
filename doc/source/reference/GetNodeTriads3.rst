@@ -21,7 +21,7 @@ Parameters:
 - *NId*: int (input)
     NId of the node of interest
 
-- *GroupSet*: TIntSet (input) (optional)
+- *GroupSet*: TInt64Set (input) (optional)
     Set of NIds representing a subset of the neighbors of the node of interest
 
 

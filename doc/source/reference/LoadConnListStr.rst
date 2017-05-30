@@ -18,7 +18,7 @@ Parameters:
 - *InFNm*: string (input)
     Filename with the description of the graph nodes and edges.
 
-- *StrToNIdH*: :class:`TStrIntSH`, a hash table of string keys and int values (output)
+- *StrToNIdH*: :class:`TStrInt64SH`, a hash table of string keys and int values (output)
     Stores the mapping from node names to node ids.
     Note that this is a special hash table for holding strings and has a different interface than the standard SNAP hash table. Use *GetDat(name)* to obtain a mapping from a node name to its node id.
 
@@ -32,13 +32,13 @@ The following example shows how to load each of the graph types from a file name
 
     import snap
 
-    H = snap.TStrIntSH()
+    H = snap.TStrInt64SH()
     Graph = snap.LoadConnListStr(snap.PNGraph, "test.dat", H)
 
-    H = snap.TStrIntSH()
+    H = snap.TStrInt64SH()
     UGraph = snap.LoadConnListStr(snap.PUNGraph, "test.dat", H)
 
-    H = snap.TStrIntSH()
+    H = snap.TStrInt64SH()
     Network = snap.LoadConnListStr(snap.PNEANet, "test.dat", H)
 
 A sample of *test.dat* is::

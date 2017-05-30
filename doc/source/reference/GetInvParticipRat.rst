@@ -16,7 +16,7 @@ Parameters:
 - *TimeLimit*: int (input)
     Maximum number seconds to search.
 
-- *EigValIprV*: :class:`TFltPrV`, a vector of (float, float) pairs (output)
+- *EigValIprV*: :class:`TFltPr64V`, a vector of (float, float) pairs (output)
     The output inverse participation ratios.
     
 Return value:
@@ -43,7 +43,7 @@ The following example computes the inverse participation ratio for :class:`TNGra
  UGraph.AddEdge(4, 6)
  UGraph.AddEdge(4, 1)
 
- EigValIprV = snap.TFltPrV()
+ EigValIprV = snap.TFltPr64V()
  snap.GetInvParticipRat(UGraph, 20, 1000, EigValIprV)
  for item in EigValIprV:
      print '%f, %f' % (item.GetVal1(), item.GetVal2())

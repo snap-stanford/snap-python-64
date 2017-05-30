@@ -24,7 +24,7 @@ Parameters:
 - *NId2*: int (input)
     ID of the destination node
 
-- *NbrV*: TIntV (input)
+- *NbrV*: TInt64V (input)
     List of nodes on each path between node NId1 and node NId2. The list is filled by the function.
 
 Return value:
@@ -37,13 +37,13 @@ The following example shows how to use GetLen2Paths in :class:`PUNGraph`, :class
     import snap
 
     g = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    middle_nodes = snap.TIntV()
+    middle_nodes = snap.TInt64V()
     print snap.GetLen2Paths(g, 0, 1, middle_nodes)
 
     g = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    middle_nodes = snap.TIntV()
+    middle_nodes = snap.TInt64V()
     print snap.GetLen2Paths(g, 0, 1, middle_nodes)
 
     g = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    middle_nodes = snap.TIntV()
+    middle_nodes = snap.TInt64V()
     print snap.GetLen2Paths(g, 0, 1, middle_nodes)

@@ -7,7 +7,7 @@ Generates a random undirected graph with the given degree sequence *DegSeqV* usi
 
 Parameters:
 
-- *DegSeqV*: :class:`TIntV`, a vector of ints (input)
+- *DegSeqV*: :class:`TInt64V`, a vector of ints (input)
 	The degree sequence vector.
 
 - *Rnd*: :class:`TRnd` (input)
@@ -23,7 +23,7 @@ The following example generates a random undirected graph with degree sequence 1
 
     import snap
 
-    DegSeqV = snap.TIntV()
+    DegSeqV = snap.TInt64V()
     DegSeqV.Add(1)
     DegSeqV.Add(2)
     DegSeqV.Add(3)

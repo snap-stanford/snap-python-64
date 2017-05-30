@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network.
 
-- *NIdV*: :class:`TIntV`, a vector of ints (input)
+- *NIdV*: :class:`TInt64V`, a vector of ints (input)
     A vector of node IDs.
 
 Return value:
@@ -23,7 +23,7 @@ The following example shows how to use :func:`GetEdgesInOut' with
 
     import snap
 
-    Nodes = snap.TIntV()
+    Nodes = snap.TInt64V()
     for nodeId in range(10):
         Nodes.Add(nodeId)
 

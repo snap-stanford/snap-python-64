@@ -5,7 +5,7 @@ One of the most common operations when processing large datasets in SNAP is to l
 
 Note that all the functions discussed below have both sequential and parallel implementations. The example code uses the sequential implementations; to use the parallelized functions (on a system which supports OpenMP), simply add MP to the function name (example, ToGraphMP and ToNetworkMP).
 
-.. function:: ToNetwork(GraphType, PTable Table, const TStr& SrcCol, const TStr& DstCol, TStrV& EdgeAttrV, PTable NodeTable, const TStr& NodeCol, TStrV& NodeAttrV, TAttrAggr AggrPolicy)
+.. function:: ToNetwork(GraphType, PTable Table, const TStr& SrcCol, const TStr& DstCol, TStr64V& EdgeAttrV, PTable NodeTable, const TStr& NodeCol, TStr64V& NodeAttrV, TAttrAggr AggrPolicy)
 
 Converts the edge and node tables to a network in SNAP, by looking at columns *SrcCol* and *DstCol* of *Table*, and at *NodeCol* of *NodeTable*
 *EdgeAttrV* specifies a list of columns in *Table* which contain edge attributes. *NodeAttrV* specifies a list of columns in *NodeTable* which correspond to node attributes.
@@ -25,7 +25,7 @@ Parameters:
 - *DstCol*: string (input)
     The name of the column in the edge table which contains the destination nodes.
 
-- *EdgeAttrV*: TStrV (vector of strings) (input)
+- *EdgeAttrV*: TStr64V (vector of strings) (input)
     A list of names of columns in the edge table which correspond to edge attributes.
 
 - *NodeTable*: :class:`TTable` (input)
@@ -34,7 +34,7 @@ Parameters:
 - *NodeCol*: string (input)
     The name of the column in the node table which contains the node ids.
 
-- *NodeAttrV*: TStrV (vector of strings) (input)
+- *NodeAttrV*: TStr64V (vector of strings) (input)
      A list of names of columns in the node table which correspond to node attributes.
 
 - *AggrPolicy*: :class:`TAttrAggr` (input)
@@ -74,18 +74,18 @@ The following code shows example usage::
     node_table = snap.TTable.LoadSS(nodeschema, nodefilename, context, "\t", snap.TBool(False))
 
     # In this example, we add both edge attributes to the network, but only one node attribute.
-    edgeattrv = snap.TStrV()
+    edgeattrv = snap.TStr64V()
     edgeattrv.Add("edgeattr1")
     edgeattrv.Add("edgeattr2")
 
-    nodeattrv = snap.TStrV()
+    nodeattrv = snap.TStr64V()
     nodeattrv.Add("nodeattr1")
 
     # net will be an object of type snap.PNEANet
     net = snap.ToNetwork(snap.PNEANet, edge_table, "srcID", "dstID", edgeattrv, node_table, "nodeID", nodeattrv, snap.aaFirst)
 
 
-.. function:: ToNetwork(GraphType, PTable Table, const TStr& SrcCol, const TStr& DstCol, TStrv& SrcAttrv, TStrV& DstAttrV, TStrV& EdgeAttrV, TAttrAggr AggrPolicy)
+.. function:: ToNetwork(GraphType, PTable Table, const TStr& SrcCol, const TStr& DstCol, TStr64V& SrcAttrv, TStr64V& DstAttrV, TStr64V& EdgeAttrV, TAttrAggr AggrPolicy)
 
 Converts the edge table to a network in SNAP, by looking at columns *SrcCol* and *DstCol* of *Table*.
 *EdgeAttrV* specifies a list of columns in *Table* which contain edge attributes. *SrcAttrV* and *DstAttrV* specifies the attributes of the source and destination columns.
@@ -105,13 +105,13 @@ Parameters:
 - *DstCol*: string (input)
     The name of the column in the edge table which contains the destination nodes.
 
-- *SrcAttrV*: TStrV (vector of strings) (input)
+- *SrcAttrV*: TStr64V (vector of strings) (input)
     A list of names of columns in the edge table which correspond to attributes of the source node.
 
-- *DstAttrV*: TStrV (vector of strings) (input)
+- *DstAttrV*: TStr64V (vector of strings) (input)
     A list of names of columns in the edge table which correspond to attributes of the destination node.
 
-- *EdgeAttrV*: TStrV (vector of strings) (input)
+- *EdgeAttrV*: TStr64V (vector of strings) (input)
     A list of names of columns in the edge table which correspond to edge attributes.
 
 - *AggrPolicy*: :class:`TAttrAggr` (input)
@@ -148,14 +148,14 @@ The following code shows example usage::
 
     # In this example, we add both edge attributes to the network, 
     # but only one src node attribute, and no dst node attributes.
-    edgeattrv = snap.TStrV()
+    edgeattrv = snap.TStr64V()
     edgeattrv.Add("edgeattr1")
     edgeattrv.Add("edgeattr2")
 
-    srcnodeattrv = snap.TStrV()
+    srcnodeattrv = snap.TStr64V()
     srcnodeattrv.Add("srcnodeattr1")
 
-    dstnodeattrv = snap.TStrV()
+    dstnodeattrv = snap.TStr64V()
 
     # net will be an object of type snap.PNEANet
     net = snap.ToNetwork(snap.PNEANet, table, "srcID", "dstID", srcnodeattrv, dstnodeattrv, edgeattrv, snap.aaFirst)
@@ -202,7 +202,7 @@ The following code shows example usage::
     # graph will be an object of type snap.PNGraph
     graph = snap.ToGraph(snap.PNGraph, sample_table, "srcID", "dstID", snap.aaFirst)
 
-.. function:: LoadModeNetToNet(PMMNet Graph, const TStr& Name, PTable Table, const TStr& NCol, TStrV& NodeAttrV)
+.. function:: LoadModeNetToNet(PMMNet Graph, const TStr& Name, PTable Table, const TStr& NCol, TStr64V& NodeAttrV)
 
 Loads a mode, with name Name, into the PMMNet from the TTable. NCol specifies the node id column and NodeAttrV the node attributes.
 
@@ -220,7 +220,7 @@ Parameters:
 - *NCol*: string (input)
     The column in the table which has the node ids.
 
-- *NodeAttrV*: TStrV (vector of strings)
+- *NodeAttrV*: TStr64V (vector of strings)
     A vector of column names corresponding to node attributes.
 
 The following code shows example usage::
@@ -244,13 +244,13 @@ The following code shows example usage::
     node_table = snap.TTable.LoadSS(nodeschema, nodefilename, context, "\t", snap.TBool(False))
 
     # In this example, we add just one of the node attributes from the table to the TMMNet
-    nodeattrv = snap.TStrV()
+    nodeattrv = snap.TStr64V()
     nodeattrv.Add("nodeattr1")
 
     # This will add a new mode net called "Mode1" to the mmnet.
     snap.LoadModeNetToNet(mmnet, "Mode1", node_table, "nodeID", nodeattrv)
 
-.. function:: LoadCrossNetToNet(PMMNet Graph, const TStr& Mode1, const TStr& Mode2, const TStr& CrossName, PTable Table, const TStr& SrcCol, const TStr& DstCol, TStrV& EdgeAttrV)
+.. function:: LoadCrossNetToNet(PMMNet Graph, const TStr& Mode1, const TStr& Mode2, const TStr& CrossName, PTable Table, const TStr& SrcCol, const TStr& DstCol, TStr64V& EdgeAttrV)
 
 Loads a crossnet from Mode1 to Mode2, with name CrossName, into the PMMNet from the given TTable. SrcCol and DstCol specify the source and destination node id columns, and EdgeAttrV specifies the columns with edge attributs.
 
@@ -277,7 +277,7 @@ Parameters:
 - *DstCol*: string (input)
     The column in the table which has the destination node id of each edge.
 
-- *EdgeAttrV*: TStrV (vector of strings)
+- *EdgeAttrV*: TStr64V (vector of strings)
     A vector of column names corresponding to edge attributes.
 
 The following code shows example usage::
@@ -304,7 +304,7 @@ The following code shows example usage::
     edge_table = snap.TTable.LoadSS(edgeschema, edgefilename, context, "\t", snap.TBool(False))
 
     # In this example, we add both edge attributes to the network
-    edgeattrv = snap.TStrV()
+    edgeattrv = snap.TStr64V()
     edgeattrv.Add("edgeattr1")
     edgeattrv.Add("edgeattr2")
 

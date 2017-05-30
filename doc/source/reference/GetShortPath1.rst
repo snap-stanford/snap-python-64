@@ -13,7 +13,7 @@ Parameters:
 - *SrcNId*: int (input)
     Node id for source node.
 
-- *NIdToDistH*: :class:`TIntH`, a hash table with integer keys and values (output)
+- *NIdToDistH*: :class:`TInt64H`, a hash table with integer keys and values (output)
     Maps node id to shortest path distance. Only contains nodes that are reachable from *SrcNId*.
 
 - *IsDir*: bool (input)
@@ -34,21 +34,21 @@ The following example shows how to calculate the length of the shortest path in
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    NIdToDistH = snap.TIntH()
+    NIdToDistH = snap.TInt64H()
     shortestPath = snap.GetShortPath(Graph, 10, NIdToDistH)
     for item in NIdToDistH:
         print item, NIdToDistH[item]
     print shortestPath
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    NIdToDistH = snap.TIntH()
+    NIdToDistH = snap.TInt64H()
     shortestPath = snap.GetShortPath(UGraph, 10, NIdToDistH)
     for item in NIdToDistH:
         print item, NIdToDistH[item]
     print shortestPath
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    NIdToDistH = snap.TIntH()
+    NIdToDistH = snap.TInt64H()
     shortestPath = snap.GetShortPath(Network, 10, NIdToDistH)
     for item in NIdToDistH:
         print item, NIdToDistH[item]

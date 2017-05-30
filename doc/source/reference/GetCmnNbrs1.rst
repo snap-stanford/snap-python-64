@@ -16,7 +16,7 @@ Parameters:
 - *NId2*: int (input)
     Node id of the second node.
 
-- *NbrV*: TIntV, vector of int (output)
+- *NbrV*: TInt64V, vector of int (output)
     Shared neighbors between the two nodes. Neighbors are node IDs.
 
 Return value:
@@ -29,19 +29,19 @@ The following example shows how to find the shared neighbors of two nodes in :cl
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    Nbrs = snap.TIntV()
+    Nbrs = snap.TInt64V()
     snap.GetCmnNbrs(Graph, 1, 10, Nbrs)
     for NId in Nbrs:
         print "node: %d" % NId
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    Nbrs = snap.TIntV()
+    Nbrs = snap.TInt64V()
     snap.GetCmnNbrs(UGraph, 1, 10, Nbrs)
     for NId in Nbrs:
         print "node: %d" % NId
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    Nbrs = snap.TIntV()
+    Nbrs = snap.TInt64V()
     snap.GetCmnNbrs(Network, 1, 10, Nbrs)
     for NId in Nbrs:
         print "node: %d" % NId

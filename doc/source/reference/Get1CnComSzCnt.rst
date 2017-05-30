@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: undirected graph (input)
     A Snap.py undirected graph.
 
-- *SzCntV*: :class:`TIntPrV`, a vector of (int, int) pairs (output)
+- *SzCntV*: :class:`TIntPr64V`, a vector of (int, int) pairs (output)
     A vector of pairs (number of nodes in the 1-component, number of such components).
 
 Return value:
@@ -23,7 +23,7 @@ The following example shows how to get distribution of sizes of 1-components in 
     import snap
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 100)
-    szCntV = snap.TIntPrV()
+    szCntV = snap.TIntPr64V()
 
     snap.Get1CnComSzCnt(UGraph, szCntV)
     for item in szCntV:

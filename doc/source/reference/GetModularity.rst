@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network.
 
-- *NIdV*: :class:`TIntV`, a vector of ints (input)
+- *NIdV*: :class:`TInt64V`, a vector of ints (input)
     The set of nodes ids from which the modularity score will be computed.
 
 - *GEdges*: int (input)
@@ -27,7 +27,7 @@ The following example shows how to calculate Modularity scores for the first 10 
 
     import snap
 
-    Nodes = snap.TIntV()
+    Nodes = snap.TInt64V()
     for nodeId in range(10):
         Nodes.Add(nodeId)
 

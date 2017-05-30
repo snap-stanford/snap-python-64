@@ -18,7 +18,7 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network.
 
-- *NIdV*: TIntV (input)
+- *NIdV*: TInt64V (input)
     Node ID vector.  The subgraph consists of all nodes in *NIdV* and the edges between nodes in *NIdV*.
 
 - *RenumberNodes*: boolean (input)
@@ -36,20 +36,20 @@ The following example shows how to get subgraphs for
     import snap
     
     Graph = snap.GenRndGnm(snap.PNGraph, 50, 500)
-    nodes = snap.TIntV()
+    nodes = snap.TInt64V()
     for N in Graph.GetNI(0).GetOutEdges():
         nodes.Add(N)
     # Get subgraph induced by the neighbors of Node 0.                                                                                                                                                        
     SubGraph = snap.GetSubGraph(Graph, nodes)
     
     Graph = snap.GenCircle(snap.PUNGraph, 100, 2, False)
-    nodes = snap.TIntV()
+    nodes = snap.TInt64V()
     for N in Graph.GetNI(50).GetOutEdges():
         nodes.Add(N)
     SubGraph = snap.GetSubGraph(Graph, nodes)
     
     Graph = snap.GenFull(snap.PNEANet, 10)
-    nodes = snap.TIntV()
+    nodes = snap.TInt64V()
     for i in [0, 2, 4, 6, 8]:
         nodes.Add(i)
     # Get complete subgraph induced by the even-numbered nodes.                                                                                                                                               

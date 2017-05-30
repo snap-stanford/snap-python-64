@@ -16,7 +16,7 @@ Parameters:
 - *Desc*: string (input)
     Description of the Graph.
 
-- *NIdLabelH*: :class:`TIntStrH`, a hash table with int keys and string values (input)
+- *NIdLabelH*: :class:`TIntStr64H`, a hash table with int keys and string values (input)
     Maps node ids to node string labels.
     
 Return value:
@@ -35,7 +35,7 @@ The following example shows how to save graphs of types
     Graph.AddNode(1)
     Graph.AddNode(2)
     Graph.AddEdge(1, 2)
-    NIdLabelH = snap.TIntStrH()     
+    NIdLabelH = snap.TIntStr64H()     
     NIdLabelH.AddDat(1, "one")
     NIdLabelH.AddDat(2, "two")
     snap.SaveGViz(Graph, "graph1.dot", "Graph file", NIdLabelH)
@@ -44,7 +44,7 @@ The following example shows how to save graphs of types
     UGraph.AddNode(1)
     UGraph.AddNode(2)
     UGraph.AddEdge(1, 2)
-    NIdLabelH = snap.TIntStrH()     
+    NIdLabelH = snap.TIntStr64H()     
     NIdLabelH.AddDat(1, "one")
     NIdLabelH.AddDat(2, "two")
     snap.SaveGViz(UGraph, "graph2.dot", "Graph file", NIdLabelH)
@@ -53,7 +53,7 @@ The following example shows how to save graphs of types
     Network.AddNode(1)
     Network.AddNode(2)
     Network.AddEdge(1, 2)
-    NIdLabelH = snap.TIntStrH()     
+    NIdLabelH = snap.TIntStr64H()     
     NIdLabelH.AddDat(1, "one")
     NIdLabelH.AddDat(2, "two")
     snap.SaveGViz(Network, "graph3.dot", "Graph file", NIdLabelH)

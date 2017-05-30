@@ -61,7 +61,7 @@ Next, we present a slightly more involved example. Let's say we have an authorsh
     # This counts the number of elements with a particular value of the attributes in GroupBy
     # (namely, AuthorID), and puts the count in a new column called "CountAuthPapers".
     # Note that for the aggregation operation snap.aaCount, the third argument is irrelevant.
-    GroupBy = snap.TStrV()
+    GroupBy = snap.TStr64V()
     GroupBy.Add("AuthorID")
     PapAuthT.Aggregate(GroupBy, snap.aaCount, "AuthorID", "CountAuthPapers", snap.TBool(False))
 
@@ -78,7 +78,7 @@ Next, we present a slightly more involved example. Let's say we have an authorsh
 
     # We now aggregate the citation counts by author, summing them all up to get the
     # total number of citations.
-    GroupBy = snap.TStrV()
+    GroupBy = snap.TStr64V()
     GroupBy.Add("AuthorID")
     PapAuthCitJoinT.Aggregate(GroupBy, snap.aaSum, "CitCount", "TotalAuthCits", snap.TBool(False))
 
@@ -86,7 +86,7 @@ Next, we present a slightly more involved example. Let's say we have an authorsh
     # TotalAuthCits. We can now keep just the relevant columns, and drop duplicate rows
     # with the same author ID.
 
-    ProjectCols = snap.TStrV()
+    ProjectCols = snap.TStr64V()
     ProjectCols.Add("AuthorID")
     ProjectCols.Add("TotalAuthCits")
     AuthCitT = PapAuthCitJoinT.Project(ProjectCols)
@@ -94,7 +94,7 @@ Next, we present a slightly more involved example. Let's say we have an authorsh
 
 
     # We can also sort the authors in decreasing order of total citations.
-    OrderBy = snap.TStrV() # The TTable.Order method sorts using the values of
+    OrderBy = snap.TStr64V() # The TTable.Order method sorts using the values of
                            # the columns in OrderBy, in lexicographic order.
     OrderBy.Add("TotalAuthCits")
     AuthCitT.Order(OrderBy, "", snap.TBool(False), snap.TBool(False))
@@ -108,15 +108,15 @@ TTable
            TTable(S, Context)
            TTable(SIn, Context)
            TTable(H, Col1, Col2, Context, IsStrKeys=False)
-           TTable(Table, const TIntV& RowIds)
+           TTable(Table, const TInt64V& RowIds)
            TTable(Table)
 
    Returns a new table. If no parameters are provided, an empty table is returned. If
    *S* and *Context* are provided, the table is initialized with the provided Schema and
    TTableContext. If *SIn* is provided, the table is read from the binary stream. If *H*, a
-   :class:`THash` with :class:`TInt` keys and either :class:`TInt` or :class:`TFlt` values,
+   :class:`THash` with :class:`TInt64` keys and either :class:`TInt64` or :class:`TFlt` values,
    is given, the TTable is constructed from the hash table. If *IsStrKeys* is True, then 
-   the :class:`TInt` keys in *H* refer to strings in the *Context*. *Col1* provides the name
+   the :class:`TInt64` keys in *H* refer to strings in the *Context*. *Col1* provides the name
    for the keys in *H* in the schema for the table and *Col2* does the same for the values.
    If *Table* is provided, the contents of *Table* are copied into the current table. If
    *RowIds* is given, then only those particular rows are copied.
@@ -130,7 +130,7 @@ TTable
 
       .. describe:: AddDstNodeAttr(Attrs)
 
-         Adds columns with the names specified in *Attrs*, a :class:`TStrV`, to be used as
+         Adds columns with the names specified in *Attrs*, a :class:`TStr64V`, to be used as
          destination node attributes of the graph.
 
       .. describe:: AddEdgeAttr(Attr)
@@ -157,7 +157,7 @@ TTable
 
       .. describe:: AddSrcNodeAttr(Attrs)
 
-         Adds columns with the names specified in *Attrs*, a :class:`TStrV`, to be used as
+         Adds columns with the names specified in *Attrs*, a :class:`TStr64V`, to be used as
          source node attributes of the graph.
 
       .. describe:: Aggregate(GroupByAttrs, AggOp, ValAttr, ResAttr, Ordered=True)
@@ -183,9 +183,9 @@ TTable
 
       .. describe:: Classify(Predicate, LabelAttr, PositiveLabel, NegativeLabel)
 
-         Adds a label attribute, *LabelAttr*, with positive labels, a :class:`TInt` given by
+         Adds a label attribute, *LabelAttr*, with positive labels, a :class:`TInt64` given by
          *PositiveLabel*, on rows selected according to the :class:`TPredicate` *Predicate*,
-         and negative labels, a :class:`TInt` given by *NegativeLabel*, on the rest.
+         and negative labels, a :class:`TInt64` given by *NegativeLabel*, on the rest.
 
       .. describe:: ClassifyAtomic(Attr1, Attr2, Cmp, LabelAttr, PositiveLabel,
                                    NegativeLabel)
@@ -320,32 +320,32 @@ TTable
 
       .. describe:: GetDstNodeFltAttrV()
 
-         Returns the names of the Flt columns, in a :class:`TStrV`, corresponding to attributes
+         Returns the names of the Flt columns, in a :class:`TStr64V`, corresponding to attributes
          of the destination nodes.
 
       .. describe:: GetDstNodeIntAttrV()
 
-         Returns the names of the Int columns, in a :class:`TStrV`, corresponding to attributes
+         Returns the names of the Int columns, in a :class:`TStr64V`, corresponding to attributes
          of the destination nodes.
 
       .. describe:: GetDstNodeStrAttrV()
 
-         Returns the names of the Str columns, in a :class:`TStrV`, corresponding to attributes
+         Returns the names of the Str columns, in a :class:`TStr64V`, corresponding to attributes
          of the destination nodes.
 
       .. describe:: GetEdgeFltAttrV()
 
-         Returns the names of the Flt columns, in a :class:`TStrV`, corresponding to edge 
+         Returns the names of the Flt columns, in a :class:`TStr64V`, corresponding to edge 
          attributes.
 
       .. describe:: GetEdgeIntAttrV()
 
-         Returns the names of the Int columns, in a :class:`TStrV`, corresponding to edge 
+         Returns the names of the Int columns, in a :class:`TStr64V`, corresponding to edge 
          attributes.
 
       .. describe:: GetEdgeStrAttrV()
 
-         Returns the names of the Str columns, in a :class:`TStrV`, corresponding to edge 
+         Returns the names of the Str columns, in a :class:`TStr64V`, corresponding to edge 
          attributes.
 
       .. describe:: GetEdgeTable(Network, Context)
@@ -361,7 +361,7 @@ TTable
       .. describe:: GetFltNodePropertyTable(Network, Property, NodeAttrName, NodeAttrType, PropertyAttrName, Context)
 
          Extracts node and and edge property TTables from a THash. *Network* is of type
-         :class:`PNEANet`, *Property* is a :class:`TIntFltH`, *NodeAttrName* and
+         :class:`PNEANet`, *Property* is a :class:`TIntFlt64H`, *NodeAttrName* and
          *PropertyAttrName* are :class:`TStr`s, *NodeAttrType* is a :class:`TAttrType`, and
          *Context* is a :class:`TTableContext`. Returns a :class:`PTable` object.
 
@@ -421,17 +421,17 @@ TTable
       .. describe:: GetSrcNodeFltAttrV()
 
          Returns the names of the Flt columns corresponding to attributes of the 
-         source nodes. Return type is :class:`TStrV`.
+         source nodes. Return type is :class:`TStr64V`.
 
       .. describe:: GetSrcNodeIntAttrV()
 
          Returns the names of the Int columns corresponding to attributes of the 
-         source nodes. Return type is :class:`TStrV`.
+         source nodes. Return type is :class:`TStr64V`.
 
       .. describe:: GetSrcNodeStrAttrV()
 
          Returns the names of the Str columns corresponding to attributes of the 
-         source nodes. Return type is :class:`TStrV`.
+         source nodes. Return type is :class:`TStr64V`.
 
       .. describe:: GetStrVal(Attr, RowIdx)
 
@@ -439,7 +439,7 @@ TTable
 
       .. describe:: Group(GroupByAttrs, GroupAttrName, Ordered=True)
 
-         Groups rows according to the attributes specified by GroupByAttrs, a :class:`TStrV`.
+         Groups rows according to the attributes specified by GroupByAttrs, a :class:`TStr64V`.
          Result is stored in a new column of the table with name *GroupAttrName*.
 
       .. describe:: Intersection(PTable)
@@ -472,13 +472,13 @@ TTable
 
       .. describe:: Order(OrderByAttrs, ResAttr, ResetRankFlag=False, Asc=True)
 
-         Orders the rows according to the values in *OrderByAttrs* (a :class:`TStrV`).
+         Orders the rows according to the values in *OrderByAttrs* (a :class:`TStr64V`).
          Results are stored in new column with name *ResAttr*. If *Asc* is True, rows
          are ordered in ascending lexicographic order.
 
       .. describe:: Project(ProjectAttrs)
 
-         Returns a table with only the attributes in *ProjectAttrs*, a :class:`TStrV`.
+         Returns a table with only the attributes in *ProjectAttrs*, a :class:`TStr64V`.
 
       .. describe:: ProjectInPlace(ProjectAttrs)
 
@@ -487,17 +487,17 @@ TTable
 
       .. describe:: ReadFltCol(Attr, Result)
 
-         Reads values of an entire float column given by *Attr* into the :class:`TFltV`
+         Reads values of an entire float column given by *Attr* into the :class:`TFlt64V`
          *Result*.
 
       .. describe:: ReadIntCol(Attr, Result)
 
-         Reads values of an entire int column given by *Attr* into the :class:`TFltV`
+         Reads values of an entire int column given by *Attr* into the :class:`TFlt64V`
          *Result*.
 
       .. describe:: ReadStrCol(Attr, Result)
 
-         Reads values of an entire string column given by *Attr* into the :class:`TFltV`
+         Reads values of an entire string column given by *Attr* into the :class:`TFlt64V`
          *Result*.
 
       .. describe:: Rename(Attr, NewAttr)
@@ -516,7 +516,7 @@ TTable
       .. describe:: Select(Predicate, SelectedRows, Remove=True)
 
          Selects rows that satisfy a given Predicate, of type :class:`TPredicate`.
-         The selected row indices are stored in *SelectedRows*, a :class:`TIntV`. If
+         The selected row indices are stored in *SelectedRows*, a :class:`TInt64V`. If
          *Remove* is True, rows that do not match the predicate are removed.
 
       .. describe:: SelectAtomic(Attr1, Attr2, Cmp, SelectedRows, Remove=True)
@@ -524,7 +524,7 @@ TTable
          Selects rows which satisfy an atomic compare operation, *Cmp*, of type
          :class:`TPredComp`. *Cmp* must be one of LT, LTE, EQ, NEQ, GTE, GT, SUBSTR, 
          or SUPERSTR. The selected row indices are stored in *SelectedRows*,
-         a :class:`TIntV`. If *Remove* is True, rows that do not match the predicate
+         a :class:`TInt64V`. If *Remove* is True, rows that do not match the predicate
          are removed.
 
       .. describe:: SelectAtomicFltConst(Attr, Val, Cmp, SelectedTable)
@@ -592,28 +592,28 @@ TTable
       .. describe:: SpliceByGroup(GroupByAttrs, Ordered)
 
          Splices table into subtables according to the result of a grouping statement. *GroupByAttrs*
-         is a :class:`TStrV`, an attribute vector grouping should be performed with respect to.
+         is a :class:`TStr64V`, an attribute vector grouping should be performed with respect to.
          *Ordered* is a flag specifying whether to treat the grouping key as ordered or unordered.
 
       .. describe:: StoreFltCol(ColName, ColVals)
 
          Adds entire float column to the table. *ColName* gives the column name and *ColVals* is
-         :class:`TFltV` giving the vector of column values.
+         :class:`TFlt64V` giving the vector of column values.
 
       .. describe:: StoreIntCol(ColName, ColVals)
 
          Adds entire int column to the table. *ColName* gives the column name and *ColVals* is
-         :class:`TIntV` giving the vector of column values.
+         :class:`TInt64V` giving the vector of column values.
 
       .. describe:: StoreStrCol(ColName, ColVals)
 
          Adds entire string column to the table. *ColName* gives the column name and *ColVals* is
-         :class:`TStrV` giving the vector of column values.
+         :class:`TStr64V` giving the vector of column values.
 
       .. describe:: TableFromHashMap(HashMap, Attr1, Attr2, Context)
 
-         Returns a table constructed from the given hash map *HashMap* of type :class:`TIntH`
-         or :class:`TIntFltH`. *Attr1* is the name of the attribute corresponding to the first
+         Returns a table constructed from the given hash map *HashMap* of type :class:`TInt64H`
+         or :class:`TIntFlt64H`. *Attr1* is the name of the attribute corresponding to the first
          column and *Attr2* for the second column.
 
       .. describe:: ToGraphSequence(SplitAttr, AggrPolicy, WindowSize, JumpSize, StartVal, EndVal)
@@ -630,7 +630,7 @@ TTable
       .. describe:: ToVarGraphSequence(SplitAttr, AggrPolicy, SplitIntervals)
 
          Returns a sequence of graphs created from the table, where partitioning is based on values of column *SplitAttr* and intervals specified by *SplitIntervals*. *SplitIntervals* is a
-         :class:`TIntPrV` that gives the start and end *SplitAttr* attribute values for each
+         :class:`TIntPr64V` that gives the start and end *SplitAttr* attribute values for each
          partition of the table. *AggrPolicy* is a  :class:`TAttrAggr` indicating the policy for
          aggregating node attribute values when a node appears in multiple rows of the table.
 
@@ -697,13 +697,13 @@ TTable
          If *Ordered* is True, values across attributes are treated as an ordered pair.
 
 
-      .. describe:: GetIntRowIdxByVal(const TStr& ColName, const TInt& Val)
+      .. describe:: GetIntRowIdxByVal(const TStr& ColName, const TInt64& Val)
 
          Gets a vector containing the indices of rows containing Val in int column ColName.
          Uses an index if it has been requested explicitly; else, it loops over all the rows.
          Be sure to request an index using :meth:`RequestIndexInt` first if you will call this multiple times.
 
-      .. describe:: GetStrRowIdxByMap(const TStr& ColName, const TInt& Map)
+      .. describe:: GetStrRowIdxByMap(const TStr& ColName, const TInt64& Map)
 
          Gets a vector containing the indices of rows containing the integer Map (which maps to a string) in str column ColName.
          Uses an index if it has been requested explicitly; else, it loops over all the rows.
@@ -773,7 +773,7 @@ TPredicateNode
       .. describe:: GetVariables(Variables)
 
          Adds variables to *Variables* in the predicate tree rooted at this node. *Variables*
-         is a :class:`TStrV`.
+         is a :class:`TStr64V`.
 
 TPredicate
 ==========
@@ -810,7 +810,7 @@ TPredicate
 
       .. describe:: GetVariables(Variables)
 
-         Adds variables to *Variables* in the given predicate. *Variables* is a :class:`TStrV`.
+         Adds variables to *Variables* in the given predicate. *Variables* is a :class:`TStr64V`.
 
 TTableContext
 =============

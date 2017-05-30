@@ -43,10 +43,10 @@ The following example shows how to compute the in degree for nodes in
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    DegToCCfV = snap.TFltPrV()
+    DegToCCfV = snap.TFltPr64V()
     # There is no SNAP type for 64-bit ints, so use two argument version of function instead
-    #ClosedTriads = snap.TInt()
-    #OpenTriads = snap.TInt()
+    #ClosedTriads = snap.TInt64()
+    #OpenTriads = snap.TInt64()
     #print snap.GetClustCf(Graph, DegToCCfV, ClosedTriads, OpenTriads)
     print snap.GetClustCf(Graph, DegToCCfV)
     for item in DegToCCfV:
@@ -55,10 +55,10 @@ The following example shows how to compute the in degree for nodes in
     #print OpenTriads
 
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    DegToCCfV = snap.TFltPrV()
+    DegToCCfV = snap.TFltPr64V()
     # There is no SNAP type for 64-bit ints, so use two argument version of function instead
-    #ClosedTriads = snap.TInt()
-    #OpenTriads = snap.TInt()
+    #ClosedTriads = snap.TInt64()
+    #OpenTriads = snap.TInt64()
     #print snap.GetClustCf(Graph, DegToCCfV, ClosedTriads, OpenTriads)
     print snap.GetClustCf(Graph, DegToCCfV)
     for item in DegToCCfV:
@@ -67,10 +67,10 @@ The following example shows how to compute the in degree for nodes in
     #print OpenTriads
 
     Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    DegToCCfV = snap.TFltPrV()
+    DegToCCfV = snap.TFltPr64V()
     # There is no SNAP type for 64-bit ints, so use two argument version of function instead
-    #ClosedTriads = snap.TInt()
-    #OpenTriads = snap.TInt()
+    #ClosedTriads = snap.TInt64()
+    #OpenTriads = snap.TInt64()
     #print snap.GetClustCf(Graph, DegToCCfV, ClosedTriads, OpenTriads)
     print snap.GetClustCf(Graph, DegToCCfV)
     for item in DegToCCfV:

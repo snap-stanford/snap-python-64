@@ -10,7 +10,7 @@ Parameters:
 - *InGraph*: undirected graph (input)
     A Snap.py undirected graph.
 
-- *ArtNIdV*: :class:`TIntV`, a vector of ints (output)
+- *ArtNIdV*: :class:`TInt64V`, a vector of ints (output)
     The node ids of the articulation points in the grpah *InGraph*.
 
 Return value:
@@ -26,7 +26,7 @@ The following example shows how to find articulation points in a graph of type
     import snap 
     
     UGraph = snap.GenRndGnm(snap.PUNGraph, 1000, 10) 
-    ArtNIdV = snap.TIntV() 
+    ArtNIdV = snap.TInt64V() 
     snap.GetArtPoints(UGraph, ArtNIdV) 
     
     print "Articulation points of a random Undirected Graph : " 

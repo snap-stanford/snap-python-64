@@ -13,7 +13,7 @@ Parameters:
 - *SrcNId*: int (input)
     The node id for the starting node.
     
-- *DistNbrsV*: :class:`TIntFltKdV`, a vector of (integer, float) pairs (output)
+- *DistNbrsV*: :class:`TIntFltKd64V`, a vector of (integer, float) pairs (output)
     Maps between the distance H (in hops) and the number of nodes reachable in <= H hops.
 
 - *MxDist*: int (input)
@@ -39,21 +39,21 @@ The following example shows how to use :func:`GetAnf` with
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     SrcNId = 0
-    DistNbrsV = snap.TIntFltKdV()
+    DistNbrsV = snap.TIntFltKd64V()
     snap.GetAnf(Graph, SrcNId, DistNbrsV, 3, False, 32)
     for item in DistNbrsV:
         print item.Dat()
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     SrcNId = 0
-    DistNbrsV = snap.TIntFltKdV()
+    DistNbrsV = snap.TIntFltKd64V()
     snap.GetAnf(UGraph, SrcNId, DistNbrsV, 3, False, 32)
     for item in DistNbrsV:
         print item.Dat()
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     SrcNId = 0
-    DistNbrsV = snap.TIntFltKdV()
+    DistNbrsV = snap.TIntFltKd64V()
     snap.GetAnf(Network, SrcNId, DistNbrsV, 3, False, 32)
     for item in DistNbrsV:
         print item.Dat()

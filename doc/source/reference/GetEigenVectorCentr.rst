@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: undirected graph (input)
     A Snap.py undirected graph
 
-- *NIdEigenH*: :class:`TIntFltH`, a hash table of int keys and float values (output)
+- *NIdEigenH*: :class:`TIntFlt64H`, a hash table of int keys and float values (output)
     Hash table mapping node ids to their corresponding eigenvector centrality values.
 
 - *Eps*: float (input)
@@ -29,7 +29,7 @@ The following example shows how to calculate eigenvector centrality values for n
     import snap
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    NIdEigenH = snap.TIntFltH()
+    NIdEigenH = snap.TIntFlt64H()
     snap.GetEigenVectorCentr(UGraph, NIdEigenH)
     for item in NIdEigenH:
         print "%node: d centrality: %f" % (item, NIdEigenH[item])

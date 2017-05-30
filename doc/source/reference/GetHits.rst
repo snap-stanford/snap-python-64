@@ -11,10 +11,10 @@ Parameters
 - *Graph*: graph (input)
     A Snap.py graph or a network.
     
-- *NIdHubH*: :class:`TIntFltH`, a hash table of int keys and float values (output)
+- *NIdHubH*: :class:`TIntFlt64H`, a hash table of int keys and float values (output)
     The keys are the node ids and the values are the hub scores as outputed by the HITS algorithm.
 
-- *NIdAuthH*: :class:`TIntFltH`, a hash table of int keys and float values (output)
+- *NIdAuthH*: :class:`TIntFlt64H`, a hash table of int keys and float values (output)
     The keys are the node ids and the values are the authority scores as outputed by the HITS algorithm.   
 
 - *MaxIter*: int (input)
@@ -31,8 +31,8 @@ The following example shows how to calculate Hub and Authority scores for nodes 
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    NIdHubH = snap.TIntFltH()
-    NIdAuthH = snap.TIntFltH()
+    NIdHubH = snap.TIntFlt64H()
+    NIdAuthH = snap.TIntFlt64H()
     snap.GetHits(Graph, NIdHubH, NIdAuthH)
     for item in NIdHubH:
         print item, NIdHubH[item]
@@ -40,8 +40,8 @@ The following example shows how to calculate Hub and Authority scores for nodes 
         print item, NIdAuthH[item]
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    NIdHubH = snap.TIntFltH()
-    NIdAuthH = snap.TIntFltH()
+    NIdHubH = snap.TIntFlt64H()
+    NIdAuthH = snap.TIntFlt64H()
     snap.GetHits(UGraph, NIdHubH, NIdAuthH)
     for item in NIdHubH:
         print item, NIdHubH[item]
@@ -49,8 +49,8 @@ The following example shows how to calculate Hub and Authority scores for nodes 
         print item, NIdAuthH[item]
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    NIdHubH = snap.TIntFltH()
-    NIdAuthH = snap.TIntFltH()
+    NIdHubH = snap.TIntFlt64H()
+    NIdAuthH = snap.TIntFlt64H()
     snap.GetHits(Network, NIdHubH, NIdAuthH)
     for item in NIdHubH:
         print item, NIdHubH[item]

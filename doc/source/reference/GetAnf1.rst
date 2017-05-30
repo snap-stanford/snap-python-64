@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network.
     
-- *DistNbrsV*: :class:`TIntFltKd`, a vector of (int, float) pairs (output)
+- *DistNbrsV*: :class:`TIntFltKd64V`, a vector of (int, float) pairs (output)
     Maps between the distance H (in hops) and the number of nodes reachable in <= H hops.
 
 - *MxDist*: int (input)
@@ -35,13 +35,13 @@ The following example shows how to use :func:`GetAnf` with
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    DistNbrsV = snap.TIntFltKdV()
+    DistNbrsV = snap.TIntFltKd64V()
     snap.GetAnf(Graph, DistNbrsV, 3, False, 32)
     for item in DistNbrsV:
         print item.Dat()
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    DistNbrsV = snap.TIntFltKdV()
+    DistNbrsV = snap.TIntFltKd64V()
     snap.GetAnf(UGraph, DistNbrsV, 3, False, 32)
     for item in DistNbrsV:
         print item.Dat()

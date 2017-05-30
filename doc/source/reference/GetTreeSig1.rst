@@ -39,8 +39,8 @@ The following example shows how to compute the tree signature for nodes in
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    Sig = snap.TIntV()
-    NodeMap = snap.TIntPrV()
+    Sig = snap.TInt64V()
+    NodeMap = snap.TIntPr64V()
     for NI in Graph.Nodes():
       # Without if statement, we receive "error *** Error: Execution stopped: Node.GetInDeg()==0 || Node.GetOutDeg()==0, file /home/rok/include/snap/alg.h, line 513" (see source here: https://github.com/snap-stanford/snap/blob/master/snap-core/alg.h)
       # With if statement, no tree signatures are computed
@@ -52,8 +52,8 @@ The following example shows how to compute the tree signature for nodes in
         print item.GetVal1(), item.GetVal2()
 
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    Sig = snap.TIntV()
-    NodeMap = snap.TIntPrV()
+    Sig = snap.TInt64V()
+    NodeMap = snap.TIntPr64V()
     for NI in Graph.Nodes():
       # Without if statement, we receive "error *** Error: Execution stopped: Node.GetInDeg()==0 || Node.GetOutDeg()==0, file /home/rok/include/snap/alg.h, line 513" (see source here: https://github.com/snap-stanford/snap/blob/master/snap-core/alg.h)
       # With if statement, no tree signatures are computed
@@ -65,8 +65,8 @@ The following example shows how to compute the tree signature for nodes in
         print item.GetVal1(), item.GetVal2()
 
     Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    Sig = snap.TIntV()
-    NodeMap = snap.TIntPrV()
+    Sig = snap.TInt64V()
+    NodeMap = snap.TIntPr64V()
     for NI in Graph.Nodes():
       # Without if statement, we receive "error *** Error: Execution stopped: Node.GetInDeg()==0 || Node.GetOutDeg()==0, file /home/rok/include/snap/alg.h, line 513" (see source here: https://github.com/snap-stanford/snap/blob/master/snap-core/alg.h)
       # With if statement, no tree signatures are computed

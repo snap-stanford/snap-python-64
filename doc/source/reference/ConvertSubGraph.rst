@@ -13,7 +13,7 @@ Parameters:
 - *InGraph*: graph (input)
     A Snap.py graph or a network.
 
-- *NIdV*: :class:`TIntV`, a vector of ints (input)
+- *NIdV*: :class:`TInt64V`, a vector of ints (input)
     Node IDs that will be included in the subgraph.
 
 - *RenumberNodes*: bool (input)
@@ -29,7 +29,7 @@ The following example shows how to convert a subgraph between the different type
 
     import snap
 
-    V = snap.TIntV()
+    V = snap.TInt64V()
     for i in range(10):
         V.Add(i)
 

@@ -11,7 +11,7 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network.
 
-- *NIdOutDegV*: :class:`TIntPrV`, a vector of (int, int) pairs (output)
+- *NIdOutDegV*: :class:`TIntPr64V`, a vector of (int, int) pairs (output)
     A vector of (node id, node out degree) pairs.
 
 Return value:
@@ -24,19 +24,19 @@ The following example shows how to use :func:`GetNodeOutDegV` with nodes in :cla
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    OutDegV = snap.TIntPrV()
+    OutDegV = snap.TIntPr64V()
     snap.GetNodeOutDegV(Graph, OutDegV)
     for item in OutDegV:
         print "node ID %d: out-degree %d" % (item.GetVal1(), item.GetVal2())
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    OutDegV = snap.TIntPrV()
+    OutDegV = snap.TIntPr64V()
     snap.GetNodeOutDegV(UGraph, OutDegV)
     for item in OutDegV:
         print "node ID %d: out-degree %d" % (item.GetVal1(), item.GetVal2())
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    OutDegV = snap.TIntPrV()
+    OutDegV = snap.TIntPr64V()
     snap.GetNodeOutDegV(Network, OutDegV)
     for item in OutDegV:
         print "node ID %d: out-degree %d" % (item.GetVal1(), item.GetVal2())

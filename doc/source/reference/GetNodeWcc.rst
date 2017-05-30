@@ -13,7 +13,7 @@ Parameters:
 - *NId*: int (input)
     A node id in *Graph*.
 
-- *CnCom*: :class:`TIntV`, a vector of ints (output)
+- *CnCom*: :class:`TInt64V`, a vector of ints (output)
     All nodes that are in the same weakly connected component as *NId*.
 
 Return value:
@@ -27,7 +27,7 @@ The following example shows how to get the nodes in the same connected component
     import snap
     
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    CnCom = snap.TIntV()
+    CnCom = snap.TInt64V()
     snap.GetNodeWcc(Graph, 0, CnCom)
     print "Nodes in the same connected component as node 0:"
     for node in CnCom:
@@ -35,7 +35,7 @@ The following example shows how to get the nodes in the same connected component
 
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    CnCom = snap.TIntV()
+    CnCom = snap.TInt64V()
     snap.GetNodeWcc(UGraph, 0, CnCom)
     print "Nodes in the same connected component as node 0:"
     for node in CnCom:
@@ -43,7 +43,7 @@ The following example shows how to get the nodes in the same connected component
 
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    CnCom = snap.TIntV()
+    CnCom = snap.TInt64V()
     snap.GetNodeWcc(Network, 0, CnCom)
     print "Nodes in the same connected component as node 0:"
     for node in CnCom:

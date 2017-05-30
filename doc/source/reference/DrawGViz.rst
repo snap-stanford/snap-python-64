@@ -22,7 +22,7 @@ Parameters:
 - *NodeLabels*: bool (input)
     Whether or not the nodes in image have labels associated with them.
     
-- *NIdColorH*: :class:`TIntStrH`, a hash table with int keys and string values (input)
+- *NIdColorH*: :class:`TIntStr64H`, a hash table with int keys and string values (input)
     Maps node ids to node colors (see GraphViz documentation for more details).
 
 Return value:
@@ -41,7 +41,7 @@ Note that larger graphs (more than a few hundred nodes) may take several minutes
     UGraph = snap.GenRndGnm(snap.PUNGraph, 10, 40)
     snap.DrawGViz(UGraph, snap.gvlNeato, "graph_undirected.png", "graph 2", True)
 
-    NIdColorH = snap.TIntStrH()
+    NIdColorH = snap.TIntStr64H()
     NIdColorH[0] = "green"
     NIdColorH[1] = "red"
     NIdColorH[2] = "purple"

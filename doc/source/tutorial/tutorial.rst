@@ -27,9 +27,9 @@ The code in this document assumes that Snap.py has been imported as shown above.
 Basic Types
 ```````````
 
-Basic types in SNAP are :class:`TInt`, :class:`TFlt`, and :class:`TStr`.
+Basic types in SNAP are :class:`TInt`, :class:`TInt64`, :class:`TFlt`, and :class:`TStr`.
 In Snap.py, these types are converted to Python types
-:class:`int`, :class:`float`, and :class:`str`, respectively. In general,
+:class:`int`, :class:`int64`, :class:`float`, and :class:`str`, respectively. In this 64 bit Snap.py, most functions support TInt64 instead of TInt. In general,
 there is no need to explicitly work with SNAP types in Snap.py, since
 Snap.py automatically converts these basic types to Python types.
 
@@ -45,13 +45,13 @@ Vector Types
 
 Vectors are sequences of values of the same type. Existing vector values can be accessed or changed by their index in the sequence. New values can be added at the end of a vector.
 
-Vector types in Snap.py and SNAP use a naming convention of being named as `<type_name>`, followed by `V`. For example, a vector of integers is named :class:`TIntV`.
+Vector types in Snap.py and SNAP use a naming convention of being named as `<type_name>`, followed by `V`. For example, a vector of integers is named :class:`TInt64V`.
 
 Below are the most commonly used vector operations:
 
 - create an empty vector of integers
 
-  >>> v = snap.TIntV()
+  >>> v = snap.TInt64V()
 
 - add a value at the end of a vector. 5 values are added below in positions 0..4:
 
@@ -114,13 +114,13 @@ Hash tables contain values of the same type. Each value has a user provided key 
 
 Table values can be accessed or changed either their keys. New values can be added as `(key, value)` pairs.
 
-Hash table types in Snap.py and SNAP use a naming convention of being named as `<key_type_name><value_type_name>`, followed by `H`. For example, a hash table with integer key and string values is named :class:`TIntStrH`. If `<key_type_name>` and `<value_type_name>` have the same type, only one type name might be used, such as :class:`TIntH`.
+Hash table types in Snap.py and SNAP use a naming convention of being named as `<key_type_name><value_type_name>`, followed by `H`. For example, a hash table with integer key and string values is named :class:`TIntStr64H`. we add '64' to denote that this is a 64 bit version of the datastructure and that the underlying variables are all should be of 64-bit type. If `<key_type_name>` and `<value_type_name>` have the same type, only one type name might be used, such as :class:`TInt64H`.
 
 Below are the most commonly used hash table operations:
 
 - create an empty hash table with integer keys and string values
 
-  >>> h = snap.TIntStrH()
+  >>> h = snap.TIntStr64H()
 
 - add a value to the table. 5 values are added below:
 
@@ -164,13 +164,13 @@ Pair Types
 ``````````
 Pairs contain two values. Each value has its own type.
 
-Pair types in Snap.py and SNAP use a naming convention of being named as `<type1><type2>`, followed by `Pr`. For example, a pair of (integer, string) is named :class:`TIntStrPr`. If `<type1>` and `<type2>` have the same type, only one type name might be used, such as :class:`TIntPr`.
+Pair types in Snap.py and SNAP use a naming convention of being named as `<type1><type2>`, followed by `Pr`. For example, a pair of (integer64, string) is named :class:`TInt64StrPr`. If `<type1>` and `<type2>` have the same type, only one type name might be used, such as :class:`TInt64Pr`.
 
 Below are the most commonly used pair operations:
 
 - create a pair of an integer and a string:
 
-  >>> p = snap.TIntStrPr(1, "one")
+  >>> p = snap.TInt64StrPr(1, "one")
 
 - print the first value:
 
@@ -197,21 +197,21 @@ The following is a list of SNAP types that are used in Snap.py functions:
 - :class:`PNEANet`, a directed network;
 - :class:`PGraph`, one of :class:`PNGraph`, :class:`PUNGraph`, or :class:`PNEANet`;
 - :class:`TCnComV`, a vector of connected components;
-- :class:`TFltPrV`, a vector of float pairs;
-- :class:`TFltV`, a vector of floats;
+- :class:`TFltPr64V`, a vector of float pairs;
+- :class:`TFlt64V`, a vector of floats;
 - :class:`TGVizLayout`, one of `gvlDot`, `gvlNeato`, `gvlTwopi`, `gvlCirco`, `gvlSfdp`;
-- :class:`TIntFltH`, a hash table with integer keys and float values;
-- :class:`TIntFltKdV`, a vector of (integer, float) values;
-- :class:`TIntH`, a hash table with integer keys and values;
-- :class:`TIntPrFltH`, a hash table with (integer, integer) pair keys and float values;
-- :class:`TIntPrV`, a vector of (integer, integer) pairs;
-- :class:`TIntSet`, a hash table with integer keys and no values;
-- :class:`TIntStrH`, a hash table with integer keys and string values;
-- :class:`TIntTrV`, a vector of (integer, integer, integer) triplets;
-- :class:`TIntV`, a vector of integers;
+- :class:`TIntFlt64H`, a hash table with integer keys and float values;
+- :class:`TIntFltKd64V`, a vector of (integer, float) values;
+- :class:`TInt64H`, a hash table with integer keys and values;
+- :class:`TIntPrFlt64H`, a hash table with (integer, integer) pair keys and float values;
+- :class:`TIntPr64V`, a vector of (integer, integer) pairs;
+- :class:`TInt64Set`, a hash table with integer keys and no values;
+- :class:`TIntStr64H`, a hash table with integer keys and string values;
+- :class:`TIntTr64V`, a vector of (integer, integer, integer) triplets;
+- :class:`TInt64V`, a vector of integers;
 - :class:`TRnd`, a random generator;
-- :class:`TStrHash< TInt >`, a hash table woth string keys and integer values;
-- :class:`TVec< TFltV >`, a vector of vectors of floats.
+- :class:`TStrHash< TInt64, int64 >`, a hash table woth string keys and integer values;
+- :class:`TVec< TFlt64V, int64 >`, a vector of vectors of floats.
 
 .. seealso::
 
@@ -401,7 +401,7 @@ Generate a random Erdos-Renyi directed graph on 10000 nodes and with 1000 edges:
 
 Define a vector of pairs of integers (size, count) and get a distribution of connected components (component size, count):
 
->>> CntV = snap.TIntPrV()
+>>> CntV = snap.TIntPr64V()
 >>> snap.GetWccSzCnt(G9, CntV)
 >>> for p in CntV:
 >>>     print "size %d: count %d" % (p.GetVal1(), p.GetVal2())
@@ -418,7 +418,7 @@ Generate a Preferential Attachment graph on 100 nodes and out-degree of 3:
 
 Define a vector of floats and get first eigenvector of graph adjacency matrix:
 
->>> EigV = snap.TFltV() 
+>>> EigV = snap.TFlt64V() 
 >>> snap.GetEigVec(G10, EigV)
 >>> nr = 0
 >>> for f in EigV:

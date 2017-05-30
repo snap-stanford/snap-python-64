@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network.
 
-- *PRankH*: :class:`TIntFltH`, a hash of int keys and float values (output)
+- *PRankH*: :class:`TIntFlt64H`, a hash of int keys and float values (output)
     PageRank scores. Keys are node IDs, values are computed PageRank scores.
 
 - *C*: float (input)
@@ -33,19 +33,19 @@ The following example shows how to calculate PageRank scores for nodes in
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    PRankH = snap.TIntFltH()
+    PRankH = snap.TIntFlt64H()
     snap.GetPageRank(Graph, PRankH)
     for item in PRankH:
         print item, PRankH[item]
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    PRankH = snap.TIntFltH()
+    PRankH = snap.TIntFlt64H()
     snap.GetPageRank(UGraph, PRankH)
     for item in PRankH:
         print item, PRankH[item]
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    PRankH = snap.TIntFltH()
+    PRankH = snap.TIntFlt64H()
     snap.GetPageRank(Network, PRankH)
     for item in PRankH:
         print item, PRankH[item]

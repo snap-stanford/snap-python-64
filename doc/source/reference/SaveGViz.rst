@@ -19,7 +19,7 @@ Parameters:
 - *NodeLabels*: bool (input)
     Indicates whether to show the node labels.
 
-- *NIdColorH*: :class:`TIntStrH`, a hash table with int keys and string values (input)
+- *NIdColorH*: :class:`TIntStr64H`, a hash table with int keys and string values (input)
     Maps node ids to node colors (see GraphViz documentation for more details).
 
 Return value:
@@ -34,7 +34,7 @@ The following example shows how to save graphs of types
 
     import snap
 
-    H = snap.TIntStrH()
+    H = snap.TIntStr64H()
     H.AddDat(1, "blue")
     H.AddDat(2, "blue")
     H.AddDat(3, "red")

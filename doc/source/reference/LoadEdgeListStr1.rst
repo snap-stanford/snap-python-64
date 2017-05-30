@@ -21,7 +21,7 @@ Parameters:
 - *DstColId*: int (input)
     The column number in the file, which contains the node id representing the destination vertex.
 
-- *StrToNIdH*: :class:`TStrIntSH`, a string hash table with string keys and int values (output)
+- *StrToNIdH*: :class:`TStrInt64SH`, a string hash table with string keys and int values (output)
     Contains the mapping of strings to node ids.
 
 
@@ -35,7 +35,7 @@ The following example shows how to load the following from a text file, wiki-vot
 
     import snap
 
-    mapping = snap.TStrIntSH()
+    mapping = snap.TStrInt64SH()
     G0 = snap.LoadEdgeListStr(snap.PNGraph, "wiki-Vote.txt", 0, 1, mapping)
 
     # convert input string to node id

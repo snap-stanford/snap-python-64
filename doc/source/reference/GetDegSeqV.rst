@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network.
 
-- *DegV*: :class:`TIntV`, a vector of ints (output)
+- *DegV*: :class:`TInt64V`, a vector of ints (output)
     A vector containing the degree for each node in the graph.
 
 Return value:
@@ -24,19 +24,19 @@ The following example shows how to compute the sequence vector for nodes in
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    result_degree = snap.TIntV()
+    result_degree = snap.TInt64V()
     snap.GetDegSeqV(Graph, result_degree)
     for i in range(0, result_degree.Len()):
         print "Node %s has degree %s" % (i, result_degree[i])
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    result_degree = snap.TIntV()
+    result_degree = snap.TInt64V()
     snap.GetDegSeqV(UGraph, result_degree)
     for i in range(0, result_degree.Len()):
         print "Node %s has degree %s" % (i, result_degree[i])
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    result_degree = snap.TIntV()
+    result_degree = snap.TInt64V()
     snap.GetDegSeqV(Network, result_degree)
     for i in range(0, result_degree.Len()):
         print "Node %s has degree %s" % (i, result_degree[i])

@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network.
 
-- *NIdV*: :class:`TIntV`, a vector of ints (input)
+- *NIdV*: :class:`TInt64V`, a vector of ints (input)
     Vector of node ids to be included in the graph.
 
 Return value:
@@ -24,7 +24,7 @@ The following example shows how to return get a subgraph of
 
     import snap
 
-    NIdV = snap.TIntV()
+    NIdV = snap.TInt64V()
     for i in range(1, 10):
         NIdV.Add(i)
 

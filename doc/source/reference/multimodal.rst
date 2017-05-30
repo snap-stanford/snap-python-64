@@ -64,20 +64,20 @@ The following code shows example usage of :class:`TMMNet` to construct a toy mul
         crossneti.Next()
 
     # Get a subgraph
-    crossnets = snap.TStrV()
+    crossnets = snap.TStr64V()
     crossnets.add("TestCross1")
     sub_mmnet = mmnet.GetSubgraphByCrossNet(crossnets)
 
     # Convert to TNEANet
 
-    crossnetids = snap.TIntV()
+    crossnetids = snap.TInt64V()
     crossnetids.Add(mmnet.GetCrossId("TestCross1"))
     crossnetids.Add(mmnet.GetCrossId("TestCross2"))
     crossnetids.Add(mmnet.GetCrossId("TestCross3"))
 
     # These are mappings consisting of triples of (modeid, old attribute name, new attribute name)
-    nodeattrmapping = snap.TIntStrStrTrV()
-    edgeattrmapping = snap.TIntStrStrTrV()
+    nodeattrmapping = snap.TIntStrStrTr64V()
+    edgeattrmapping = snap.TIntStrStrTr64V()
     
     pneanet = mmnet.ToNetwork(crossnetids, nodeattrmapping, edgeattrmapping)
 
@@ -553,7 +553,7 @@ TMMNet
         Returns a reference to the crossnet with name *CrossName* or id *CrossId*,
         respectively, in the multimodal network.
 
-     .. describe:: ToNetwork(TIntV& CrossNetTypes, TIntStrStrTrV& NodeAttrMap, TIntStrStrTrV& EdgeAttrMap)
+     .. describe:: ToNetwork(TInt64V& CrossNetTypes, TIntStrStrTr64V& NodeAttrMap, TIntStrStrTr64V& EdgeAttrMap)
 
         Converts the MMNet to a :class:`TNEANet` (which flattens out the multimodal nature of the network), adding only
         the crossnets (and corresponding modenets) whose ids are specified in the vector of integer ids, CrossNetTypes.

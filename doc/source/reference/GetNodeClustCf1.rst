@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network.
 
-- *NIdCCfH*: :class:`TIntFltH`, a hash table of int keys and float values (output)
+- *NIdCCfH*: :class:`TIntFlt64H`, a hash table of int keys and float values (output)
     Clustering Coefficients. Keys are node IDs, values are the node's computed clustering coefficients.
 
 Return value:
@@ -24,19 +24,19 @@ The following example shows how to calculate the clustering coefficient for node
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    NIdCCfH = snap.TIntFltH()
+    NIdCCfH = snap.TIntFlt64H()
     snap.GetNodeClustCf(Graph, NIdCCfH)
     for item in NIdCCfH:
         print item, NIdCCfH[item]
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    NIdCCfH = snap.TIntFltH()
+    NIdCCfH = snap.TIntFlt64H()
     snap.GetNodeClustCf(UGraph, NIdCCfH)
     for item in NIdCCfH:
         print item, NIdCCfH[item]
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    NIdCCfH = snap.TIntFltH()
+    NIdCCfH = snap.TIntFlt64H()
     snap.GetNodeClustCf(Network, NIdCCfH)
     for item in NIdCCfH:
         print item, NIdCCfH[item]

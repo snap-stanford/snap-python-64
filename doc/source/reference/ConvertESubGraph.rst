@@ -13,7 +13,7 @@ Parameters:
 - *InGraph*: network (input)
     A Snap.py network.
 
-- *EIdV*: :class:`TIntV`, a vector of ints (input)
+- *EIdV*: :class:`TInt64V`, a vector of ints (input)
     Edge IDs that will be included in the subgraph.
 
 - *RenumberNodes*: bool (input)
@@ -31,7 +31,7 @@ The following example shows how to create a subgraph for nodes in
     import snap
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    V = snap.TIntV()
+    V = snap.TInt64V()
     for i in range(100):
       V.Add(i)
 

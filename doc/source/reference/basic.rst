@@ -1,23 +1,23 @@
 Basic Types
 ```````````
 
-Basic types in SNAP are :class:`TInt`, :class:`TFlt`, and :class:`TStr`, which
+Basic types in SNAP are :class:`TInt64`, :class:`TFlt`, and :class:`TStr`, which
 in Snap.py are automatically converted to Python types
 :class:`int`, :class:`float`, and :class:`str`, respectively. In general,
 there is no need to explicitly work with SNAP types in Snap.py because
 of the automatic conversion.
 
 
-TInt
+TInt64
 ====
 
-.. class:: TInt()
-           TInt(val)
-           TInt(SIn)
+.. class:: TInt64()
+           TInt64(val)
+           TInt64(SIn)
 
-   Returns a new :class:`TInt` initialized with the value specified by optional parameter
-   *val*. If no value is given, the :class:`TInt` object is initialized with the default value 0. If *SIn* is provided, the value is loaded from the binary stream *SIn*.
-   In Snap.py, :class:`TInt` is automatically converted to Python type :class:`int`.
+   Returns a new :class:`TInt64` initialized with the value specified by optional parameter
+   *val*. If no value is given, the :class:`TInt64` object is initialized with the default value 0. If *SIn* is provided, the value is loaded from the binary stream *SIn*.
+   In Snap.py, :class:`TInt64` is automatically converted to Python type :class:`int`.
 
    Below is a list of functions supported by the :class:`TInt` class:
 
@@ -102,14 +102,14 @@ TInt
         *val* == 0.
 
 
-   A single public attribute is offered by the :class:`TInt` class:
+   A single public attribute is offered by the :class:`TInt64` class:
 
      .. describe:: Val
 
-        A member of the :class:`TInt` object of type int that gives the value the int holds.
+        A member of the :class:`TInt64` object of type int that gives the value the int holds.
 
 
-   A few static public attributes are offered by the :class:`TInt` class:
+   A few static public attributes are offered by the :class:`TInt64` class:
 
      .. data:: Mn
 
@@ -135,15 +135,15 @@ TInt
 
         The :class:`TRnd` object used in methods such as :func:`GetRnd`.
 
-   Below is some code demonstrating the use of the :class:`TInt` type:
+   Below is some code demonstrating the use of the :class:`TInt64` type:
 
-      >>> i = snap.TInt(10)
+      >>> i = snap.TInt64(10)
       >>> print i.Val
       10
       >>> i.Val = 21
-      >>> snap.TInt.IsEven(5)
+      >>> snap.TInt64.IsEven(5)
       False
-      >>> snap.TInt.GetMegaStr(1234567)
+      >>> snap.TInt64.GetMegaStr(1234567)
       '1.2M'
 
 TFlt

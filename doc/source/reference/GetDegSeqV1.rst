@@ -10,10 +10,10 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network.
 
-- *InDegV*: :class:`TIntV`, a vector of ints (output)
+- *InDegV*: :class:`TInt64V`, a vector of ints (output)
     In-degree sequence vector.
 
-- *OutDegV*: :class:`TIntV`, a vector of ints (output)
+- *OutDegV*: :class:`TInt64V`, a vector of ints (output)
     Out-degree sequence vector.
 
 Return Value:
@@ -27,22 +27,22 @@ The following examples shows how to compute the in- and out-degree sequence vect
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    result_in_degree = snap.TIntV()
-    result_out_degree = snap.TIntV()
+    result_in_degree = snap.TInt64V()
+    result_out_degree = snap.TInt64V()
     snap.GetDegSeqV(Graph, result_in_degree, result_out_degree)
     for i in range(0, result_in_degree.Len()):
       print "Node %s has in-degree %s and out-degree %s" % (i, result_in_degree[i], result_out_degree[i])
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    result_in_degree = snap.TIntV()
-    result_out_degree = snap.TIntV()
+    result_in_degree = snap.TInt64V()
+    result_out_degree = snap.TInt64V()
     snap.GetDegSeqV(UGraph, result_in_degree, result_out_degree)
     for i in range(0, result_in_degree.Len()):
       print "Node %s has in-degree %s and out-degree %s" % (i, result_in_degree[i], result_out_degree[i])
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    result_in_degree = snap.TIntV()
-    result_out_degree = snap.TIntV()
+    result_in_degree = snap.TInt64V()
+    result_out_degree = snap.TInt64V()
     snap.GetDegSeqV(Network, result_in_degree, result_out_degree)
     for i in range(0, result_in_degree.Len()):
       print "Node %s has in-degree %s and out-degree %s" % (i, result_in_degree[i], result_out_degree[i])

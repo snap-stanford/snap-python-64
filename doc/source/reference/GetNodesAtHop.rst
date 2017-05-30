@@ -16,7 +16,7 @@ Parameters:
 - *Hop*: int (input)
     Distance from the starting node.
 
-- *NIdV*: :class:`TIntV`, a vector of ints (output)
+- *NIdV*: :class:`TInt64V`, a vector of ints (output)
     Node ids of nodes *Hop* distance away from *StartNId*.
 
 - *IsDir*: bool (input)
@@ -35,19 +35,19 @@ The following example shows how to get a vector of nodes at hop distance
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    NodeVec = snap.TIntV()
+    NodeVec = snap.TInt64V()
     snap.GetNodesAtHop(Graph, 1, 2, NodeVec, True)
     for item in NodeVec:
         print item
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    NodeVec = snap.TIntV()
+    NodeVec = snap.TInt64V()
     snap.GetNodesAtHop(UGraph, 1, 2, NodeVec, False)
     for item in NodeVec:
         print item
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    NodeVec = snap.TIntV()
+    NodeVec = snap.TInt64V()
     snap.GetNodesAtHop(Network, 1, 2, NodeVec, True)
     for item in NodeVec:
         print item

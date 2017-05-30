@@ -39,7 +39,7 @@ Return value:
 
 Unexpected behaviors:
 
-- The data structure for GroupSet (TIntSet) is not implemented
+- The data structure for GroupSet (TInt64Set) is not implemented
 
 - GetNodeTriads method calls three sub-methods (GetNodeTriads_PUNGraph, GetNodeTriads_PNGraph and GetNodeTriads_PNEANet). None of these three are actually implemented, causing errors like "NameError: global name 'GetNodeTriads_PNGraph' is not defined"
 
@@ -49,10 +49,10 @@ The following example shows how to calculate the number of triads between a node
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     NId = Graph.Nodes().next().GetId()
-    GroupSet = snap.TIntSet()
+    GroupSet = snap.TInt64Set()
     
-    inGroupEdges = snap.TInt()
-    inOutGroupEdges = snap.TInt()
-    outGroupEdges = snap.TInt()
+    inGroupEdges = snap.TInt64()
+    inOutGroupEdges = snap.TInt64()
+    outGroupEdges = snap.TInt64()
     
     snap.GetNodeTriads(Graph, NId, GroupSet, inGroupEdges, inOutGroupEdges, outGroupEdges)

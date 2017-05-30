@@ -13,10 +13,10 @@ Parameters:
 - *OutFNm*: string (input)
     Specifies output filename of Pajek formatted graph.
 	
-- *NIdColorH*: :class:`TIntStrH`, a hash table of int keys and string values (input)
+- *NIdColorH*: :class:`TIntStr64H`, a hash table of int keys and string values (input)
     Maps node ids to node colors. Default node color is Red.
 
-- *NIdLabelH*: :class:`TIntStrH`, a hash table of int keys and string values (input)
+- *NIdLabelH*: :class:`TIntStr64H`, a hash table of int keys and string values (input)
     Maps node ids to node string labels.
 
 Return value:
@@ -31,13 +31,13 @@ The following example saves the graph in the Pajek format in:
 
     import snap
 
-    NIdColorH = snap.TIntStrH()
+    NIdColorH = snap.TIntStr64H()
     for i in range(100):
         if i % 2 == 0:
             NIdColorH[i] = "red"
         else:
             NIdColorH[i] = "blue"
-    NIdLabelH = snap.TIntStrH()
+    NIdLabelH = snap.TIntStr64H()
     for i in range(100):
         NIdLabelH[i] = str(i)
 

@@ -21,7 +21,7 @@ Parameters:
 - *NTestNodes*: int (input)
     Number of starting nodes for calculating path lengths.
 
-- *SubGraphNIdV*: TIntV - vector of ints (input)
+- *SubGraphNIdV*: TInt64V - vector of ints (input)
     List of nodes in the subgraph for which the path lengths will be reported.
 
 - *IsDir*: bool (input)
@@ -50,18 +50,18 @@ The following example shows how to calculate the average shortest path length fo
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     Num = 50
-    List = snap.TIntV.GetV(1, 4, 9, 16, 25, 36)
+    List = snap.TInt64V.GetV(1, 4, 9, 16, 25, 36)
     Dist = snap.GetBfsEffDiam(Graph, Num, List, True,0,0)
     print Dist
 
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     Num = 75
-    List = snap.TIntV.GetV(1, 4, 9, 16, 25, 36)
+    List = snap.TInt64V.GetV(1, 4, 9, 16, 25, 36)
     Dist = snap.GetBfsEffDiam(Graph, Num, List, False,0,0)
     print Dist
 
     Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     Num = 33
-    List = snap.TIntV.GetV(1, 4, 9, 16, 25, 36)
+    List = snap.TInt64V.GetV(1, 4, 9, 16, 25, 36)
     Dist = snap.GetBfsEffDiam(Graph, Num, List, True,0,0)
     print Dist

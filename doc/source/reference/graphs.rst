@@ -683,7 +683,7 @@ TNEANet
 
      .. describe:: GetNIdV(NIdV)
 
-        Returns IDs of all the nodes in vector *NIdV*, which must be of type *TIntV*.
+        Returns IDs of all the nodes in vector *NIdV*, which must be of type *TInt64V*.
 
      .. describe:: Edges()
 
@@ -743,7 +743,7 @@ TNEANet
 
      .. describe:: GetEIdV(EIdV)
 
-        Returns IDs of all the edges in vector *EIdV*, which must be of type *TIntV*.
+        Returns IDs of all the edges in vector *EIdV*, which must be of type *TInt64V*.
 
      .. describe:: Empty()
 
@@ -904,7 +904,7 @@ TNEANet
 
         Provides names of attributes for the node *NId*. Only attributes
         with an assigned value are provided. Attribute names are returned
-        as strings in *NameV*, which must be of type *TStrV*.
+        as strings in *NameV*, which must be of type *TStr64V*.
 
      .. describe:: IntAttrNameNI(NId, NameV)
                    FltAttrNameNI(NId, NameV)
@@ -913,13 +913,13 @@ TNEANet
         Provides names of integer, float, or string attributes for the
         node *NId*, respectively. Only attributes with an assigned value
         are provided. Attribute names are returned as strings in *NameV*,
-        which must be of type *TStrV*.
+        which must be of type *TStr64V*.
 
      .. describe:: AttrValueNI(NId, ValueV)
 
         Provides values of attributes for the node *NId*. Only attributes
         with an assigned value are provided. Attribute values are converted
-        to strings and returned in *ValueV*, which must be of type *TStrV*.
+        to strings and returned in *ValueV*, which must be of type *TStr64V*.
 
      .. describe:: IntAttrValueNI(NId, ValueV)
                    FltAttrValueNI(NId, ValueV)
@@ -928,8 +928,8 @@ TNEANet
         Provides values of integer, float, or string attributes for the
         node *NId*, respectively. Only attributes with an assigned value
         are provided. Attribute values are returned as integers, floats, or
-        strings in *ValueV*, which must be of type *TIntV*, *TFltV*, or
-        *TStrV*, respectively.
+        strings in *ValueV*, which must be of type *TInt64V*, *TFlt64V*, or
+        *TStr64V*, respectively.
 
    :class:`TNEANet` methods for edge attributes are the following:
 
@@ -1043,7 +1043,7 @@ TNEANet
 
         Provides names of attributes for the edge *EId*. Only attributes
         with an assigned value are provided. Attribute names are returned
-        as strings in *NameV*, which must be of type *TStrV*.
+        as strings in *NameV*, which must be of type *TStr64V*.
 
      .. describe:: IntAttrNameEI(EId, NameV)
                    FltAttrNameEI(EId, NameV)
@@ -1052,13 +1052,13 @@ TNEANet
         Provides names of integer, float, or string attributes for the
         edge *EId*, respectively. Only attributes with an assigned value
         are provided. Attribute names are returned as strings in *NameV*,
-        which must be of type *TStrV*.
+        which must be of type *TStr64V*.
 
      .. describe:: AttrValueEI(EId, ValueV)
 
         Provides values of attributes for the edge *EId*. Only attributes
         with an assigned value are provided. Attribute values are converted
-        to strings and returned in *ValueV*, which must be of type *TStrV*.
+        to strings and returned in *ValueV*, which must be of type *TStr64V*.
 
      .. describe:: IntAttrValueEI(EId, ValueV)
                    FltAttrValueEI(EId, ValueV)
@@ -1067,14 +1067,14 @@ TNEANet
         Provides values of integer, float, or string attributes for the
         edge *EId*, respectively. Only attributes with an assigned value
         are provided. Attribute values are returned as integers, floats, or
-        strings in *ValueV*, which must be of type *TIntV*, *TFltV*, or
-        *TStrV*, respectively.
+        strings in *ValueV*, which must be of type *TInt64V*, *TFlt64V*, or
+        *TStr64V*, respectively.
 
      .. describe:: AttrValueEI(EId, ValueV)
 
         Provides values of attributes for the edge *EId*. Only attributes
         with an assigned value are provided. Attribute values are converted
-        to strings and returned in *ValueV*, which must be of type *TStrV*.
+        to strings and returned in *ValueV*, which must be of type *TStr64V*.
 
   :class:`TNEANet` also provides methods for sparse attributes. **NOTE** these methods
   are currently under development:

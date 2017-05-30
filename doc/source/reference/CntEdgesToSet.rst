@@ -13,7 +13,7 @@ Parameters:
 - *NId*: int (input)
 	The node id of the source node.
 
-- *NodeSet*: :class:`TIntSet`, a set of ints (input)
+- *NodeSet*: :class:`TInt64Set`, a set of ints (input)
 	The set of destination node ids.
 
 Return Value:
@@ -26,7 +26,7 @@ The following example shows how to use :func:`CntEdgesToSet` with :class:`TNGrap
 
 	import snap
 
-    NodeSet = snap.TIntSet()
+    NodeSet = snap.TInt64Set()
     for NI in range(1,50):
         NodeSet.AddKey(NI)
     NodeId = 65

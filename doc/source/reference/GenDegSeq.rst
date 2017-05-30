@@ -7,7 +7,7 @@ Generates an undirected random graph with the exact degree sequence given by *De
 
 Parameters:
 
-- *DegSeqV*: :class:`TIntV`, a vector of ints (input)
+- *DegSeqV*: :class:`TInt64V`, a vector of ints (input)
     The desired degree sequence, sorted in descending order.
 
 - *Rnd*: :class:`TRnd` (input)
@@ -24,7 +24,7 @@ exact degree sequence::
 
     import snap
 
-    DegSeqV = snap.TIntV()
+    DegSeqV = snap.TInt64V()
     DegSeqV.Add(3)
     DegSeqV.Add(2)
     DegSeqV.Add(1)

@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: undirected graph (input)
     A Snap.py undirected graph.
 
-- *EdgeV*: :class:`TIntPrV`, a vector of (int, int) pairs (output)
+- *EdgeV*: :class:`TIntPr64V`, a vector of (int, int) pairs (output)
     The bride edges of the graph. Each edge is represented by a node id pair.
 
 Return value:
@@ -24,7 +24,7 @@ The following example shows how to calculate number of bidirectional edges for
     import snap
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    EdgeV = snap.TIntPrV()
+    EdgeV = snap.TIntPr64V()
     snap.GetEdgeBridges(UGraph, EdgeV)
     for edge in EdgeV:
         print "edge: (%d, %d)" % (edge.GetVal1(), edge.GetVal2())

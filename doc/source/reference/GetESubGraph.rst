@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: network (input)
     A Snap.py network.
 
-- *EIdV*: :class:`TIntV`, a vector of ints (input)
+- *EIdV*: :class:`TInt64V`, a vector of ints (input)
     A vector of edge IDs in graph.
 
 Return value:
@@ -25,7 +25,7 @@ The following example shows how to use :func:`GetESubGraph` with
     import snap
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    EIdV = snap.TIntV()
+    EIdV = snap.TInt64V()
     for EI in Network.Edges():
         EIdV.Add(EI.GetId())
     ESubGraph = snap.GetESubGraph(Network, EIdV)
