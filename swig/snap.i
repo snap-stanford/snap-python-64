@@ -75,10 +75,10 @@ Version = "3.0.3"
 %ignore TVec<TVec<TInt64, int64>, int64>::Add;
 %ignore TVec<TVec<TInt64, int64>, int64>::AddMerged;
 
-%ignore TVec<TStr, int>::Add;
-%ignore TVec<TStr, int>::AddMerged;
-%ignore TVec<TStr, int64>::Add;
-%ignore TVec<TStr, int64>::AddMerged;
+//%ignore TVec<TStr, int>::Add;
+//%ignore TVec<TStr, int>::AddMerged;
+//%ignore TVec<TStr, int64>::Add;
+//%ignore TVec<TStr, int64>::AddMerged;
 
 
 %ignore THash< TInt, TVec< TInt, int > >::AddDat;
@@ -380,6 +380,7 @@ Version = "3.0.3"
 %template(TSFlt64V) TVec<TSFlt, int64>;
 %template(TAscFltV) TVec<TAscFlt>;
 %template(TStrV) TVec<TStr>;
+%template(TStr64V) TVec<TStr, int64>;
 %template(TChAV) TVec<TChA>;
 %template(TIntQuV) TVec<TIntQu>;
 %template(TFltTrV) TVec<TFltTr>;

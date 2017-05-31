@@ -673,6 +673,12 @@ TStrV.__iter__ = itervec
 TStrV.__len__ = len_vec
 TStrV.__delitem__ = delitem_vec
 
+TStr64V.__getitem__ = getitem_vec
+TStr64V.__setitem__ = setitem_vec
+TStr64V.__iter__ = itervec
+TStr64V.__len__ = len_vec
+TStr64V.__delitem__ = delitem_vec
+
 TIntStrStrTrV.__getitem__ = getitem_vec
 TIntStrStrTrV.__setitem__ = setitem_vec
 TIntStrStrTrV.__iter__ = itervec
