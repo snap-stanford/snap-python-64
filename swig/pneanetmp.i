@@ -27,17 +27,17 @@ def GetId(self):
 TNEANetMPEdgeI.GetId = GetId
 %}
 
-#ifdef _OPENMP
-%pythoncode %{
-def ToNetworkMP(tspec, *args):
-    if tspec == PNEANetMP : return ToNetworkMP_PNEANetMP(*args)
-    return None
-
-def ToNetworkMP2(tspec, *args):
-    if tspec == PNEANetMP : return ToNetworkMP2_PNEANetMP(*args)
-    return None
-%}
-#endif
+//#ifdef _OPENMP
+//%pythoncode %{
+//def ToNetworkMP(tspec, *args):
+//    if tspec == PNEANetMP : return ToNetworkMP_PNEANetMP(*args)
+//    return None
+//
+//def ToNetworkMP2(tspec, *args):
+//    if tspec == PNEANetMP : return ToNetworkMP2_PNEANetMP(*args)
+//    return None
+//%}
+//#endif
 
 // gbase.h - PNEANet
 %template(PrintInfo_PNEANetMP) TSnap::PrintInfo<PNEANetMP>;
@@ -55,6 +55,6 @@ def ToNetworkMP2(tspec, *args):
 %template(PNEANetMP) TPt< TNEANetMP >;
 // conv.h - PNGraph
 #ifdef _OPENMP
-//%template(ToNetworkMP_PNEANetMP) TSnap::ToNetworkMP<PNEANetMP>;
-//%template(ToNetworkMP2_PNEANetMP) TSnap::ToNetworkMP2<PNEANetMP>;
+%template(ToNetworkMP_PNEANetMP) TSnap::ToNetworkMP<PNEANetMP>;
+%template(ToNetworkMP2_PNEANetMP) TSnap::ToNetworkMP2<PNEANetMP>;
 #endif

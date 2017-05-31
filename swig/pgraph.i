@@ -1344,11 +1344,23 @@ def ConvertESubGraph(toutspec, tinspec, *args):
 def ToNetwork(tspec, *args):
     if tspec == PNEANet : return ToNetwork_PNEANet(*args)
     raise TypeError('First argument has invalid type')
+def ToNetworkMP(tspec, *args):
+    if tspec == PNEANetMP : return ToNetworkMP_PNEANetMP(*args)
+    raise TypeError('First argument has invalid type')
+def ToNetworkMP2(tspec, *args):
+    if tspec == PNEANetMP : return ToNetworkMP2_PNEANetMP(*args)
+    raise TypeError('First argument has invalid type')
 def ToGraph(tspec, *args):
     if tspec == PUNGraph: return ToGraph_PUNGraph(*args)
     if tspec == PUndirNet: return ToGraph_PUndirNet(*args)
     if tspec == PDirNet: return ToGraph_PDirNet(*args)
     if tspec == PNGraph : return ToGraph_PNGraph(*args)
+    raise TypeError('First argument has invalid type')
+def ToGraphMP(tspec, *args):
+    if tspec == PNGraphMP : return ToGraphMP_PNGraphMP(*args)
+    raise TypeError('First argument has invalid type')
+def ToGraphMP3(tspec, *args):
+    if tspec == PNGraphMP : return ToGraphMP3_PNGraphMP(*args)
     raise TypeError('First argument has invalid type')
 
 #
