@@ -12,9 +12,10 @@ awk -f f.awk -v g=PUNGraph flist.txt > dispatch-pungraph.txt
 awk -f f.awk -v g=PNGraph flist.txt > dispatch-pngraph.txt
 awk -f f.awk -v g=PNEANet flist.txt > dispatch-pneanet.txt
 awk -f f.awk -v g=PNGraphMP flist.txt > dispatch-pngraphmp.txt
+awk -f f.awk -v g=PNEANetMP flist.txt > dispatch-pneanetmp.txt
 
 # combine the dispatch tables
-cat dispatch-pungraph.txt dispatch-pngraph.txt dispatch-pneanet.txt dispatch-pngraphmp.txt > dispatch.txt
+cat dispatch-pungraph.txt dispatch-pngraph.txt dispatch-pneanet.txt dispatch-pngraphmp.txt dispatch-pneanetmp.txt > dispatch.txt
 
 # generate the Python code
 python gendispatch.py types.txt dispatch.txt > out-20130807.txt
