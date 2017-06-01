@@ -110,10 +110,10 @@ TNEANetMPEdgeI.GetId = GetId
 %template(GetUnDir_PNEANetMP) TSnap::GetUnDir<PNEANetMP>;
 %template(MakeUnDir_PNEANetMP) TSnap::MakeUnDir<PNEANetMP>;
 %template(AddSelfEdges_PNEANetMP) TSnap::AddSelfEdges<PNEANetMP>;
-%template(DelSelfEdges_PNEANetMP) TSnap::DelSelfEdges<PNEANetMP>;
-%template(DelNodes_PNEANetMP) TSnap::DelNodes<PNEANetMP>;
-%template(DelZeroDegNodes_PNEANetMP) TSnap::DelZeroDegNodes<PNEANetMP>;
-%template(DelDegKNodes_PNEANetMP) TSnap::DelDegKNodes<PNEANetMP>;
+//%template(DelSelfEdges_PNEANetMP) TSnap::DelSelfEdges<PNEANetMP>;
+//%template(DelNodes_PNEANetMP) TSnap::DelNodes<PNEANetMP>;
+//%template(DelZeroDegNodes_PNEANetMP) TSnap::DelZeroDegNodes<PNEANetMP>;
+//%template(DelDegKNodes_PNEANetMP) TSnap::DelDegKNodes<PNEANetMP>;
 %template(IsTree_PNEANetMP) TSnap::IsTree<PNEANetMP>;
 %template(GetTreeRootNId_PNEANetMP) TSnap::GetTreeRootNId<PNEANetMP>;
 %template(GetTreeSig_PNEANetMP) TSnap::GetTreeSig<PNEANetMP>;
