@@ -6,7 +6,7 @@ void print_array(int *x, int length) {
 }
 void print_array(int64 *x, int64 length) {
   for (int64 i = 0; i < length; i++)
-    printf("x[%d] = %d\n", i, x[i]);
+    printf("x[%s] = %s\n", ToCStr(i), ToCStr(x[i]));
 }
 
 TFltV PyTFltV(double x[10]) {
