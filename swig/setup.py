@@ -157,12 +157,12 @@ if uname[0] == "Darwin":
     dynlib_path = getdynpath()
 
 if dryrun:
-    print "swubuntu", swubuntu
-    print "pkg_version", pkg_version
-    print "obj_name", obj_name
-    print "user_install", user_install
+    print ("swubuntu", swubuntu)
+    print ("pkg_version", pkg_version)
+    print ("obj_name", obj_name)
+    print ("user_install", user_install)
     if dynlib_path:
-        print "dynlib_path", dynlib_path
+        print ("dynlib_path", dynlib_path)
     sys.exit(0)
 
 # specify additional files for Mac OS X

@@ -31,12 +31,17 @@ include ../Makefile.config
 
 all: snap.py _snap.so
 
+all3: snap.py _snap3.so
+
 snap_wrap.cxx: snap.i snap_types.i tvec.i pneanet.i tmodenet.i tcrossnet.i pungraph.i pngraph.i pgraph.i pngraphmp.i pneanetmp.i\
 	snapswig.h snap_types.h printgraph.h goodgraph.cpp
 	swig $(SWIGFLAGS) -python -c++ -w302,312,317,325,362,383,384,389,401,503,508,509 -O -I$(SNAPDIR) -I$(GLIBDIR) snap.i
 
 snap_wrap.o: snap_wrap.cxx
 	g++ $(CXXFLAGS) -c snap_wrap.cxx -I$(SNAPDIR)  -I$(GLIBDIR) -I/usr/include/python2.6 -I/usr/include/python2.7 -I/usr/lib/python2.7/dist-packages/numpy/core/include
+
+snap_wrap3.o: snap_wrap.cxx
+	g++ $(CXXFLAGS) -c snap_wrap.cxx -I$(SNAPDIR)  -I$(GLIBDIR) -I/usr/local/include/python3.6m -o snap_wrap3.o
 
 Snap.o: 
 	$(CC) $(CXXFLAGS) -c $(SNAPDIR)/Snap.cpp -I$(SNAPDIR)  -I$(GLIBDIR)
@@ -65,6 +70,9 @@ Snap.o:
 _snap.so: snap_wrap.o Snap.o 
 	g++ $(LDFLAGS) -o _snap.so snap_wrap.o Snap.o  $(LIBS)
 
+_snap3.so: snap_wrap3.o Snap.o 
+	g++ $(LDFLAGS) -o _snap3.so snap_wrap3.o Snap.o  $(LIBS)
+
 snap.py: snap_wrap.cxx
 
 install: setup.py snap.py _snap.so
@@ -73,6 +81,10 @@ install: setup.py snap.py _snap.so
 dist: setup.py snap.py _snap.so
 	cp $(MANIFEST) MANIFEST
 	python setup.py sdist
+
+dist3: setup.py snap.py _snap3.so
+	cp $(MANIFEST)3 MANIFEST
+	python3 setup.py sdist
 
 swig-win: snap_wrap.cxx
 
