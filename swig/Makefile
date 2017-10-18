@@ -71,7 +71,7 @@ _snap.so: snap_wrap.o Snap.o
 	g++ $(LDFLAGS) -o _snap.so snap_wrap.o Snap.o  $(LIBS)
 
 _snap3.so: snap_wrap3.o Snap.o 
-	g++ $(LDFLAGS) -o _snap3.so snap_wrap3.o Snap.o  $(LIBS)
+	g++ $(LDFLAGS3) -o _snap3.so snap_wrap3.o Snap.o  $(LIBS)
 
 snap.py: snap_wrap.cxx
 
@@ -83,7 +83,8 @@ dist: setup.py snap.py _snap.so
 	python setup.py sdist
 
 dist3: setup.py snap.py _snap3.so
-	cp $(MANIFEST)3 MANIFEST
+	cp _snap3.so _snap.so
+	cp $(MANIFEST) MANIFEST
 	python3 setup.py sdist
 
 swig-win: snap_wrap.cxx
