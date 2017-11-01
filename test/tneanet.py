@@ -393,7 +393,7 @@ def ManipulateAttributesId():
         if EI.GetDat() != TStr.GetNullStr():
             print ("E Attribute3: %s, Edge: %i, Val: %s" % (
                 attr1, EdgeId, EI.GetDat()))
-            #(Attr1(), EdgeId, EI.GetDat())
+            #(attr1(), EdgeId, EI.GetDat())
             assert EI.GetDat() in Values
             Values.remove(EI.GetDat())
         EdgeId += 1
@@ -622,7 +622,7 @@ def ManipulateAttributesIter():
         KeyId += 1
         NI.Next()
 
-    # Test column str iterator for node 3, 50, 700, 900
+    # Test column str iterator for node 10, 20, 400
     NI10 = Graph.GetNI(10)
     NI20 = Graph.GetNI(20)
     NI400 = Graph.GetNI(400)
