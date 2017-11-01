@@ -370,7 +370,7 @@ public:
   bool operator < (const TNEANetAIntI& I) const { return IntAI < I.IntAI; }
   bool operator == (const TNEANetAIntI& I) const { return IntAI == I.IntAI; }
   /// Returns an attribute of the node.
-  int64 GetDat() const { return IntAI.GetDat().Val; }
+  const int64 GetDat() const { return IntAI.GetDat().Val; }
   /// Returns true if node or edge has been deleted.
   bool IsDeleted() const { return IntAI.IsDeleted(); };
   TNEANetAIntI& operator++(int) { IntAI++; return *this; }
@@ -395,7 +395,7 @@ public:
   bool operator < (const TNEANetAStrI& I) const { return StrAI < I.StrAI; }
   bool operator == (const TNEANetAStrI& I) const { return StrAI == I.StrAI; }
   /// Returns an attribute of the node.
-  const char * GetDat() const { return StrAI.GetDat().CStr(); }
+  const char* GetDat() const { return StrAI.GetDat().CStr(); }
   /// Returns true if node or edge has been deleted.
   bool IsDeleted() const { return StrAI.IsDeleted(); };
   TNEANetAStrI& operator++(int) { StrAI++; return *this; }
@@ -421,7 +421,7 @@ public:
   bool operator < (const TNEANetAFltI& I) const { return FltAI < I.FltAI; }
   bool operator == (const TNEANetAFltI& I) const { return FltAI == I.FltAI; }
   /// Returns an attribute of the node.
-  double GetDat() const { return FltAI.GetDat().Val; }
+  const double GetDat() const { return FltAI.GetDat().Val; }
   /// Returns true if node or edge has been deleted.
   bool IsDeleted() const { return FltAI.IsDeleted(); };
   TNEANetAFltI& operator++(int) { FltAI++; return *this; }
@@ -582,7 +582,7 @@ public:
   bool operator < (const TCrossNetAIntI& I) const { return IntAI < I.IntAI; }
   bool operator == (const TCrossNetAIntI& I) const { return IntAI == I.IntAI; }
   /// Returns an attribute of the node.
-  int64 GetDat() const { return IntAI.GetDat().Val; }
+  const int64 GetDat() const { return IntAI.GetDat().Val; }
   /// Returns true if node or edge has been deleted.
   bool IsDeleted() const { return IntAI.IsDeleted(); };
   TCrossNetAIntI& operator++(int) { IntAI++; return *this; }
@@ -605,7 +605,7 @@ public:
   bool operator < (const TCrossNetAStrI& I) const { return StrAI < I.StrAI; }
   bool operator == (const TCrossNetAStrI& I) const { return StrAI == I.StrAI; }
   /// Returns an attribute of the node.
-  const char * GetDat() const { return StrAI.GetDat().CStr(); }
+  const char* GetDat() const { return StrAI.GetDat().CStr(); }
   /// Returns true if node or edge has been deleted.
   bool IsDeleted() const { return StrAI.IsDeleted(); };
   TCrossNetAStrI& operator++(int) { StrAI++; return *this; }
@@ -629,7 +629,7 @@ public:
   bool operator < (const TCrossNetAFltI& I) const { return FltAI < I.FltAI; }
   bool operator == (const TCrossNetAFltI& I) const { return FltAI == I.FltAI; }
   /// Returns an attribute of the node.
-  double GetDat() const { return FltAI.GetDat().Val; }
+  const double GetDat() const { return FltAI.GetDat().Val; }
   /// Returns true if node or edge has been deleted.
   bool IsDeleted() const { return FltAI.IsDeleted(); };
   TCrossNetAFltI& operator++(int) { FltAI++; return *this; }

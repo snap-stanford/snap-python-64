@@ -72,6 +72,7 @@ _snap.so: snap_wrap.o Snap.o
 
 _snap3.so: snap_wrap3.o Snap.o 
 	g++ $(LDFLAGS3) -o _snap3.so snap_wrap3.o Snap.o  $(LIBS)
+	cp _snap3.so _snap.so
 
 snap.py: snap_wrap.cxx
 

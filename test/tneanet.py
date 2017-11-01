@@ -7,9 +7,9 @@ def PrintGStats(s, Graph):
     Print graph statistics
     '''
 
-    print "graph %s, nodes %d, edges %d, empty %s" % (
+    print ("graph %s, nodes %d, edges %d, empty %s" % (
         s, Graph.GetNodes(), Graph.GetEdges(),
-        "yes" if Graph.Empty() else "no")
+        "yes" if Graph.Empty() else "no"))
 
 def DefaultConstructor():
     '''
@@ -73,15 +73,15 @@ def ManipulateNodesEdges():
         ECount2 += 1
         EI.Next()
 
-    print "graph ManipulateNodesEdges:Graph2, nodes %d, edges1 %d, edges2 %d"\
-        % (NCount, ECount1, ECount2)
+    print ("graph ManipulateNodesEdges:Graph2, nodes %d, edges1 %d, edges2 %d"\
+        % (NCount, ECount1, ECount2))
 
     # assignment
     Graph1 = Graph
     PrintGStats("ManipulateNodesEdges:Graph3", Graph1)
 
     # save the graph
-    print "graph type = ", type(Graph)
+    print ("graph type = ", type(Graph))
     #FOut = TFOut(TStr(FName))
     FOut = TFOut(FName)
     Graph.Save(FOut)
@@ -109,7 +109,7 @@ def ManipulateAttributesId():
     '''
 
     NNodes = 1000
-    NEdges = 1000
+    NEdges = 10000
   
     Graph = TNEANet.New()
     t = Graph.Empty()
@@ -131,7 +131,7 @@ def ManipulateAttributesId():
             n = Graph.AddEdge(x, y)
         NCount -= 1
     
-    print "Added nodes"
+    print ("Added nodes")
 
     # create attributes and fill all nodes
     #attr1 = TStr("str")
@@ -151,15 +151,15 @@ def ManipulateAttributesId():
     Graph.AddIntAttrDatN(700, 700*2, attr2)
     Graph.AddIntAttrDatN(900, 900*2, attr2)
         
-    print "Added attributes"
+    print ("Added attributes")
 
-    NodeId = 0
+    KeyId = 0
     NI = Graph.BegNAIntI(attr2)
     while NI < Graph.EndNAIntI(attr2):
         if NI.GetDat() != 0:
-           print "Attribute1: %s, Node: %i, Val: %d" % (attr2, NodeId, NI.GetDat())
-           #print "Attribute: %s, Node: %i, Val: %d" % (attr2(), NodeId, NI.GetDat())
-        NodeId += 1
+           print ("Attribute1: %s, KeyId: %i, Val: %d" % (attr2, KeyId, NI.GetDat()))
+           #print ("Attribute: %s, KeyId: %i, Val: %d" % (attr2(), KeyId, NI.GetDat()))
+        KeyId += 1
         NI.Next()
 
     # Test column flt iterator for node 3, 50, 700, 900
@@ -168,7 +168,7 @@ def ManipulateAttributesId():
     Graph.AddFltAttrDatN(300, 150.0, attr3)
         
     Graph.AddFltAttrDatN(653, 653, attr3)
-    NodeId = 0
+    KeyId = 0
     NCount = 0
     NI = Graph.BegNI()
     while NI < Graph.EndNI():
@@ -176,34 +176,49 @@ def ManipulateAttributesId():
         NI.Next()
 
     NI = Graph.BegNAFltI(attr3)
-    NodeId = 0
+    KeyId = 0
     while NI < Graph.EndNAFltI(attr3):
         if NI.GetDat() != TFlt.Mn:
-            print "Attribute2: %s, Node: %i, Val: %f" % (attr3, NodeId, NI.GetDat())
-            #print "Attribute: %s, Node: %i, Val: %f" % (attr3(), NodeId, NI.GetDat())
-        NodeId += 1
+            print ("Attribute2: %s, KeyId: %i, Val: %f" % (attr3, KeyId, NI.GetDat()))
+            #print ("Attribute: %s, KeyId: %i, Val: %f" % (attr3(), KeyId, NI.GetDat()))
+        KeyId += 1
         NI.Next()
 
-    # Test column str iterator for node 3, 50, 700, 900
-    #Graph.AddStrAttrDatN(10, TStr("abc"), attr1)
-    #Graph.AddStrAttrDatN(20, TStr("def"), attr1)
-    #Graph.AddStrAttrDatN(400, TStr("ghi"), attr1)
+    Values = set()
+    Values.add("abc")
+    Values.add("def")
+    Values.add("ghi")
+
+    # Test column str iterator for node 10, 20, 400
     Graph.AddStrAttrDatN(10, "abc", attr1)
     Graph.AddStrAttrDatN(20, "def", attr1)
     Graph.AddStrAttrDatN(400, "ghi", attr1)
     # this does not show since ""=null
     #Graph.AddStrAttrDatN(455, TStr(""), attr1)
     # TODO Graph.AddStrAttrDatN(455, "", attr1)
-    NodeId = 0
+    KeyId = 0
+
+    # Confirm that the values have been added correctly
+    #print ("abc", Graph.GetStrAttrDatN(10, attr1))
+    #print ("def", Graph.GetStrAttrDatN(20, attr1))
+    #print ("ghi", Graph.GetStrAttrDatN(400, attr1))
+
+    assert "abc" == Graph.GetStrAttrDatN(10, attr1)
+    assert "def" == Graph.GetStrAttrDatN(20, attr1)
+    assert "ghi" == Graph.GetStrAttrDatN(400, attr1)
 
     NI = Graph.BegNAStrI(attr1)
-    NodeId = 0
+    KeyId = 0
     while NI < Graph.EndNAStrI(attr1):
         if NI.GetDat() != TStr.GetNullStr():
-            print "Attribute3: %s, Node: %i, Val: %s" % (attr1, NodeId, NI.GetDat())
-            #print "Attribute: %s, Node: %i, Val: %s" % (attr1(), NodeId, NI.GetDat())
-        NodeId += 1
+            print ("Attribute3: %s, KeyId: %i, Val: %s" % (attr1, KeyId, NI.GetDat()))
+            #print ("Attribute: %s, KeyId: %i, Val: %s" % (attr1(), KeyId, NI.GetDat()))
+            assert NI.GetDat() in Values
+            Values.remove(NI.GetDat())
+        KeyId += 1
         NI.Next()
+
+    assert len(Values) == 0
 
     # Test column iterator over many types (must skip default/deleted attr)
     NId = 55
@@ -218,20 +233,20 @@ def ManipulateAttributesId():
     attr2idx = Graph.GetAttrIndN(attr2)
     attr3idx = Graph.GetAttrIndN(attr3)
     attr4idx = Graph.GetAttrIndN(attr4)
-    print "Node attribute indexes:  %s %d,   %s %d,   %s %d,   %s %d" % (
-            attr1, attr1idx, attr2, attr2idx, attr3, attr3idx, attr4, attr4idx)
+    print ("Node attribute indexes:  %s %d,   %s %d,   %s %d,   %s %d" % (
+            attr1, attr1idx, attr2, attr2idx, attr3, attr3idx, attr4, attr4idx))
 
-    print "NId attributes: %i, %s %d %.2f" % (
+    print ("NId attributes: %i, %s %d %.2f" % (
             NId,
             Graph.GetStrAttrDatN(NId, attr1),
             Graph.GetIntAttrDatN(NId, attr2),
-            Graph.GetFltAttrDatN(NId, attr3))
+            Graph.GetFltAttrDatN(NId, attr3)))
 
-    print "ind attributes: %i, %s %d %.2f" % (
+    print ("ind attributes: %i, %s %d %.2f" % (
             NId,
             Graph.GetStrAttrIndDatN(NId, attr1idx),
             Graph.GetIntAttrIndDatN(NId, attr2idx),
-            Graph.GetFltAttrIndDatN(NId, attr3idx))
+            Graph.GetFltAttrIndDatN(NId, attr3idx)))
 
     NIdAttrName = TStr64V()
     NIdAttrValue = TStr64V()
@@ -242,69 +257,69 @@ def ManipulateAttributesId():
     Graph.AttrNameNI(NId, NIdAttrName)
     AttrLen = NIdAttrName.Len()
     for i in range(AttrLen):
-        print "Vertical Node1: %i, Attr: %s" % (NId, NIdAttrName.GetI(i)())
+        print ("Vertical Node1: %i, Attr: %s" % (NId, NIdAttrName.GetI(i)()))
 
     Graph.IntAttrNameNI(NId, NIdAttrName)
     AttrLen = NIdAttrName.Len()
     for i in range(AttrLen):
-        print "Vertical Node11 (int): %i, Attr: %s" % (NId, NIdAttrName.GetI(i)())
+        print ("Vertical Node11 (int): %i, Attr: %s" % (NId, NIdAttrName.GetI(i)()))
 
     Graph.FltAttrNameNI(NId, NIdAttrName)
     AttrLen = NIdAttrName.Len()
     for i in range(AttrLen):
-        print "Vertical Node12 (flt): %i, Attr: %s" % (NId, NIdAttrName.GetI(i)())
+        print ("Vertical Node12 (flt): %i, Attr: %s" % (NId, NIdAttrName.GetI(i)()))
 
     Graph.StrAttrNameNI(NId, NIdAttrName)
     AttrLen = NIdAttrName.Len()
     for i in range(AttrLen):
-        print "Vertical Node13 (str): %i, Attr: %s" % (NId, NIdAttrName.GetI(i)())
+        print ("Vertical Node13 (str): %i, Attr: %s" % (NId, NIdAttrName.GetI(i)()))
 
     Graph.IntAttrValueNI(NId, NIdIntAttrValue)
     AttrLen = NIdIntAttrValue.Len()
     for i in range(AttrLen):
-        print "Vertical Node14 (int): %i, Attr_Val: %d" % (NId, NIdIntAttrValue.GetI(i)())
+        print ("Vertical Node14 (int): %i, Attr_Val: %d" % (NId, NIdIntAttrValue.GetI(i)()))
 
     Graph.FltAttrValueNI(NId, NIdFltAttrValue)
     AttrLen = NIdFltAttrValue.Len()
     for i in range(AttrLen):
-        print "Vertical Node15 (flt): %i, Attr_Val: %.2f" % (NId, NIdFltAttrValue.GetI(i)())
+        print ("Vertical Node15 (flt): %i, Attr_Val: %.2f" % (NId, NIdFltAttrValue.GetI(i)()))
 
     Graph.StrAttrValueNI(NId, NIdStrAttrValue)
     AttrLen = NIdStrAttrValue.Len()
     for i in range(AttrLen):
-        print "Vertical Node16 (str): %i, Attr_Val: %s" % (NId, NIdStrAttrValue.GetI(i)())
+        print ("Vertical Node16 (str): %i, Attr_Val: %s" % (NId, NIdStrAttrValue.GetI(i)()))
 
-    print "DeletedN: %i, Attr: %s, %s" % (NId, attr1, Graph.IsAttrDeletedN(NId, attr1))
-    print "DeletedN: %i, Attr: %s, %s" % (NId, attr2, Graph.IsAttrDeletedN(NId, attr2))
-    print "DeletedN: %i, Attr: %s, %s" % (NId, attr3, Graph.IsAttrDeletedN(NId, attr3))
-    print "DeletedN: %i, Attr: %s, %s" % (NId, attr4, Graph.IsAttrDeletedN(NId, attr4))
-    print "DeletedN (str): %i, Attr: %s, %s" % (NId, attr1, Graph.IsStrAttrDeletedN(NId, attr1))
-    print "DeletedN (int): %i, Attr: %s, %s" % (NId, attr2, Graph.IsIntAttrDeletedN(NId, attr2))
-    print "DeletedN (flt): %i, Attr: %s, %s" % (NId, attr3, Graph.IsFltAttrDeletedN(NId, attr3))
-    print "DeletedN (str): %i, Attr: %s, %s" % (NId, attr4, Graph.IsStrAttrDeletedN(NId, attr4))
-    print "DeletedN (int): %i, Attr: %s, %s" % (NId, attr4, Graph.IsIntAttrDeletedN(NId, attr4))
-    print "DeletedN (flt): %i, Attr: %s, %s" % (NId, attr4, Graph.IsFltAttrDeletedN(NId, attr4))
+    print ("DeletedN: %i, Attr: %s, %s" % (NId, attr1, Graph.IsAttrDeletedN(NId, attr1)))
+    print ("DeletedN: %i, Attr: %s, %s" % (NId, attr2, Graph.IsAttrDeletedN(NId, attr2)))
+    print ("DeletedN: %i, Attr: %s, %s" % (NId, attr3, Graph.IsAttrDeletedN(NId, attr3)))
+    print ("DeletedN: %i, Attr: %s, %s" % (NId, attr4, Graph.IsAttrDeletedN(NId, attr4)))
+    print ("DeletedN (str): %i, Attr: %s, %s" % (NId, attr1, Graph.IsStrAttrDeletedN(NId, attr1)))
+    print ("DeletedN (int): %i, Attr: %s, %s" % (NId, attr2, Graph.IsIntAttrDeletedN(NId, attr2)))
+    print ("DeletedN (flt): %i, Attr: %s, %s" % (NId, attr3, Graph.IsFltAttrDeletedN(NId, attr3)))
+    print ("DeletedN (str): %i, Attr: %s, %s" % (NId, attr4, Graph.IsStrAttrDeletedN(NId, attr4)))
+    print ("DeletedN (int): %i, Attr: %s, %s" % (NId, attr4, Graph.IsIntAttrDeletedN(NId, attr4)))
+    print ("DeletedN (flt): %i, Attr: %s, %s" % (NId, attr4, Graph.IsFltAttrDeletedN(NId, attr4)))
 
     Graph.DelAttrDatN(NId, attr2)
-    print "DeletedN: %i, Attr: %s, %s" % (NId, attr2, Graph.IsAttrDeletedN(NId, attr2))
-    print "DeletedN (int): %i, Attr: %s, %s" % (NId, attr2, Graph.IsIntAttrDeletedN(NId, attr2))
+    print ("DeletedN: %i, Attr: %s, %s" % (NId, attr2, Graph.IsAttrDeletedN(NId, attr2)))
+    print ("DeletedN (int): %i, Attr: %s, %s" % (NId, attr2, Graph.IsIntAttrDeletedN(NId, attr2)))
 
     Graph.AttrNameNI(NId, NIdAttrName)
     AttrLen = NIdAttrName.Len()
     for i in range(AttrLen):
-        print "Vertical Node2 (no int): %i, Attr: %s" % (NId, NIdAttrName.GetI(i)())
+        print ("Vertical Node2 (no int): %i, Attr: %s" % (NId, NIdAttrName.GetI(i)()))
 
     Graph.AddIntAttrDatN(NId, 3*2, attr2)
     Graph.DelAttrN(attr1)
     Graph.AttrNameNI(NId, NIdAttrName)
     AttrLen = NIdAttrName.Len()
     for i in range(AttrLen):
-        print "Vertical Node3 (no str): %i, Attr: %s" % (NId, NIdAttrName.GetI(i)())
+        print ("Vertical Node3 (no str): %i, Attr: %s" % (NId, NIdAttrName.GetI(i)()))
 
     Graph.AttrValueNI(NId, NIdAttrValue)
     AttrLen = NIdAttrValue.Len()
     for i in range(AttrLen):
-        print "Vertical Node4 (no str): %i, Attr_Val: %s" % (NId, NIdAttrValue.GetI(i)())
+        print ("Vertical Node4 (no str): %i, Attr_Val: %s" % (NId, NIdAttrValue.GetI(i)()))
 
     for i in range(NNodes):
         Graph.AddIntAttrDatN(i, 70, attr2)
@@ -315,9 +330,10 @@ def ManipulateAttributesId():
         total += NI.GetDat()
         NI.Next()
 
-    print "Average: %i (should be 70)" % (total/NNodes)
+    print ("Average: %i (should be 70)" % (total/NNodes))
     if total/NNodes != 70:
-        print "*** Error1"
+        print ("*** Error1")
+        assert total/NNodes == 70
 
     # Test column iterator for edge
     Graph.AddIntAttrDatE(3, 3*2, attr2)
@@ -328,9 +344,9 @@ def ManipulateAttributesId():
     EI = Graph.BegEAIntI(attr2)
     while EI < Graph.EndEAIntI(attr2):
         if EI.GetDat() != TInt64.Mn:
-            print "E Attribute1: %s, Edge: %i, Val: %i" % (
-                attr2, EdgeId, EI.GetDat())
-            #% (attr2(), EdgeId, EI.GetDat())
+            print ("E Attribute1: %s, Edge: %i, Val: %i" % (
+                attr2, EdgeId, EI.GetDat()))
+            #% (attr2(), EdgeId, EI.GetDat()))
         EdgeId += 1
         EI.Next()
 
@@ -345,11 +361,16 @@ def ManipulateAttributesId():
     while EI < Graph.EndEAFltI(attr3):
         # Check if defaults are set to 0.
         if EI.GetDat() != 0:
-            print "E Attribute2: %s, Edge: %i, Val: %f" % (
-                attr3, EdgeId, EI.GetDat())
+            print ("E Attribute2: %s, Edge: %i, Val: %f" % (
+                attr3, EdgeId, EI.GetDat()))
             #(attr3(), EdgeId, EI.GetDat())
         EdgeId += 1
         EI.Next()
+
+    Values = set()
+    Values.add("abc")
+    Values.add("def")
+    Values.add("ghi")
 
     # Test column str iterator for edge
     #Graph.AddStrAttrDatE(10, TStr("abc"), attr1)
@@ -361,15 +382,24 @@ def ManipulateAttributesId():
     # this does not show since ""=null
     #Graph.AddStrAttrDatE(455, TStr(""), attr1)
     # TODO Graph.AddStrAttrDatE(455, "", attr1)
+
+    assert "abc" == Graph.GetStrAttrDatE(10, attr1)
+    assert "def" == Graph.GetStrAttrDatE(20, attr1)
+    assert "ghi" == Graph.GetStrAttrDatE(400, attr1)
+
     EdgeId = 0
     EI = Graph.BegEAStrI(attr1)
     while EI < Graph.EndEAStrI(attr1):
         if EI.GetDat() != TStr.GetNullStr():
-            print "E Attribute3: %s, Edge: %i, Val: %s" % (
-                attr1, EdgeId, EI.GetDat())
-            #(attr1(), EdgeId, EI.GetDat())
+            print ("E Attribute3: %s, Edge: %i, Val: %s" % (
+                attr1, EdgeId, EI.GetDat()))
+            #(Attr1(), EdgeId, EI.GetDat())
+            assert EI.GetDat() in Values
+            Values.remove(EI.GetDat())
         EdgeId += 1
         EI.Next()
+
+    assert len(Values) == 0
 
     # Test column iterator over many types (must skip default/deleted attr)
     EId = 55
@@ -384,20 +414,20 @@ def ManipulateAttributesId():
     attr2idx = Graph.GetAttrIndE(attr2)
     attr3idx = Graph.GetAttrIndE(attr3)
     attr4idx = Graph.GetAttrIndE(attr4)
-    print "Edge attribute indexes:  %s %d,   %s %d,   %s %d,   %s %d" % (
-            attr1, attr1idx, attr2, attr2idx, attr3, attr3idx, attr4, attr4idx)
+    print ("Edge attribute indexes:  %s %d,   %s %d,   %s %d,   %s %d" % (
+            attr1, attr1idx, attr2, attr2idx, attr3, attr3idx, attr4, attr4idx))
 
-    print "EId attributes: %i, %s %d %.2f" % (
+    print ("EId attributes: %i, %s %d %.2f" % (
             EId,
             Graph.GetStrAttrDatE(EId, attr1),
             Graph.GetIntAttrDatE(EId, attr2),
-            Graph.GetFltAttrDatE(EId, attr3))
+            Graph.GetFltAttrDatE(EId, attr3)))
 
-    print "ind attributes: %i, %s %d %.2f" % (
+    print ("ind attributes: %i, %s %d %.2f" % (
             EId,
             Graph.GetStrAttrIndDatE(EId, attr1idx),
             Graph.GetIntAttrIndDatE(EId, attr2idx),
-            Graph.GetFltAttrIndDatE(EId, attr3idx))
+            Graph.GetFltAttrIndDatE(EId, attr3idx)))
 
     EIdAttrName = TStr64V()
     EIdAttrValue = TStr64V()
@@ -409,83 +439,83 @@ def ManipulateAttributesId():
     EI = Graph.BegEAIntI(attr2)
     while EI < Graph.EndEAIntI(attr2):
         if EI.GetDat() != TInt64.Mn:
-            print "E Attribute1: %s, Edge: %i, Val: %i" % (
-                attr2, EdgeId, EI.GetDat())
-            #% (attr2(), EdgeId, EI.GetDat())
+            print ("E Attribute1: %s, Edge: %i, Val: %i" % (
+                attr2, EdgeId, EI.GetDat()))
+            #% (attr2(), EdgeId, EI.GetDat()))
         EdgeId += 1
         EI.Next()
 
     Graph.AttrValueEI(EId, EIdAttrValue)
     AttrLen = EIdAttrValue.Len()
     for i in range(AttrLen):
-        print "Vertical Edge4 (no str): %i, Attr_Val: %s" % (EId, EIdAttrValue.GetI(i)())
+        print ("Vertical Edge4 (no str): %i, Attr_Val: %s" % (EId, EIdAttrValue.GetI(i)()))
 
     Graph.AttrNameEI(EId, EIdAttrName)
     AttrLen = EIdAttrName.Len()
     for i in range(AttrLen):
-        print "Vertical Edge1: %i, Attr: %s" % (EId, EIdAttrName.GetI(i)())
+        print ("Vertical Edge1: %i, Attr: %s" % (EId, EIdAttrName.GetI(i)()))
 
     Graph.IntAttrNameEI(EId, EIdAttrName)
     AttrLen = EIdAttrName.Len()
     for i in range(AttrLen):
-        print "Vertical Edge11 (int): %i, Attr: %s" % (EId, EIdAttrName.GetI(i)())
+        print ("Vertical Edge11 (int): %i, Attr: %s" % (EId, EIdAttrName.GetI(i)()))
 
     Graph.FltAttrNameEI(EId, EIdAttrName)
     AttrLen = EIdAttrName.Len()
     for i in range(AttrLen):
-        print "Vertical Edge12 (flt): %i, Attr: %s" % (EId, EIdAttrName.GetI(i)())
+        print ("Vertical Edge12 (flt): %i, Attr: %s" % (EId, EIdAttrName.GetI(i)()))
 
     Graph.StrAttrNameEI(EId, EIdAttrName)
     AttrLen = EIdAttrName.Len()
     for i in range(AttrLen):
-        print "Vertical Edge13 (str): %i, Attr: %s" % (EId, EIdAttrName.GetI(i)())
+        print ("Vertical Edge13 (str): %i, Attr: %s" % (EId, EIdAttrName.GetI(i)()))
 
     Graph.IntAttrValueEI(EId, EIdIntAttrValue)
     AttrLen = EIdIntAttrValue.Len()
     for i in range(AttrLen):
-        print "Vertical Edge14 (int): %i, Attr_Val: %d" % (EId, EIdIntAttrValue.GetI(i)())
+        print ("Vertical Edge14 (int): %i, Attr_Val: %d" % (EId, EIdIntAttrValue.GetI(i)()))
 
     Graph.FltAttrValueEI(EId, EIdFltAttrValue)
     AttrLen = EIdFltAttrValue.Len()
     for i in range(AttrLen):
-        print "Vertical Edge15 (flt): %i, Attr_Val: %.2f" % (EId, EIdFltAttrValue.GetI(i)())
+        print ("Vertical Edge15 (flt): %i, Attr_Val: %.2f" % (EId, EIdFltAttrValue.GetI(i)()))
 
     Graph.StrAttrValueEI(EId, EIdStrAttrValue)
     AttrLen = EIdStrAttrValue.Len()
     for i in range(AttrLen):
-        print "Vertical Edge16 (str): %i, Attr_Val: %s" % (EId, EIdStrAttrValue.GetI(i)())
+        print ("Vertical Edge16 (str): %i, Attr_Val: %s" % (EId, EIdStrAttrValue.GetI(i)()))
 
-    print "DeletedE: %i, Attr: %s, %s" % (EId, attr1, Graph.IsAttrDeletedE(EId, attr1))
-    print "DeletedE: %i, Attr: %s, %s" % (EId, attr2, Graph.IsAttrDeletedE(EId, attr2))
-    print "DeletedE: %i, Attr: %s, %s" % (EId, attr3, Graph.IsAttrDeletedE(EId, attr3))
-    print "DeletedE: %i, Attr: %s, %s" % (EId, attr4, Graph.IsAttrDeletedE(EId, attr4))
-    print "DeletedE (str): %i, Attr: %s, %s" % (EId, attr1, Graph.IsStrAttrDeletedE(EId, attr1))
-    print "DeletedE (int): %i, Attr: %s, %s" % (EId, attr2, Graph.IsIntAttrDeletedE(EId, attr2))
-    print "DeletedE (flt): %i, Attr: %s, %s" % (EId, attr3, Graph.IsFltAttrDeletedE(EId, attr3))
-    print "DeletedE (str): %i, Attr: %s, %s" % (EId, attr4, Graph.IsStrAttrDeletedE(EId, attr4))
-    print "DeletedE (int): %i, Attr: %s, %s" % (EId, attr4, Graph.IsIntAttrDeletedE(EId, attr4))
-    print "DeletedE (flt): %i, Attr: %s, %s" % (EId, attr4, Graph.IsFltAttrDeletedE(EId, attr4))
+    print ("DeletedE: %i, Attr: %s, %s" % (EId, attr1, Graph.IsAttrDeletedE(EId, attr1)))
+    print ("DeletedE: %i, Attr: %s, %s" % (EId, attr2, Graph.IsAttrDeletedE(EId, attr2)))
+    print ("DeletedE: %i, Attr: %s, %s" % (EId, attr3, Graph.IsAttrDeletedE(EId, attr3)))
+    print ("DeletedE: %i, Attr: %s, %s" % (EId, attr4, Graph.IsAttrDeletedE(EId, attr4)))
+    print ("DeletedE (str): %i, Attr: %s, %s" % (EId, attr1, Graph.IsStrAttrDeletedE(EId, attr1)))
+    print ("DeletedE (int): %i, Attr: %s, %s" % (EId, attr2, Graph.IsIntAttrDeletedE(EId, attr2)))
+    print ("DeletedE (flt): %i, Attr: %s, %s" % (EId, attr3, Graph.IsFltAttrDeletedE(EId, attr3)))
+    print ("DeletedE (str): %i, Attr: %s, %s" % (EId, attr4, Graph.IsStrAttrDeletedE(EId, attr4)))
+    print ("DeletedE (int): %i, Attr: %s, %s" % (EId, attr4, Graph.IsIntAttrDeletedE(EId, attr4)))
+    print ("DeletedE (flt): %i, Attr: %s, %s" % (EId, attr4, Graph.IsFltAttrDeletedE(EId, attr4)))
 
     Graph.DelAttrDatE(EId, attr2)
-    print "DeletedE: %i, Attr: %s, %s" % (EId, attr2, Graph.IsAttrDeletedE(EId, attr2))
-    print "DeletedE (int): %i, Attr: %s, %s" % (EId, attr2, Graph.IsIntAttrDeletedE(EId, attr2))
+    print ("DeletedE: %i, Attr: %s, %s" % (EId, attr2, Graph.IsAttrDeletedE(EId, attr2)))
+    print ("DeletedE (int): %i, Attr: %s, %s" % (EId, attr2, Graph.IsIntAttrDeletedE(EId, attr2)))
 
     Graph.AttrNameEI(EId, EIdAttrName)
     AttrLen = EIdAttrName.Len()
     for i in range(AttrLen):
-        print "Vertical Edge2 (no int): %i, Attr: %s" % (EId, EIdAttrName.GetI(i)())
+        print ("Vertical Edge2 (no int): %i, Attr: %s" % (EId, EIdAttrName.GetI(i)()))
 
     Graph.AddIntAttrDatE(EId, 3*2, attr2)
     Graph.DelAttrE(attr1)
     Graph.AttrNameEI(EId, EIdAttrName)
     AttrLen = EIdAttrName.Len()
     for i in range(AttrLen):
-        print "Vertical Edge3 (no str): %i, Attr: %s" % (EId, EIdAttrName.GetI(i)())
+        print ("Vertical Edge3 (no str): %i, Attr: %s" % (EId, EIdAttrName.GetI(i)()))
 
     Graph.AttrValueEI(EId, EIdAttrValue)
     AttrLen = EIdAttrValue.Len()
     for i in range(AttrLen):
-        print "Vertical Edge4 (no str): %i, Attr_Val: %s" % (EId, EIdAttrValue.GetI(i)())
+        print ("Vertical Edge4 (no str): %i, Attr_Val: %s" % (EId, EIdAttrValue.GetI(i)()))
 
     for i in range(NEdges):
         Graph.AddIntAttrDatE(i, 70, attr2)
@@ -496,10 +526,11 @@ def ManipulateAttributesId():
         total += EI.GetDat()
         EI.Next()
 
-    print "Average: %i (should be 70)" % (total/NEdges)
-    if total/NNodes != 70:
-        print "*** Error2"
-  
+    print ("Average: %i (should be 7)" % (total/NEdges))
+    if total/NEdges != 7:
+        print ("*** Error2", total/NEdges)
+        assert total/NEdges == 7
+
     Graph.Clr()
 
 def ManipulateAttributesIter():
@@ -508,7 +539,7 @@ def ManipulateAttributesIter():
     '''
 
     NNodes = 1000
-    NEdges = 1000
+    NEdges = 10000
   
     Graph = TNEANet.New()
     t = Graph.Empty()
@@ -530,7 +561,7 @@ def ManipulateAttributesIter():
             n = Graph.AddEdge(x, y)
         NCount -= 1
     
-    print "Added nodes"
+    print ("Added nodes")
 
     # create attributes and fill all nodes
     #attr1 = TStr("str")
@@ -554,15 +585,15 @@ def ManipulateAttributesIter():
     Graph.AddIntAttrDatN(NI700, 700*2, attr2)
     Graph.AddIntAttrDatN(NI900, 900*2, attr2)
         
-    print "Added attributes"
+    print ("Added attributes")
         
-    NodeId = 0
+    KeyId = 0
     NI = Graph.BegNAIntI(attr2)
     while NI < Graph.EndNAIntI(attr2):
         if NI.GetDat() != 0:
-           print "Attribute1: %s, Node: %i, Val: %d" % (attr2, NodeId, NI.GetDat())
-           #print "Attribute: %s, Node: %i, Val: %d" % (attr2(), NodeId, NI.GetDat())
-        NodeId += 1
+           print ("Attribute1: %s, KeyId: %i, Val: %d" % (attr2, KeyId, NI.GetDat()))
+           #print ("Attribute: %s, KeyId: %i, Val: %d" % (attr2(), KeyId, NI.GetDat()))
+        KeyId += 1
         NI.Next()
 
     # Test column flt iterator for node 3, 50, 700, 900
@@ -575,7 +606,7 @@ def ManipulateAttributesIter():
     Graph.AddFltAttrDatN(NI300, 150.0, attr3)
     Graph.AddFltAttrDatN(NI653, 653, attr3)
 
-    NodeId = 0
+    KeyId = 0
     NCount = 0
     NI = Graph.BegNI()
     while NI < Graph.EndNI():
@@ -583,18 +614,24 @@ def ManipulateAttributesIter():
         NI.Next()
 
     NI = Graph.BegNAFltI(attr3)
-    NodeId = 0
+    KeyId = 0
     while NI < Graph.EndNAFltI(attr3):
         if NI.GetDat() != TFlt.Mn:
-            print "Attribute2: %s, Node: %i, Val: %f" % (attr3, NodeId, NI.GetDat())
-            #print "Attribute: %s, Node: %i, Val: %f" % (attr3(), NodeId, NI.GetDat())
-        NodeId += 1
+            print ("Attribute2: %s, KeyId: %i, Val: %f" % (attr3, KeyId, NI.GetDat()))
+            #print ("Attribute: %s, KeyId: %i, Val: %f" % (attr3(), KeyId, NI.GetDat()))
+        KeyId += 1
         NI.Next()
 
     # Test column str iterator for node 3, 50, 700, 900
     NI10 = Graph.GetNI(10)
     NI20 = Graph.GetNI(20)
     NI400 = Graph.GetNI(400)
+
+    Values = set()
+    Values.add("abc")
+    Values.add("def")
+    Values.add("ghi")
+
     #Graph.AddStrAttrDatN(10, TStr("abc"), attr1)
     #Graph.AddStrAttrDatN(20, TStr("def"), attr1)
     #Graph.AddStrAttrDatN(400, TStr("ghi"), attr1)
@@ -604,16 +641,23 @@ def ManipulateAttributesIter():
     # this does not show since ""=null
     #Graph.AddStrAttrDatN(455, TStr(""), attr1)
     # TODO Graph.AddStrAttrDatN(455, "", attr1)
-    NodeId = 0
+
+    assert "abc" == Graph.GetStrAttrDatN(NI10, attr1)
+    assert "def" == Graph.GetStrAttrDatN(NI20, attr1)
+    assert "ghi" == Graph.GetStrAttrDatN(NI400, attr1)
 
     NI = Graph.BegNAStrI(attr1)
-    NodeId = 0
+    KeyId = 0
     while NI < Graph.EndNAStrI(attr1):
         if NI.GetDat() != TStr.GetNullStr():
-            print "Attribute3: %s, Node: %i, Val: %s" % (attr1, NodeId, NI.GetDat())
-            #print "Attribute: %s, Node: %i, Val: %s" % (attr1(), NodeId, NI.GetDat())
-        NodeId += 1
+            print ("Attribute3: %s, KeyId: %i, Val: %s" % (attr1, KeyId, NI.GetDat()))
+            #print ("Attribute: %s, KeyId: %i, Val: %s" % (attr1(), KeyId, NI.GetDat()))
+            assert NI.GetDat() in Values
+            Values.remove(NI.GetDat())
+        KeyId += 1
         NI.Next()
+
+    assert len(Values) == 0
 
     # Test column iterator over many types (must skip default/deleted attr)
     NId = 55
@@ -630,21 +674,21 @@ def ManipulateAttributesIter():
     attr2idx = Graph.GetAttrIndN(attr2)
     attr3idx = Graph.GetAttrIndN(attr3)
     attr4idx = Graph.GetAttrIndN(attr4)
-    print "Node attribute indexes:  %s %d,   %s %d,   %s %d,   %s %d" % (
-            attr1, attr1idx, attr2, attr2idx, attr3, attr3idx, attr4, attr4idx)
+    print ("Node attribute indexes:  %s %d,   %s %d,   %s %d,   %s %d" % (
+            attr1, attr1idx, attr2, attr2idx, attr3, attr3idx, attr4, attr4idx))
 
     NI = Graph.GetNI(NId)
-    print "NI  attributes: %i, %s %d %.2f" % (
+    print ("NI  attributes: %i, %s %d %.2f" % (
             NI.GetId(),
             Graph.GetStrAttrDatN(NI, attr1),
             Graph.GetIntAttrDatN(NI, attr2),
-            Graph.GetFltAttrDatN(NI, attr3))
+            Graph.GetFltAttrDatN(NI, attr3)))
 
-    print "ind attributes: %i, %s %d %.2f" % (
+    print ("ind attributes: %i, %s %d %.2f" % (
             NI.GetId(),
             Graph.GetStrAttrIndDatN(NI, attr1idx),
             Graph.GetIntAttrIndDatN(NI, attr2idx),
-            Graph.GetFltAttrIndDatN(NI, attr3idx))
+            Graph.GetFltAttrIndDatN(NI, attr3idx)))
 
     NIdAttrName = TStr64V()
     NIdAttrValue = TStr64V()
@@ -655,58 +699,58 @@ def ManipulateAttributesIter():
     Graph.AttrNameNI(NId, NIdAttrName)
     AttrLen = NIdAttrName.Len()
     for i in range(AttrLen):
-        print "Vertical Node1: %i, Attr: %s" % (NId, NIdAttrName.GetI(i)())
+        print ("Vertical Node1: %i, Attr: %s" % (NId, NIdAttrName.GetI(i)()))
 
     NIdAttrName = TStr64V()
     Graph.IntAttrNameNI(NId, NIdAttrName)
     AttrLen = NIdAttrName.Len()
     for i in range(AttrLen):
-        print "Vertical Node11 (int): %i, Attr: %s" % (NId, NIdAttrName.GetI(i)())
+        print ("Vertical Node11 (int): %i, Attr: %s" % (NId, NIdAttrName.GetI(i)()))
 
     NIdAttrName = TStr64V()
     Graph.FltAttrNameNI(NId, NIdAttrName)
     AttrLen = NIdAttrName.Len()
     for i in range(AttrLen):
-        print "Vertical Node12 (flt): %i, Attr: %s" % (NId, NIdAttrName.GetI(i)())
+        print ("Vertical Node12 (flt): %i, Attr: %s" % (NId, NIdAttrName.GetI(i)()))
 
     NIdAttrName = TStr64V()
     Graph.StrAttrNameNI(NId, NIdAttrName)
     AttrLen = NIdAttrName.Len()
     for i in range(AttrLen):
-        print "Vertical Node13 (str): %i, Attr: %s" % (NId, NIdAttrName.GetI(i)())
+        print ("Vertical Node13 (str): %i, Attr: %s" % (NId, NIdAttrName.GetI(i)()))
 
     Graph.IntAttrValueNI(NId, NIdIntAttrValue)
     AttrLen = NIdIntAttrValue.Len()
     for i in range(AttrLen):
-        print "Vertical Node14 (int): %i, Attr_Val: %d" % (NId, NIdIntAttrValue.GetI(i)())
+        print ("Vertical Node14 (int): %i, Attr_Val: %d" % (NId, NIdIntAttrValue.GetI(i)()))
 
     Graph.FltAttrValueNI(NId, NIdFltAttrValue)
     AttrLen = NIdFltAttrValue.Len()
     for i in range(AttrLen):
-        print "Vertical Node15 (flt): %i, Attr_Val: %.2f" % (NId, NIdFltAttrValue.GetI(i)())
+        print ("Vertical Node15 (flt): %i, Attr_Val: %.2f" % (NId, NIdFltAttrValue.GetI(i)()))
 
     Graph.StrAttrValueNI(NId, NIdStrAttrValue)
     AttrLen = NIdStrAttrValue.Len()
     for i in range(AttrLen):
-        print "Vertical Node16 (str): %i, Attr_Val: %s" % (NId, NIdStrAttrValue.GetI(i)())
+        print ("Vertical Node16 (str): %i, Attr_Val: %s" % (NId, NIdStrAttrValue.GetI(i)()))
 
     Graph.DelAttrDatN(NId, attr2)
     Graph.AttrNameNI(NId, NIdAttrName)
     AttrLen = NIdAttrName.Len()
     for i in range(AttrLen):
-        print "Vertical Node2 (no int) : %i, Attr: %s" % (NId, NIdAttrName.GetI(i)())
+        print ("Vertical Node2 (no int) : %i, Attr: %s" % (NId, NIdAttrName.GetI(i)()))
 
     Graph.AddIntAttrDatN(NId, 3*2, attr2)
     Graph.DelAttrN(attr1)
     Graph.AttrNameNI(NId, NIdAttrName)
     AttrLen = NIdAttrName.Len()
     for i in range(AttrLen):
-        print "Vertical Node3 (no str) : %i, Attr: %s" % (NId, NIdAttrName.GetI(i)())
+        print ("Vertical Node3 (no str) : %i, Attr: %s" % (NId, NIdAttrName.GetI(i)()))
 
     Graph.AttrValueNI(NId, NIdAttrValue)
     AttrLen = NIdAttrValue.Len()
     for i in range(AttrLen):
-        print "Vertical Node4 (no str) : %i, Attr_Val: %s" % (NId, NIdAttrValue.GetI(i)())
+        print ("Vertical Node4 (no str) : %i, Attr_Val: %s" % (NId, NIdAttrValue.GetI(i)()))
 
     for i in range(NNodes):
         Graph.AddIntAttrDatN(i, 70, attr2)
@@ -717,9 +761,10 @@ def ManipulateAttributesIter():
         total += NI.GetDat()
         NI.Next()
 
-    print "Average: %i (should be 70)" % (total/NNodes)
+    print ("Average: %i (should be 70)" % (total/NNodes))
     if total/NNodes != 70:
-        print "*** Error3"
+        print ("*** Error3")
+        assert total/NNodes == 70
 
     # Test column iterator for edge
     EI3 = Graph.GetEI(3)
@@ -734,9 +779,9 @@ def ManipulateAttributesIter():
     EI = Graph.BegEAIntI(attr2)
     while EI < Graph.EndEAIntI(attr2):
         if EI.GetDat() != TInt64.Mn:
-            print "E Attribute1: %s, Edge: %i, Val: %i" % (
-                attr2, EdgeId, EI.GetDat())
-            #% (attr2(), EdgeId, EI.GetDat())
+            print ("E Attribute1: %s, Edge: %i, Val: %i" % (
+                attr2, EdgeId, EI.GetDat()))
+            #% (attr2(), EdgeId, EI.GetDat()))
         EdgeId += 1
         EI.Next()
 
@@ -755,9 +800,9 @@ def ManipulateAttributesIter():
     while EI < Graph.EndEAFltI(attr3):
         # Check if defaults are set to 0.
         if EI.GetDat() != 0:
-            print "E Attribute2: %s, Edge: %i, Val: %f" % (
-                attr3, EdgeId, EI.GetDat())
-            #(attr3(), EdgeId, EI.GetDat())
+            print ("E Attribute2: %s, Edge: %i, Val: %f" % (
+                attr3, EdgeId, EI.GetDat()))
+            #(attr3(), EdgeId, EI.GetDat()))
         EdgeId += 1
         EI.Next()
 
@@ -768,6 +813,12 @@ def ManipulateAttributesIter():
     EI10 = Graph.GetEI(10)
     EI20 = Graph.GetEI(20)
     EI400 = Graph.GetEI(400)
+
+    Values = set()
+    Values.add("abc")
+    Values.add("def")
+    Values.add("ghi")
+
     Graph.AddStrAttrDatE(EI10, "abc", attr1)
     Graph.AddStrAttrDatE(EI20, "def", attr1)
     Graph.AddStrAttrDatE(EI400, "ghi", attr1)
@@ -778,11 +829,16 @@ def ManipulateAttributesIter():
     EI = Graph.BegEAStrI(attr1)
     while EI < Graph.EndEAStrI(attr1):
         if EI.GetDat() != TStr.GetNullStr():
-            print "E Attribute3: %s, Edge: %i, Val: %s" % (
-                attr1, EdgeId, EI.GetDat())
-            #(attr1(), EdgeId, EI.GetDat())
+            print ("E Attribute3: %s, Edge: %i, Val: %s" % (
+                attr1, EdgeId, EI.GetDat()))
+            #(attr1(), EdgeId, EI.GetDat()))
+            assert EI.GetDat() in Values
+            Values.remove(EI.GetDat())
+
         EdgeId += 1
         EI.Next()
+
+    assert len(Values) == 0
 
     # Test column iterator over many types (must skip default/deleted attr)
     EId = 55
@@ -799,21 +855,21 @@ def ManipulateAttributesIter():
     attr2idx = Graph.GetAttrIndE(attr2)
     attr3idx = Graph.GetAttrIndE(attr3)
     attr4idx = Graph.GetAttrIndE(attr4)
-    print "Edge attribute indexes:  %s %d,   %s %d,   %s %d,   %s %d" % (
-            attr1, attr1idx, attr2, attr2idx, attr3, attr3idx, attr4, attr4idx)
+    print ("Edge attribute indexes:  %s %d,   %s %d,   %s %d,   %s %d" % (
+            attr1, attr1idx, attr2, attr2idx, attr3, attr3idx, attr4, attr4idx))
 
     EI = Graph.GetEI(EId)
-    print "EI  attributes: %i, %s %d %.2f" % (
+    print ("EI  attributes: %i, %s %d %.2f" % (
             EI.GetId(),
             Graph.GetStrAttrDatE(EI, attr1),
             Graph.GetIntAttrDatE(EI, attr2),
-            Graph.GetFltAttrDatE(EI, attr3))
+            Graph.GetFltAttrDatE(EI, attr3)))
 
-    print "ind attributes: %i, %s %d %.2f" % (
+    print ("ind attributes: %i, %s %d %.2f" % (
             EI.GetId(),
             Graph.GetStrAttrIndDatE(EI, attr1idx),
             Graph.GetIntAttrIndDatE(EI, attr2idx),
-            Graph.GetFltAttrIndDatE(EI, attr3idx))
+            Graph.GetFltAttrIndDatE(EI, attr3idx)))
 
     EIdAttrName = TStr64V()
     EIdAttrValue = TStr64V()
@@ -821,25 +877,25 @@ def ManipulateAttributesIter():
     Graph.AttrNameEI(EId, EIdAttrName)
     AttrLen = EIdAttrName.Len()
     for i in range(AttrLen):
-        print "Vertical Edge1: %i, Attr: %s" % (EId, EIdAttrName.GetI(i)())
+        print ("Vertical Edge1: %i, Attr: %s" % (EId, EIdAttrName.GetI(i)()))
 
     Graph.DelAttrDatE(EId, attr2)
     Graph.AttrNameEI(EId, EIdAttrName)
     AttrLen = EIdAttrName.Len()
     for i in range(AttrLen):
-        print "Vertical Edge2 (no int) : %i, Attr: %s" % (EId, EIdAttrName.GetI(i)())
+        print ("Vertical Edge2 (no int) : %i, Attr: %s" % (EId, EIdAttrName.GetI(i)()))
 
     Graph.AddIntAttrDatE(EId, 3*2, attr2)
     Graph.DelAttrE(attr1)
     Graph.AttrNameEI(EId, EIdAttrName)
     AttrLen = EIdAttrName.Len()
     for i in range(AttrLen):
-        print "Vertical Edge3 (no str) : %i, Attr: %s" % (EId, EIdAttrName.GetI(i)())
+        print ("Vertical Edge3 (no str) : %i, Attr: %s" % (EId, EIdAttrName.GetI(i)()))
 
     Graph.AttrValueEI(EId, EIdAttrValue)
     AttrLen = EIdAttrValue.Len()
     for i in range(AttrLen):
-        print "Vertical Edge4 (no str) : %i, Attr_Val: %s" % (EId, EIdAttrValue.GetI(i)())
+        print ("Vertical Edge4 (no str) : %i, Attr_Val: %s" % (EId, EIdAttrValue.GetI(i)()))
 
     for i in range(NEdges):
         Graph.AddIntAttrDatE(i, 70, attr2)
@@ -850,19 +906,20 @@ def ManipulateAttributesIter():
         total += EI.GetDat()
         EI.Next()
 
-    print "Average: %i (should be 70)" % (total/NEdges)
-    if total/NNodes != 70:
-        print "*** Error4"
+    print ("Average: %i (should be 7)" % (total/NEdges))
+    if total/NEdges != 7:
+        print ("*** Error4")
+        assert total/NEdges == 7
   
     Graph.Clr()
 
 if __name__ == '__main__':
-    print "----- DefaultConstructor -----"
+    print ("----- DefaultConstructor -----")
     DefaultConstructor()
-    print "----- ManipulateNodesEdges -----"
+    print ("----- ManipulateNodesEdges -----")
     ManipulateNodesEdges()
-    print "----- ManipulateAttributesId -----"
+    print ("----- ManipulateAttributesId -----")
     ManipulateAttributesId()
-    print "----- ManipulateAttributesIter -----"
+    print ("----- ManipulateAttributesIter -----")
     ManipulateAttributesIter()
 
