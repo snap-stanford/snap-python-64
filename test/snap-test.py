@@ -57,12 +57,14 @@ class SnapPythonTest(unittest.TestCase):
     #### Helper Functions for Tests ####
 
     def checkPlotHash(self, gen_file, exp_hash):
-        test_file = 'test.txt'
+        fname = 'test.txt'
         self.assertTrue(os.path.isfile(gen_file))
-        os.system('grep -v "^#" ' + gen_file + '  > ' + test_file)
-        act_hash = hashlib.md5(open(test_file, 'rb').read()).hexdigest()
+        os.system('grep -v "^#" ' + gen_file + '  > ' + fname)
+        f = open(fname, 'rb')
+        act_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, act_hash)
-        os.system('rm ' + test_file)
+        os.system('rm ' + fname)
 
     def checkPrintInfoOutput(self, filename, params):
         count = 0
@@ -1308,21 +1310,27 @@ class SnapPythonTest(unittest.TestCase):
         fname = "mygraph.txt"
         snap.SaveEdgeList(self.DirGraphFull, fname)
         exp_hash = 'd26278f1b4d13aac3c22763f937a30d3'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
         # Undirected Graph
         snap.SaveEdgeList(self.UnDirGraphFull, fname)
         exp_hash = 'c767b54d9d1c607c791d895817b9b758'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
         # Directed Graph
         snap.SaveEdgeList(self.NetFull, fname)
         exp_hash = 'd26278f1b4d13aac3c22763f937a30d3'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
@@ -1331,21 +1339,27 @@ class SnapPythonTest(unittest.TestCase):
         fname = "mygraph.txt"
         snap.SaveMatlabSparseMtx(self.DirGraphFull, fname)
         exp_hash = 'a0e90dc5e7e3d9383a4af049d4dafee2'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
         # Undirected Graph
         snap.SaveMatlabSparseMtx(self.UnDirGraphFull, fname)
         exp_hash = '28a9ccb0bf7c71de564fac9d071fb704'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
         # Directed Graph
         snap.SaveMatlabSparseMtx(self.NetFull, fname)
         exp_hash = 'a0e90dc5e7e3d9383a4af049d4dafee2'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
@@ -2477,17 +2491,17 @@ class SnapPythonTest(unittest.TestCase):
         # Directed Graph
         Graph = snap.GenFull(snap.PNGraph, 10)
         result = snap.GetTriads(Graph)
-        self.assertEqual(result, 120L)
+        self.assertEqual(result, 120)
 
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 10)
         result = snap.GetTriads(Graph)
-        self.assertEqual(result, 120L)
+        self.assertEqual(result, 120)
 
         # Network
         Graph = snap.GenFull(snap.PNEANet, 10)
         result = snap.GetTriads(Graph)
-        self.assertEqual(result, 120L)
+        self.assertEqual(result, 120)
 
     def test_GetClustCf(self):
         # Directed Graph
@@ -2545,21 +2559,27 @@ class SnapPythonTest(unittest.TestCase):
         fname = "mygraph.txt"
         snap.SavePajek(self.DirGraphFull, fname)
         exp_hash = '9474d66aacad5a21ce366eb6b98eb157'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
         # Undirected Graph
         snap.SavePajek(self.UnDirGraphFull, fname)
         exp_hash = '7552ace478ac1b2193a91f4d2707d45d'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
         # Directed Graph
         snap.SavePajek(self.NetFull, fname)
         exp_hash = '9474d66aacad5a21ce366eb6b98eb157'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
@@ -2571,7 +2591,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdColorH[i] = "red"
         snap.SavePajek(self.DirGraphFull, fname, NIdColorH)
         exp_hash = '1d0c1618ae32a2e3e600e47d9540e2e4'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
@@ -2581,7 +2603,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdColorH[i] = "red"
         snap.SavePajek(self.UnDirGraphFull, fname, NIdColorH)
         exp_hash = '7a63bc4bd44d9c078e50ba2a43fc484f'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
@@ -2591,7 +2615,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdColorH[i] = "red"
         snap.SavePajek(self.NetFull, fname, NIdColorH)
         exp_hash = '1d0c1618ae32a2e3e600e47d9540e2e4'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
@@ -2606,7 +2632,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdLabelH[i] = str(i)
         snap.SavePajek(self.DirGraphFull, fname, NIdColorH, NIdLabelH)
         exp_hash = '1d0c1618ae32a2e3e600e47d9540e2e4'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
@@ -2619,7 +2647,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdLabelH[i] = str(i)
         snap.SavePajek(self.UnDirGraphFull, fname, NIdColorH, NIdLabelH)
         exp_hash = '7a63bc4bd44d9c078e50ba2a43fc484f'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
@@ -2632,7 +2662,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdLabelH[i] = str(i)
         snap.SavePajek(self.NetFull, fname, NIdColorH, NIdLabelH)
         exp_hash = '1d0c1618ae32a2e3e600e47d9540e2e4'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
@@ -2650,7 +2682,9 @@ class SnapPythonTest(unittest.TestCase):
             EIdColorH[i] = "black"
         snap.SavePajek(self.DirGraphFull, fname, NIdColorH, NIdLabelH, EIdColorH)
         exp_hash = '1d0c1618ae32a2e3e600e47d9540e2e4'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
@@ -2666,7 +2700,9 @@ class SnapPythonTest(unittest.TestCase):
             EIdColorH[i] = "black"
         snap.SavePajek(self.UnDirGraphFull, fname, NIdColorH, NIdLabelH, EIdColorH)
         exp_hash = '7a63bc4bd44d9c078e50ba2a43fc484f'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
@@ -2682,7 +2718,9 @@ class SnapPythonTest(unittest.TestCase):
             EIdColorH[i] = "black"
         snap.SavePajek(self.NetFull, fname, NIdColorH, NIdLabelH, EIdColorH)
         exp_hash = '22acc46e0a1a57c4f74fbacac90ebd82'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
@@ -2694,7 +2732,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdColorH[i] = "red"
         snap.SaveGViz(self.DirGraphFull, fname, "text", True, NIdColorH)
         exp_hash = '64fe626fa482a0d45416824dc02d73a5'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
@@ -2704,7 +2744,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdColorH[i] = "red"
         snap.SaveGViz(self.UnDirGraphFull, fname, "text", True, NIdColorH)
         exp_hash = 'd2185ec44f908e8d10da6c6319c900a5'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
@@ -2714,7 +2756,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdColorH[i] = "red"
         snap.SaveGViz(self.NetFull, fname, "text", True, NIdColorH)
         exp_hash = '64fe626fa482a0d45416824dc02d73a5'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
@@ -2726,7 +2770,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdLabelH[i] = str(i)
         snap.SaveGViz(self.DirGraphFull, fname, "text", NIdLabelH)
         exp_hash = '260c9cfe1b5eac55a053ffcf418703e1'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
@@ -2736,7 +2782,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdLabelH[i] = str(i)
         snap.SaveGViz(self.UnDirGraphFull, fname, "text", NIdLabelH)
         exp_hash = 'df04d8deed65d2a537a741e3ab3e251b'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
@@ -2746,7 +2794,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdLabelH[i] = str(i)
         snap.SaveGViz(self.NetFull, fname, "text", NIdLabelH)
         exp_hash = '260c9cfe1b5eac55a053ffcf418703e1'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
@@ -2878,7 +2928,9 @@ class SnapPythonTest(unittest.TestCase):
         self.assertTrue(os.path.isfile(fname))
         self.assertTrue(os.stat(fname).st_size > 50000)
         exp_hash = '7ac8bcf157f7d916be78a09faaf13f23'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         # OP RS 2014/05/13, disabled since it is not portable
         #self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
@@ -2889,7 +2941,9 @@ class SnapPythonTest(unittest.TestCase):
         self.assertTrue(os.path.isfile(fname))
         self.assertTrue(os.stat(fname).st_size > 50000)
         exp_hash = '734899b11f197b88d14d771b18011d85'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         # OP RS 2014/05/13, disabled since it is not portable
         #self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
@@ -2900,7 +2954,9 @@ class SnapPythonTest(unittest.TestCase):
         self.assertTrue(os.path.isfile(fname))
         self.assertTrue(os.stat(fname).st_size > 50000)
         exp_hash = '7ac8bcf157f7d916be78a09faaf13f23'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         # OP RS 2014/05/13, disabled since it is not portable
         #self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
@@ -2916,7 +2972,9 @@ class SnapPythonTest(unittest.TestCase):
         self.assertTrue(os.stat(fname).st_size > 50000)
         self.assertTrue(os.path.isfile(fname))
         exp_hash = 'd0fa3688dd5d9c5599222270be49805e'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         # OP RS 2014/05/13, disabled since it is not portable
         #self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
@@ -2930,7 +2988,9 @@ class SnapPythonTest(unittest.TestCase):
         self.assertTrue(os.path.isfile(fname))
         self.assertTrue(os.stat(fname).st_size > 50000)
         exp_hash = '191c86413fd43f23bf1c5ce4a9972863'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         # OP RS 2014/05/13, disabled since it is not portable
         #self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
@@ -2944,7 +3004,9 @@ class SnapPythonTest(unittest.TestCase):
         self.assertTrue(os.path.isfile(fname))
         self.assertTrue(os.stat(fname).st_size > 50000)
         exp_hash = 'd0fa3688dd5d9c5599222270be49805e'
-        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
         # OP RS 2014/05/13, disabled since it is not portable
         #self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)

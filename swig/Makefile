@@ -31,17 +31,34 @@ include ../Makefile.config
 
 all: snap.py _snap.so
 
-all3: snap.py _snap3.so
+all3: snap3.py _snap3.so
+
+snap.py: snap_wrap.cxx
+
+snap3.py: snap_wrap3.cxx
+
+_snap.so: snap_wrap.o Snap.o 
+	g++ $(LDFLAGS) -o _snap.so snap_wrap.o Snap.o  $(LIBS)
+
+_snap3.so: snap_wrap3.o Snap.o 
+	g++ $(LDFLAGS3) -o _snap.so snap_wrap3.o Snap.o  $(LIBS)
+	ln -f _snap.so _snap3.so
 
 snap_wrap.cxx: snap.i snap_types.i tvec.i pneanet.i tmodenet.i tcrossnet.i pungraph.i pngraph.i pgraph.i pngraphmp.i pneanetmp.i\
 	snapswig.h snap_types.h printgraph.h goodgraph.cpp
 	swig $(SWIGFLAGS) -python -c++ -w302,312,317,325,362,383,384,389,401,503,508,509 -O -I$(SNAPDIR) -I$(GLIBDIR) snap.i
 
+snap_wrap3.cxx: snap.i snap_types.i tvec.i pneanet.i tmodenet.i tcrossnet.i pungraph.i pngraph.i pgraph.i pngraphmp.i pneanetmp.i\
+	snapswig.h snap_types.h printgraph.h goodgraph.cpp
+	swig $(SWIGFLAGS3) -python -c++ -w302,312,317,325,362,383,384,389,401,503,508,509 -O -I$(SNAPDIR) -I$(GLIBDIR) snap.i
+	ln -f snap_wrap.cxx snap_wrap3.cxx
+
 snap_wrap.o: snap_wrap.cxx
 	g++ $(CXXFLAGS) -c snap_wrap.cxx -I$(SNAPDIR)  -I$(GLIBDIR) -I/usr/include/python2.6 -I/usr/include/python2.7 -I/usr/lib/python2.7/dist-packages/numpy/core/include
 
-snap_wrap3.o: snap_wrap.cxx
-	g++ $(CXXFLAGS) -c snap_wrap.cxx -I$(SNAPDIR)  -I$(GLIBDIR) -I/usr/local/include/python3.6m -o snap_wrap3.o
+snap_wrap3.o: snap_wrap3.cxx
+	g++ $(CXXFLAGS) -c snap_wrap3.cxx -I$(SNAPDIR)  -I$(GLIBDIR) -I/usr/local/include/python3.6m -o snap_wrap.o
+	ln -f snap_wrap.o snap_wrap3.o
 
 Snap.o: 
 	$(CC) $(CXXFLAGS) -c $(SNAPDIR)/Snap.cpp -I$(SNAPDIR)  -I$(GLIBDIR)
@@ -67,15 +84,6 @@ Snap.o:
 # n2v.o: 
 # 	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/n2v.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
 
-_snap.so: snap_wrap.o Snap.o 
-	g++ $(LDFLAGS) -o _snap.so snap_wrap.o Snap.o  $(LIBS)
-
-_snap3.so: snap_wrap3.o Snap.o 
-	g++ $(LDFLAGS3) -o _snap3.so snap_wrap3.o Snap.o  $(LIBS)
-	cp _snap3.so _snap.so
-
-snap.py: snap_wrap.cxx
-
 install: setup.py snap.py _snap.so
 	sudo python setup.py install
 
@@ -83,8 +91,7 @@ dist: setup.py snap.py _snap.so
 	cp $(MANIFEST) MANIFEST
 	python setup.py sdist
 
-dist3: setup.py snap.py _snap3.so
-	cp _snap3.so _snap.so
+dist3: setup.py snap3.py _snap3.so
 	cp $(MANIFEST) MANIFEST
 	python3 setup.py sdist
 
@@ -99,5 +106,5 @@ dist-win: setup.py snap.py _snap.pyd
 	chmod 0644 dist/*.zip
 
 clean:
-	rm -f *.o *_wrap.cxx _*.so *.pyc snap.py _snap.*
+	rm -f *.o *_wrap*.cxx _*.so *.pyc snap*.py _snap*.*
 
