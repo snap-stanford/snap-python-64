@@ -152,14 +152,14 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\snap\snap-adv\agm.cpp" />
-    <ClCompile Include="..\..\snap\snap-adv\agmfast.cpp" />
-    <ClCompile Include="..\..\snap\snap-adv\agmfit.cpp" />
-    <ClCompile Include="..\..\snap\snap-adv\cliques.cpp" />
-    <ClCompile Include="..\..\snap\snap-adv\biasedrandomwalk.cpp" />
-    <ClCompile Include="..\..\snap\snap-adv\word2vec.cpp" />
-    <ClCompile Include="..\..\snap\snap-adv\n2v.cpp" />
-    <ClCompile Include="..\..\snap\snap-core\Snap.cpp" />
+    <ClCompile Include="S:\snap-adv\agm.cpp" />
+    <ClCompile Include="S:\snap-adv\agmfast.cpp" />
+    <ClCompile Include="S:\snap-adv\agmfit.cpp" />
+    <ClCompile Include="S:\snap-adv\cliques.cpp" />
+    <ClCompile Include="S:\snap-adv\biasedrandomwalk.cpp" />
+    <ClCompile Include="S:\snap-adv\word2vec.cpp" />
+    <ClCompile Include="S:\snap-adv\n2v.cpp" />
+    <ClCompile Include="S:\snap-core\Snap.cpp" />
     <ClCompile Include="snap_wrap.cxx">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">WIN32;NDEBUG;SW_SNAPPY;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
