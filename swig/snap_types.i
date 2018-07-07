@@ -12,8 +12,8 @@
 %apply int64 &OUTPUT { int64& FullDiamX};
 %apply int64 &OUTPUT { int64& EdgesInX};
 %apply int64 &OUTPUT { int64& EdgesOutX};
-//%apply int64 &OUTPUT { int64& ClosedTriadsX};
-//%apply int64 &OUTPUT { int64& OpenTriadsX};
+%apply int64 &OUTPUT { int64& ClosedTriadsX};
+%apply int64 &OUTPUT { int64& OpenTriadsX};
 %apply int64 &OUTPUT { int64& ClosedNTriadsX};
 %apply int64 &OUTPUT { int64& OpenNTriadsX};
 %apply int64 &OUTPUT { int64& InGroupEdgesX};
