@@ -16,7 +16,7 @@ from distutils.core import setup, Extension
 #
 #   Snap.py version
 #
-snappy_version = "5.0.1-64"
+snappy_version = "5.1.0-64"
 
 def getdynpath():
     '''

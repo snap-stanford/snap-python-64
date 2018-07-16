@@ -8,7 +8,7 @@
 #define SNAP_ALL 0
 
 %pythoncode %{
-Version = "5.0.10-64"
+Version = "5.1.0-64"
 %}
 
 %module snap
@@ -230,6 +230,7 @@ Version = "5.0.10-64"
 %include "subgraph.h"
 %include "util.h"
 %include "triad.h"
+%include "gstat.h"
 %include "statplot.h"
 //%include "cliques.h"
 //%include "agm.h"
