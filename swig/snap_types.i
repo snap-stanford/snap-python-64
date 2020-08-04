@@ -4,21 +4,21 @@
 //
 
 %include typemaps.i
-%apply int64 &INOUT { int64& RootNIdX};
-%apply int64 &INOUT { int64& TreeSzX};
-%apply int64 &INOUT { int64& TreeDepthX};
-%apply double &INOUT { double& EffDiamX};
-%apply double &INOUT { double& AvgSPLX};
-%apply int64 &INOUT { int64& FullDiamX};
-%apply int64 &INOUT { int64& EdgesInX};
-%apply int64 &INOUT { int64& EdgesOutX};
-%apply int64 &INOUT { int64& ClosedTriadsX};
-%apply int64 &INOUT { int64& OpenTriadsX};
-%apply int64 &INOUT { int64& ClosedNTriadsX};
-%apply int64 &INOUT { int64& OpenNTriadsX};
-%apply int64 &INOUT { int64& InGroupEdgesX};
-%apply int64 &INOUT { int64& InOutGroupEdgesX};
-%apply int64 &INOUT { int64& OutGroupX};
+%apply int64 &OUTPUT { int64& RootNIdX};
+%apply int64 &OUTPUT { int64& TreeSzX};
+%apply int64 &OUTPUT { int64& TreeDepthX};
+%apply double &OUTPUT { double& EffDiamX};
+%apply double &OUTPUT { double& AvgSPLX};
+%apply int64 &OUTPUT { int64& FullDiamX};
+%apply int64 &OUTPUT { int64& EdgesInX};
+%apply int64 &OUTPUT { int64& EdgesOutX};
+%apply int64 &OUTPUT { int64& ClosedTriadsX};
+%apply int64 &OUTPUT { int64& OpenTriadsX};
+%apply int64 &OUTPUT { int64& ClosedNTriadsX};
+%apply int64 &OUTPUT { int64& OpenNTriadsX};
+%apply int64 &OUTPUT { int64& InGroupEdgesX};
+%apply int64 &OUTPUT { int64& InOutGroupEdgesX};
+%apply int64 &OUTPUT { int64& OutGroupX};
 
 //
 // TInt
