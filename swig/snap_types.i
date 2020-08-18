@@ -18,7 +18,7 @@
 %apply int64 &OUTPUT { int64& OpenNTriadsX};
 %apply int64 &OUTPUT { int64& InGroupEdgesX};
 %apply int64 &OUTPUT { int64& InOutGroupEdgesX};
-%apply int64 &OUTPUT { int64& OutGroupX};
+%apply int64 &OUTPUT { int64& OutGroupEdgesX};
 
 //
 // TInt
