@@ -758,6 +758,9 @@ Version = "5.1.0-64"
 /* table interface */
 %include "ptable.i"
 
+/* enhanced Python functionality */
+%include "pylayer.i"
+
 %template(PTable) TPt< TTable >;
 
 // note for operator renaming
